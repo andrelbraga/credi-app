@@ -17,18 +17,22 @@
     <ion-list>
         <ion-item>
           <ion-label>Categoria</ion-label>
-          <ion-select [(ngModel)]="teste">
+          <ion-select [(ngModel)]="choice.categories">
             <ion-option *ngFor="let item of categories" [value]="item">{{item}}</ion-option>
           </ion-select>
         </ion-item>
-      </ion-list>
+    </ion-list>
       
       <ion-item>
           <ion-label>Data</ion-label>
-          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="teste"></ion-datetime>
+          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="choice.date"></ion-datetime>
       </ion-item>
 
 
+      <ion-content padding>
+        <button ion-button color="positive" block (click)="showPromptSaveExpense(choice)">Save Expense</button>
+      </ion-content>
+      
 
 </ion-content>
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { SQLite } from '@ionic-native/sqlite';
+
 
 /**
  * Generated class for the InvoicePage page.
@@ -16,14 +17,70 @@ import { SQLite } from '@ionic-native/sqlite';
 })
 export class InvoicePage {
 public categories: Array<string> = ['Banco','Lanche','Roupas'];
-public teste: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private sqlite: SQLite) {
+public choice: any = { categories:"", date:"" };
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private sqlite: SQLite, public alertCtrl: AlertController, public loadingCtrl: LoadingController ) {
   }
+
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InvoicePage');
-    console.log(this.teste);
   }
+
+
+  showInputCategories(){
+    
+  }
+ 
+  showPromptSaveExpense(choice) {
+    let prompt = this.alertCtrl.create({
+      title: 'Expenses',
+      message: "Enter a name for this new expense.",
+      inputs: [
+        {
+          name: 'Expense',
+          placeholder: 'Expense name'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: (data) => {
+            console.log(data);
+            console.log(choice);
+            console.log('Saved clicked');
+            this.presentLoading();
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
+
+
+  presentLoading() {
+    var loader = this.loadingCtrl.create({
+      content: "Please wait..."
+      //duration: 3000
+    });
+    loader.present();
+    
+    setTimeout(() => {
+      loader.dismiss();
+      this.navCtrl.popToRoot()
+    }, 3000);
+
+  }
+
+
+
 
 
 

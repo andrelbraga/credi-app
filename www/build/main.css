@@ -25677,3 +25677,44 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-bottom));
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
+
+page-home .income {
+  color: #32db64;
+  position: absolute;
+  width: 100%;
+  padding-right: 220px;
+  padding-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: right;
+  font-weight: bold;
+}
+
+page-home .categorie {
+  color: #488aff;
+  position: absolute;
+  width: 100%;
+  padding-right: 220px;
+  padding-bottom: 140px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: right;
+  font-weight: bold;
+}
+
+page-home .expense {
+  color: #f53d3d;
+  position: absolute;
+  width: 100%;
+  padding-right: 220px;
+  padding-bottom: 85px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: right;
+  font-weight: bold;
+}
+
+page-home .ListBackdrop {
+  background-color: white !important;
+  opacity: 0.2;
+}

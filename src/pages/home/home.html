@@ -6,33 +6,50 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-
-    <ion-slides pager>
+    <ion-slides pager [ngClass]="{'ListBackdrop': fabButtonOpened == true }">
         
           <ion-slide>
-              <div style="display: block">
+
+              <div *ngIf="doughnutChartData.length == 0">
+                <h4><i>"You not data."</i></h4> 
+                  <img src="assets/imgs/404.png" class="slide-image"/>
+              </div>
+              <div *ngIf="doughnutChartData.length > 0" style="display: block">
                   <canvas baseChart height="350"
                               [data]="doughnutChartData"
                               [labels]="doughnutChartLabels"
                               [chartType]="doughnutChartType"
                               (chartHover)="chartHovered($event)"
                               (chartClick)="chartClicked($event)"></canvas>
-                </div>
+              </div>
+
           </ion-slide>
         
           <ion-slide>
             <h2>Lista de Contas</h2>
           </ion-slide>
         
-        </ion-slides>
-
-    
+    </ion-slides>
 
 
-      <ion-fab right bottom>
-          <button ion-fab color="positive" (click)="addInvoice()"><ion-icon name="add"></ion-icon></button>
-      </ion-fab>
+
+
+
+
+    <ion-fab right bottom #fab>
+        <button ion-fab color="positive" (click)="penFabButton()"><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list side="top">
+            <ion-label class="income">Income</ion-label>
+            <ion-label class="categorie">Categories</ion-label>
+            <ion-label class="expense">Expense</ion-label>
+            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-round-up"></ion-icon></button>            
+            <button ion-fab style="color:#f53d3d" (click)="openExpense($event)"><ion-icon name="md-arrow-round-down"></ion-icon></button>
+            <button ion-fab style="color:#488aff" (click)="openCategorie($event)"><ion-icon name="md-list"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
 </ion-content>
+
+
 <ion-footer>
     <ion-toolbar>
 <!-- {{today | date:'dd/MM/yyyy'}} -->

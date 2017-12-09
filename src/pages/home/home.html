@@ -1,23 +1,29 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Dashboard</ion-title>
+    <ion-navbar>
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+    <ion-title>Home</ion-title>
     <ion-buttons end>
         <button ion-button icon-only>
-            <ion-icon name="md-notifications"> 
+            <ion-icon name="md-notifications">
             <ion-badge id="notifications-badge">5</ion-badge>
             </ion-icon>
         </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
+
+
 <ion-content padding>
     <ion-slides pager [ngClass]="{'ListBackdrop': fabButtonOpened == true }">
-        
+
           <ion-slide>
 
               <div *ngIf="doughnutChartData.length == 0">
-                <h4><i>"You not data."</i></h4> 
-                  <img src="assets/imgs/404.png" class="slide-image"/>
+                  <p style="color:darkgray">"You not data in view page add new expesense
+                          for generate dynamic chart"</p>
+                <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>
               </div>
               <div *ngIf="doughnutChartData.length > 0" style="display: block">
                   <canvas baseChart height="350"
@@ -29,11 +35,12 @@
               </div>
 
           </ion-slide>
-        
+
           <ion-slide>
-            <h2>Lista de Contas</h2>
+              <p style="color:darkgray">Not list expenses.</p>
+            <img src="assets/imgs/ica-slidebox-img-4.png" class="slide-image"/>
           </ion-slide>
-        
+
     </ion-slides>
 
 
@@ -47,7 +54,7 @@
             <ion-label class="income">Income</ion-label>
             <ion-label class="categorie">Categories</ion-label>
             <ion-label class="expense">Expense</ion-label>
-            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-round-up"></ion-icon></button>            
+            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-round-up"></ion-icon></button>
             <button ion-fab style="color:#f53d3d" (click)="openExpense($event)"><ion-icon name="md-arrow-round-down"></ion-icon></button>
             <button ion-fab style="color:#488aff" (click)="openCategorie($event)"><ion-icon name="md-list"></ion-icon></button>
       </ion-fab-list>

@@ -16,8 +16,8 @@ import { SQLite } from '@ionic-native/sqlite';
 })
 export class CategoriePage {
   public categories: Array<string> = [];
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
     private sqlite: SQLite, public alertCtrl: AlertController, public loadingCtrl: LoadingController ) {
   }
 
@@ -63,7 +63,7 @@ export class CategoriePage {
       //duration: 3000
     });
     loader.present();
-    
+
     setTimeout(() => {
       loader.dismiss();
       this.navCtrl.push(CategoriePage);
@@ -72,8 +72,8 @@ export class CategoriePage {
   }
 
 
-  transporte(){
-    console.log('agora');
+  addCategorie(){
+
   }
 
 }

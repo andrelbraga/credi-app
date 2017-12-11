@@ -45,19 +45,8 @@ export class CategoriePage {
     }
 
   ionViewDidLoad() {
-    // this.categorieProvider.getDb().then((data: any) =>{
-// let data = this.categorieProvider.getDb();
-//     for(var i=0; i < data.length; i++){
-//         this.categories.push({id: data.rows.item(i).id,
-//                               name: data.rows.item(i).name,
-//                               status: data.rows.item(i).status});
-//     }
-
-    // }).catch(() =>{
-    //   let toast = this.toastCtrl.create({message:'Te arranca!', duration: 3000, position: 'top'});
-    //   toast.present();
-    // });
-    console.log('ionViewDidLoad CategoriePage');
+    console.log(this.categorieProvider.getDb());
+   console.log('ionViewDidLoad CategoriePage');
   }
 
   showPromptSaveExpense(choice){

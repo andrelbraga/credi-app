@@ -10,17 +10,17 @@
         "spec": "latest",
         "type": "tag"
       },
-      "C:\\Projetos\\App\\Credi"
+      "C:\\Projetos\\credi-app"
     ]
   ],
   "_from": "cordova-sqlite-storage@latest",
-  "_id": "cordova-sqlite-storage@2.1.2",
+  "_id": "cordova-sqlite-storage@2.1.3",
   "_inCache": true,
   "_location": "/cordova-sqlite-storage",
-  "_nodeVersion": "6.11.5",
+  "_nodeVersion": "6.12.2",
   "_npmOperationalInternal": {
     "host": "s3://npm-registry-packages",
-    "tmp": "tmp/cordova-sqlite-storage-2.1.2.tgz_1510550071835_0.12552570877596736"
+    "tmp": "tmp/cordova-sqlite-storage-2.1.3.tgz_1512962436169_0.2136280802078545"
   },
   "_npmUser": {
     "name": "brodybits",
@@ -41,11 +41,11 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-2.1.2.tgz",
-  "_shasum": "fb3ccc842d088fde5513b7d3160a88319fb72ea4",
+  "_resolved": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-2.1.3.tgz",
+  "_shasum": "3881223bf5b343b2bdefb67dead3127bca7edfc3",
   "_shrinkwrap": null,
   "_spec": "cordova-sqlite-storage",
-  "_where": "C:\\Projetos\\App\\Credi",
+  "_where": "C:\\Projetos\\credi-app",
   "author": {
     "name": "various"
   },
@@ -70,16 +70,17 @@
   },
   "directories": {},
   "dist": {
-    "shasum": "fb3ccc842d088fde5513b7d3160a88319fb72ea4",
-    "tarball": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-2.1.2.tgz"
+    "shasum": "3881223bf5b343b2bdefb67dead3127bca7edfc3",
+    "tarball": "https://registry.npmjs.org/cordova-sqlite-storage/-/cordova-sqlite-storage-2.1.3.tgz"
   },
-  "gitHead": "7bd451f03b1558c181fac5eb7e4df88a9dc97c9d",
+  "gitHead": "1bea0b2e8e33356c0b1fd059455adfccc22d1360",
   "homepage": "https://github.com/litehelpers/Cordova-sqlite-storage",
   "keywords": [
     "sqlite",
     "ecosystem:cordova",
     "cordova-android",
     "cordova-ios",
+    "cordova-osx",
     "cordova-windows"
   ],
   "license": "MIT",
@@ -99,5 +100,5 @@
   "scripts": {
     "start": "node scripts/prepareSpec.js"
   },
-  "version": "2.1.2"
+  "version": "2.1.3"
 }

@@ -20,10 +20,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       //Cria o banco no momento da inicialiação
-      dbProvider.initizalizeDb().then(() => {
+      dbProvider.createDb().then(() => {
+
         this.openHomePage(splashScreen);
+        console.info('Create Tables !!!');
       }).catch(()=>{
+        
         this.openHomePage(splashScreen);
+      
       });
 
       //this.openHomePage(splashScreen);

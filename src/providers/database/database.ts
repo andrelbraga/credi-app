@@ -15,7 +15,7 @@ export class DatabaseProvider {
 
   }
 
-public initizalizeDb(){
+public iniDb(){
   return this.sqlite.create({
     name: 'data.db',
     location: 'default'
@@ -23,13 +23,12 @@ public initizalizeDb(){
 }
 
 public createDb(){
-return this.initizalizeDb()
+return this.iniDb()
 .then((db: SQLiteObject) => {
   this.createTables(db);
   this.insertDataDefaultTableCategorie(db);
-}).catch(()=>{
-  let toast = this.toastCtrl.create({message:'Not create Tables!', duration: 2000, position: 'top'});
-  toast.present();
+}).catch(e => {
+  console.error(e);
 })
 
 }
@@ -55,14 +54,12 @@ public insertDataDefaultTableCategorie(db: SQLiteObject){
         let toast = this.toastCtrl.create({message:'Insert Categorie Conclude!', duration: 2000, position: 'top'});
         toast.present();
       })
-        .catch(()=>{
-          let toast = this.toastCtrl.create({message:'Not! Insert Categorie.', duration: 2000, position: 'top'});
-          toast.present();
-      });
+      .catch(e => {
+        console.error(e);
+      })
     }
-  }).catch(()=>{
-    let toast = this.toastCtrl.create({message:'Not!! Select Categorie.', duration: 2000, position: 'top'});
-    toast.present();
+  }).catch(e => {
+    console.error(e)
   });
 }
 
@@ -74,9 +71,8 @@ db.sqlBatch([
 ]).then(() => {
   let toast = this.toastCtrl.create({message:'Create DBs!', duration: 2000, position: 'top'});
   toast.present();
-}).catch(()=>{
-  let toast = this.toastCtrl.create({message:'Not Create DBs!', duration: 2000, position: 'top'});
-  toast.present();
+}).catch(e => {
+  console.error(e);
 });
 
 }

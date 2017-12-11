@@ -11,29 +11,43 @@ import { DatabaseProvider } from '../database/database';
 */
 @Injectable()
 export class CategorieProvider {
-public
+  public aCategorie = Array<Categorie>();
   constructor(private dbProvider: DatabaseProvider, private sqlite: SQLite, public toastCtrl: ToastController) {
     console.log('Hello CategorieProvider Provider');
   }
 
   createTbl(){
-    this.toastCtrl.create({message:'Insert Categorie Conclude!', duration: 2000, position: 'top'});
   }
 
   getDb(){
-    // this.dbProvider.initizalizeDb().then((db: SQLiteObject) => {
-    //   db.executeSql('SELECT * FROM categorie',{}).then((data) =>{
-    //       return data;
-    //   });
-    // })
+     this.dbProvider.iniDb().then((db: SQLiteObject) => {
+      return db.executeSql('SELECT * FROM category',{})
+      .then( data =>{
+         for(var i=1; i < data.rows.length;i++){
+           let item = data.rows.item(i);
+           let categorie = new Categorie();
+           categorie.id = item.id;
+           categorie.name = item.name;
+           categorie.status = item.status;
+           this.aCategorie.push(categorie);
+         }
+      return this.aCategorie;
+      });
+    })
   }
 
   delDb(){
 
-}
+  }
 
   insertDb(){
 
+  }
+
 }
 
+export class Categorie{
+  id: number;
+  name: string;
+  status: number;
 }

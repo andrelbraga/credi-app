@@ -20,132 +20,99 @@
     <!-- <ion-list-header>
     </ion-list-header> -->
 
-    <!--<ion-item>
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Transporte
-        </ion-label>
-        <ion-icon name="md-bus" item-start></ion-icon>
-    </ion-item>
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToogledBus" (ionChange)="categorieMarket(isToogledBus)" checked="isToogledBus"></ion-toggle>
+        <ion-label>Bus</ion-label>
+        <ion-icon color="bus" name="md-bus" item-start></ion-icon>
+    </button>
 
-    <ion-item>
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Cafe
-        </ion-label>
-        <ion-icon name="md-cafe" item-start></ion-icon>
-    </ion-item>
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledCoffee" (ionChange)="categorieMarket(isToggledCoffee)" checked="isToggledCoffee"></ion-toggle>
+        <ion-label>Coffee</ion-label>
+        <ion-icon color="cafe" name="md-cafe" item-start></ion-icon>
+    </button>
 
-    <ion-item>
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Telefone
-        </ion-label>
-        <ion-icon name="md-call" item-start></ion-icon>
-    </ion-item>
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledCall" (ionChange)="categorieMarket(isToggledCall)" checked="isToggledCall"></ion-toggle>
+        <ion-label>Telephone</ion-label>
+        <ion-icon color="call" name="md-call" item-start></ion-icon>
+    </button>
 
-    <ion-item>
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Carro
-        </ion-label>
-        <ion-icon name="md-car" item-start></ion-icon>
-    </ion-item>
-
-    <ion-item>
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Cartão
-        </ion-label>
-        <ion-icon name="md-card" item-start></ion-icon>
-    </ion-item>
-
-    <ion-item>
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Compras
-        </ion-label>
-        <ion-icon name="md-cart" item-start></ion-icon>
-    </ion-item>
-
-    <ion-item>
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Dinheiro
-        </ion-label>
-        <ion-icon name="md-cash" item-start></ion-icon>
-    </ion-item>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Dinheiro
-        </ion-label>
-        <ion-icon name="md-cash" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Pessoas
-        </ion-label>
-        <ion-icon name="md-contacts" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Contas
-        </ion-label>
-        <ion-icon name="md-document" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Tv
-        </ion-label>
-        <ion-icon name="md-desktop" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Combustivel
-        </ion-label>
-        <ion-icon name="md-flame" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Lazer
-        </ion-label>
-        <ion-icon name="md-football" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Lazer
-        </ion-label>
-        <ion-icon name="md-game-controller-b" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Lazer
-        </ion-label>
-        <ion-icon name="md-glasses" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Lazer
-        </ion-label>
-        <ion-icon name="md-globe" item-start></ion-icon>
-
-        <ion-toggle checked="false"></ion-toggle>
-        <ion-label>
-          Casa
-        </ion-label>
-        <ion-icon name="md-home" item-start></ion-icon>
-
-
-    </ion-item> -->
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledCar" (ionChange)="categorieMarket(isToggledCar)" checked="isToggledCar"></ion-toggle>
+        <ion-label>Car</ion-label>
+        <ion-icon color="car" name="md-car" item-start></ion-icon>
+    </button>
 
 
     <button ion-item>
-        <ion-icon color="primary" name="md-home" item-start></ion-icon>
-        Market
+        <ion-toggle [(ngModel)]="isToggledCreditCard" (ionChange)="categorieMarket(isToggledCreditCard)" checked="isToggledCreditCard"></ion-toggle>
+        <ion-label>Credit Card</ion-label>
+        <ion-icon color="card" name="md-card" item-start></ion-icon>
     </button>
 
-<ion-item-sliding>
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledCash" (ionChange)="categorieMarket(isToggledCash)" checked="isToggledCash"></ion-toggle>
+        <ion-label>Cash</ion-label>
+        <ion-icon color="cash" name="md-cash" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledContacts" (ionChange)="categorieMarket(isToggledContacts)" checked="isToggledContacts"></ion-toggle>
+        <ion-label>Contacts</ion-label>
+        <ion-icon color="contacts" name="md-contacts" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledIncomes" (ionChange)="categorieMarket(isToggledIncomes)" checked="isToggledIncomes"></ion-toggle>
+        <ion-label>Incomes</ion-label>
+        <ion-icon color="document" name="md-document" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledTv" (ionChange)="categorieMarket(isToggledTv)" checked="isToggledTv"></ion-toggle>
+        <ion-label>Tv</ion-label>
+        <ion-icon color="desktop" name="md-desktop" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledFuel" (ionChange)="categorieMarket(isToggledFuel)" checked="isToggledFuel"></ion-toggle>
+        <ion-label>Fuel</ion-label>
+        <ion-icon color="flame" name="md-flame" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledFootball" (ionChange)="categorieMarket(isToggledFootball)" checked="isToggledFootball"></ion-toggle>
+        <ion-label>Football</ion-label>
+        <ion-icon color="football" name="md-football" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledGame" (ionChange)="categorieMarket(isToggledGame)" checked="isToggledGame"></ion-toggle>
+        <ion-label>Game</ion-label>
+        <ion-icon color="primary" name="md-game-controller-b" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledGlasses" (ionChange)="categorieMarket(isToggledGlasses)" checked="isToggledGlasses"></ion-toggle>
+        <ion-label>Glasses</ion-label>
+        <ion-icon color="glasses" name="md-glasses" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledGlobe" (ionChange)="categorieMarket(isToggledGlobe)" checked="isToggledGlobe"></ion-toggle>
+        <ion-label>Globe</ion-label>
+        <ion-icon color="globe" name="md-globe" item-start></ion-icon>
+    </button>
+
+    <button ion-item>
+        <ion-toggle [(ngModel)]="isToggledMarket" (ionChange)="categorieMarket(isToggledMarket)" checked="isToggledMarket"></ion-toggle>
+        <ion-label>Market</ion-label>
+        <ion-icon color="home" name="md-home" item-start></ion-icon>
+    </button>
+
+
+    <!-- <ion-item-sliding>
         <ion-item>
             <ion-icon name="md-game-controller-b" item-start></ion-icon>
           <h2>Market</h2>
@@ -161,14 +128,19 @@
             Drop
           </button>
         </ion-item-options>
-      </ion-item-sliding>
+    </ion-item-sliding> -->
+  </ion-list>
 
-    </ion-list>
+
+    <ion-fab right bottom #fab>
+        <button ion-fab color="positive" (click)="settingCategorie()"><ion-icon name="md-settings"></ion-icon></button>
+    </ion-fab>
+
+<ion-list *ngFor="let c of categories">
+  <ion-label>{{c.id}}-{{c.name}}-{{c.status}}</ion-label>
+</ion-list>
 
 
-    <!-- <ion-fab right bottom #fab>
-        <button ion-fab color="positive" (click)="addCategorie()"><ion-icon name="add"></ion-icon></button>
-    </ion-fab> -->
 </ion-content>
 
 <ion-footer>

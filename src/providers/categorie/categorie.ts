@@ -46,7 +46,12 @@ export class CategorieProvider {
   }
 
   updateCategorie(categorie: Categorie){
-
+    return this.dbProvider.iniDb()
+      .then((db: SQLiteObject) => {
+        let qry = 'UPDATE categorie SET name = ? WHERE id = ?';
+        let data = [categorie.name, categorie.id];
+        return db.executeSql(qry,data).catch(e => console.error(e) );      
+      }).catch(e => console.error(e) );
   }
 
 }

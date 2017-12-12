@@ -17,7 +17,7 @@
 
     <ion-list no-border no-lines *ngFor="let c of categories">
 
-      <button ion-item (click)="showPromptRenameCategory(c.name)">
+      <button ion-item (click)="showPromptRenameCategory(c)">
           <ion-toggle [(ngModel)]="c.status" (ionChange)="categorieTarget(c)" checked="c.status"></ion-toggle>
           <ion-label>{{c.name}}</ion-label>
           <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>

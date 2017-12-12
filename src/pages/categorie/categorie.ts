@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { CategorieProvider } from '../../providers/categorie/categorie';
-import { ClassUtil } from '../../Util/ClassUtil';
+import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
+import { ClassUtil } from '../../util/ClassUtil';
 
 /**
  * Generated class for the CategoriePage page.
@@ -22,21 +22,6 @@ import { ClassUtil } from '../../Util/ClassUtil';
 export class CategoriePage {
   public categories: Array<any> = [];
 
-  public isToogledMarket: boolean;
-  public isToogledFuel: boolean;
-  public isToogledGame: boolean;
-  public isToogledCreditCard: boolean;
-  public isToogledFootball: boolean;
-  public isToogledIncomes: boolean;
-  public isToogledCash: boolean;
-  public isToogledBus: boolean;
-  public isToogledCoffee: boolean;
-  public isToogledTelephone: boolean;
-  public isToogledCar: boolean;
-  public isToogledTv: boolean;
-  public isToogledGlasses: boolean;
-  public isToogledContacts: boolean;
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -44,23 +29,24 @@ export class CategoriePage {
     public toastCtrl: ToastController,
     public util: ClassUtil
    ) {
-
-    }
-
-    ionViewCanEnter() {
       this.getAll();
     }
+
+    // ionViewCanEnter() {
+    //   this.getAll();
+    // }
 
     getAll(){
       this.categorieProvider.getAllCategorie()
       .then((result: any[]) => {
         this.categories = result;
+        return this.categories;
       });
     }
 
-    showPromptRenameCategory(choice){
+    showPromptRenameCategory(c){
       let prompt = this.alertCtrl.create({
-        title: choice,
+        title: c.name,
         message: "Enter a new name for this new categorie.",
         inputs: [
           {
@@ -78,10 +64,12 @@ export class CategoriePage {
           {
             text: 'Save',
             handler: (data) => {
-              console.log(data);
-              console.log(choice);
-              console.log('Saved clicked');
-              this.util.presentLoading(CategoriePage, false);
+              let rename = new Categorie();
+              rename.name = data.Categorie;
+              rename.id = c.id;
+              this.categorieProvider.updateCategorie(rename).then(() => {
+                this.util.presentLoading(CategoriePage, false);
+              });
             }
           }
         ]

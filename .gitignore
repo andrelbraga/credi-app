@@ -59,4 +59,5 @@ typings/
 
 # files Android
 www/
+android/build/
 

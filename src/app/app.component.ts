@@ -23,7 +23,7 @@ export class MyApp {
       dbProvider.createDb().then(() => {
 
         this.openHomePage(splashScreen);
-        console.info('Create Tables !!!');
+        
       }).catch(()=>{
         
         this.openHomePage(splashScreen);

@@ -38,21 +38,21 @@ public insertDataDefaultTableCategorie(db: SQLiteObject){
   .then((data: any) => {
     if(data.rows.item(0).qtd == 0){
       db.sqlBatch([
-          ['INSERT INTO categorie (name, status) values (?,?)',['Market',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Fuel',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Game',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Income',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Cash',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Coffee',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Telephone',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Car',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Glasse',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Contact',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Tv',1]],
-          ['INSERT INTO categorie (name, status) values (?,?)',['Football',1]]
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Market','md-home','home','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Fuel','md-flame','flame','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Game','md-game-controller-b','primary','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Income','md-document','document','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Cash','md-cash','cash','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Coffee','md-cafe','cafe','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Telephone','md-call','call','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Car','md-car','car','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Glasse','md-glasses','glasses','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Contact','md-contacts','contacts','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Tv','md-desktop','desktop','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Football','md-football','football','true']],
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['CreditCard','md-card','card','true']]
       ]).then(()=>{
-        let toast = this.toastCtrl.create({message:'Insert Categorie Conclude!', duration: 2000, position: 'top'});
-        toast.present();
+        console.info('Insert Categorie Conclude!');
       })
       .catch(e => {
         console.error(e);
@@ -65,12 +65,11 @@ public insertDataDefaultTableCategorie(db: SQLiteObject){
 
 public createTables(db: SQLiteObject){
 db.sqlBatch([
-  ['CREATE TABLE IF NOT EXISTS categorie (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), status NUMERIC)'],
-  ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), status NUMERIC, entrada VARCHAR(8), saida VARCHAR(8), resume VARCHAR(150))'],
-  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(20), status NUMERIC, entrada VARCHAR(8), saida VARCHAR(8), resume VARCHAR(150))']
+  ['CREATE TABLE IF NOT EXISTS categorie (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, color TEXT, status TEXT)'],
+  ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)'],
+  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)']
 ]).then(() => {
-  let toast = this.toastCtrl.create({message:'Create DBs!', duration: 2000, position: 'top'});
-  toast.present();
+  console.info('Create DBs!');
 }).catch(e => {
   console.error(e);
 });

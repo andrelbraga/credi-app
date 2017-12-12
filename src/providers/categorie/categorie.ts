@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from 'ionic-angular';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../database/database';
 
 /*
@@ -12,35 +12,41 @@ import { DatabaseProvider } from '../database/database';
 @Injectable()
 export class CategorieProvider {
   public aCategorie = Array<Categorie>();
-  constructor(private dbProvider: DatabaseProvider, private sqlite: SQLite, public toastCtrl: ToastController) {
+
+  constructor(private dbProvider: DatabaseProvider) {
     console.log('Hello CategorieProvider Provider');
   }
 
-  createTbl(){
-  }
-
-  getDb(){
-     this.dbProvider.iniDb().then((db: SQLiteObject) => {
-      return db.executeSql('SELECT * FROM category',{})
+  getAllCategorie(){
+     return this.dbProvider.iniDb()
+     .then((db: SQLiteObject) => {
+      return db.executeSql('SELECT * FROM categorie',{})
       .then( data =>{
-         for(var i=1; i < data.rows.length;i++){
+         for(var i=0; i < data.rows.length;i++){
            let item = data.rows.item(i);
            let categorie = new Categorie();
            categorie.id = item.id;
            categorie.name = item.name;
+           categorie.color = item.color;
+           categorie.icon = item.icon;
            categorie.status = item.status;
            this.aCategorie.push(categorie);
          }
+         console.table(this.aCategorie);
       return this.aCategorie;
       });
     })
   }
 
-  delDb(){
+  removeCategorie(categorie: Categorie){
 
   }
 
-  insertDb(){
+  insertCategorie(categorie: Categorie){
+
+  }
+
+  updateCategorie(categorie: Categorie){
 
   }
 
@@ -49,5 +55,7 @@ export class CategorieProvider {
 export class Categorie{
   id: number;
   name: string;
-  status: number;
+  icon: string;
+  color: string;
+  status: string;
 }

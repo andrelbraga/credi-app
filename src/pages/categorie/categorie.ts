@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { CategorieProvider } from '../../providers/categorie/categorie';
+import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
 
 /**
  * Generated class for the CategoriePage page.
@@ -20,6 +20,7 @@ import { CategorieProvider } from '../../providers/categorie/categorie';
 
 export class CategoriePage {
   public categories: Array<any> = [];
+
   public isToogledMarket: boolean;
   public isToogledFuel: boolean;
   public isToogledGame: boolean;
@@ -44,67 +45,75 @@ export class CategoriePage {
 
     }
 
-  ionViewDidLoad() {
-    console.log(this.categorieProvider.getDb());
-   console.log('ionViewDidLoad CategoriePage');
-  }
+    ionViewCanEnter() {
+      this.getAll();
+    }
 
-  showPromptSaveExpense(choice){
-    let prompt = this.alertCtrl.create({
-      title: 'Categorie',
-      message: "Enter a name for this new categorie.",
-      inputs: [
-        {
-          name: 'Categorie',
-          placeholder: 'Categorie name'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: data => {
-            console.log('Cancel clicked');
+    getAll(){
+      this.categorieProvider.getAllCategorie()
+      .then((result: any[]) => {
+        this.categories = result;
+      });
+    }
+
+    showPromptRenameCategory(choice){
+      let prompt = this.alertCtrl.create({
+        title: 'Categorie',
+        message: "Enter a name for this new categorie.",
+        inputs: [
+          {
+            name: 'Categorie',
+            placeholder: 'Categorie name'
+          },
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Save',
+            handler: (data) => {
+              console.log(data);
+              console.log(choice);
+              console.log('Saved clicked');
+              this.presentLoading();
+            }
           }
-        },
-        {
-          text: 'Save',
-          handler: (data) => {
-            console.log(data);
-            this.categories.push(data);
-            console.log(choice);
-            console.log('Saved clicked');
-            this.presentLoading();
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
+        ]
+      });
+      prompt.present();
+    }
 
-  presentLoading(){
-    var loader = this.loadingCtrl.create({
-      content: "Please wait..."
-      //duration: 3000
-    });
-    loader.present();
+    presentLoading(){
+      var loader = this.loadingCtrl.create({
+        content: "Please wait..."
+      });
+      loader.present();
 
-    setTimeout(() => {
-      loader.dismiss();
-      this.navCtrl.push(CategoriePage);
-    }, 3000);
+      setTimeout(() => {
+        loader.dismiss();
+        this.navCtrl.push(CategoriePage);
+      }, 3000);
 
-  }
+    }
 
 
-  addCategorie(){
-  }
+    addCategorie(){
+    }
 
-  settingCategorie(){
-  }
+    settingCategorie(){
+    }
 
 
-categorieMarket(isToggled){
-    console.log(isToggled);
-}
+    categorieTarget(isToggled){
+        console.log(isToggled);
+    }
+
+    showStatus(s:any):boolean{
+      return s == 1 ? true : false;
+    }
 
 }

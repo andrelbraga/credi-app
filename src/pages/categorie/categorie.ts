@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
+import { CategorieProvider } from '../../providers/categorie/categorie';
+import { ClassUtil } from '../../Util/ClassUtil';
 
 /**
  * Generated class for the CategoriePage page.
@@ -14,7 +15,7 @@ import { CategorieProvider, Categorie } from '../../providers/categorie/categori
 @Component({
   selector: 'page-categorie',
   templateUrl: 'categorie.html',
-  providers:[CategorieProvider]
+  providers:[CategorieProvider, ClassUtil]
 })
 
 
@@ -40,7 +41,8 @@ export class CategoriePage {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private categorieProvider: CategorieProvider,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public util: ClassUtil
    ) {
 
     }
@@ -58,12 +60,12 @@ export class CategoriePage {
 
     showPromptRenameCategory(choice){
       let prompt = this.alertCtrl.create({
-        title: 'Categorie',
-        message: "Enter a name for this new categorie.",
+        title: choice,
+        message: "Enter a new name for this new categorie.",
         inputs: [
           {
             name: 'Categorie',
-            placeholder: 'Categorie name'
+            placeholder: 'Categorie name...'
           },
         ],
         buttons: [
@@ -79,7 +81,7 @@ export class CategoriePage {
               console.log(data);
               console.log(choice);
               console.log('Saved clicked');
-              this.presentLoading();
+              this.util.presentLoading(CategoriePage, false);
             }
           }
         ]
@@ -87,24 +89,9 @@ export class CategoriePage {
       prompt.present();
     }
 
-    presentLoading(){
-      var loader = this.loadingCtrl.create({
-        content: "Please wait..."
-      });
-      loader.present();
 
-      setTimeout(() => {
-        loader.dismiss();
-        this.navCtrl.push(CategoriePage);
-      }, 3000);
-
-    }
-
-
-    addCategorie(){
-    }
-
-    settingCategorie(){
+    saveCategorie(e){
+      console.log(e);
     }
 
 
@@ -112,8 +99,5 @@ export class CategoriePage {
         console.log(isToggled);
     }
 
-    showStatus(s:any):boolean{
-      return s == 1 ? true : false;
-    }
-
 }
+

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from 'ionic-angular';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from '../database/database';
 

@@ -17,21 +17,21 @@
 
     <ion-list no-border no-lines *ngFor="let c of categories">
 
-    <!-- <ion-list-header>
-    </ion-list-header> -->
+      <button ion-item (click)="showPromptRenameCategory(c.name)">
+          <ion-toggle [(ngModel)]="c.status" (ionChange)="categorieTarget(c)" checked="c.status"></ion-toggle>
+          <ion-label>{{c.name}}</ion-label>
+          <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
+      </button>
 
-    <button ion-item>
-        <ion-toggle [(ngModel)]="c.status" (ionChange)="categorieTarget(c)" checked="c.status"></ion-toggle>
-        <ion-label>{{c.name}}</ion-label>
-        <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
-    </button>
-
-
-  </ion-list>
+    </ion-list>
 
 
     <ion-fab right bottom #fab>
-        <button ion-fab color="positive" (click)="settingCategorie()"><ion-icon name="md-settings"></ion-icon></button>
+        <button ion-fab color="positive"><ion-icon name="md-settings"></ion-icon></button>
+         <ion-fab-list side="top">
+           <ion-label class="save">Save</ion-label>
+           <button ion-fab style="color:#488aff" (click)="saveCategorie($event)"><ion-icon name="md-thumbs-up"></ion-icon></button>
+         </ion-fab-list>
     </ion-fab>
 
 </ion-content>

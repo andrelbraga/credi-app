@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { SQLite } from '@ionic-native/sqlite';
+
 
 
 /**
@@ -18,11 +18,11 @@ import { SQLite } from '@ionic-native/sqlite';
 export class InvoicePage {
 public categories: Array<string> = ['Banco','Lanche','Roupas'];
 public choice: any = { categories:"", date:"" };
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private sqlite: SQLite, public alertCtrl: AlertController, public loadingCtrl: LoadingController ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public alertCtrl: AlertController, public loadingCtrl: LoadingController ) {
   }
 
-  
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InvoicePage');
@@ -30,9 +30,9 @@ public choice: any = { categories:"", date:"" };
 
 
   showInputCategories(){
-    
+
   }
- 
+
   showPromptSaveExpense(choice) {
     let prompt = this.alertCtrl.create({
       title: 'Expenses',
@@ -56,7 +56,6 @@ public choice: any = { categories:"", date:"" };
             console.log(data);
             console.log(choice);
             console.log('Saved clicked');
-            this.presentLoading();
           }
         }
       ]
@@ -65,19 +64,6 @@ public choice: any = { categories:"", date:"" };
   }
 
 
-  presentLoading() {
-    var loader = this.loadingCtrl.create({
-      content: "Please wait..."
-      //duration: 3000
-    });
-    loader.present();
-    
-    setTimeout(() => {
-      loader.dismiss();
-      this.navCtrl.popToRoot()
-    }, 3000);
-
-  }
 
 
 

@@ -1,15 +1,16 @@
 page-home {
-  .income{
-    color: #32db64;
+
+  .graphic{
+    color: #565656;
     position: absolute;
     width: 100%;
     padding-right: 220px;
-    padding-bottom: 30px;
+    padding-bottom: 195px;
     margin-top: 10px;
     margin-bottom: 0px;
     text-align: right;
     font-weight: bold;
-    }
+  }
 
   .categorie{
     color: #488aff;
@@ -23,20 +24,31 @@ page-home {
     font-weight: bold;
     }
 
-   .expense{
-     color: #f53d3d;
-     position: absolute;
-     width: 100%;
-     padding-right: 220px;
-     padding-bottom: 85px;
-     margin-top: 10px;
-     margin-bottom: 0px;
-     text-align: right;
-     font-weight: bold;
-    }
+    .expense{
+      color: #f53d3d;
+      position: absolute;
+      width: 100%;
+      padding-right: 220px;
+      padding-bottom: 85px;
+      margin-top: 10px;
+      margin-bottom: 0px;
+      text-align: right;
+      font-weight: bold;
+     }
 
- 
+    .income{
+      color: #32db64;
+      position: absolute;
+      width: 100%;
+      padding-right: 220px;
+      padding-bottom: 30px;
+      margin-top: 10px;
+      margin-bottom: 0px;
+      text-align: right;
+      font-weight: bold;
+      }
 
+    
    .ListBackdrop{
         background-color: white !important;
         opacity: 0.2;

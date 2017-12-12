@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ToastController } from 'ionic-angular';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { ToastController, Events } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
 import { ClassUtil } from '../../util/ClassUtil';
@@ -19,7 +19,7 @@ import { ClassUtil } from '../../util/ClassUtil';
 })
 
 
-export class CategoriePage {
+export class CategoriePage implements OnInit{
   public categories: Array<any> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -27,16 +27,32 @@ export class CategoriePage {
     public loadingCtrl: LoadingController,
     private categorieProvider: CategorieProvider,
     public toastCtrl: ToastController,
-    public util: ClassUtil
+    public util: ClassUtil,
+    public zone: NgZone,
+    public events: Events
    ) {
+     //Before OnInit
+     this.events.subscribe('updateScreen',()=>{
+      this.zone.run((e)=>{
+        this.getAll();
+      })
+     });
+    
+    }
+
+    ngOnInit(){
+      //After constructor
       this.getAll();
     }
 
-    // ionViewCanEnter() {
+    
+
+    //ionViewCanEnter() {
     //   this.getAll();
-    // }
+    //}
 
     getAll(){
+      this.categories = [];
       this.categorieProvider.getAllCategorie()
       .then((result: any[]) => {
         this.categories = result;
@@ -44,7 +60,7 @@ export class CategoriePage {
       });
     }
 
-    showPromptRenameCategory(c){
+    RenameCategory(c){
       let prompt = this.alertCtrl.create({
         title: c.name,
         message: "Enter a new name for this new categorie.",
@@ -64,11 +80,13 @@ export class CategoriePage {
           {
             text: 'Save',
             handler: (data) => {
-              let rename = new Categorie();
-              rename.name = data.Categorie;
-              rename.id = c.id;
-              this.categorieProvider.updateCategorie(rename).then(() => {
-                this.util.presentLoading(CategoriePage, false);
+              let categorie  = new Categorie();
+              categorie.name = data.Categorie;
+              categorie.id   = c.id;
+              categorie.status = c.status;
+              this.categorieProvider.updateCategorie(categorie).then(() => {               
+                //this.util.presentLoading(CategoriePage, false);
+                this.events.publish('updateScreen');
               });
             }
           }
@@ -83,8 +101,15 @@ export class CategoriePage {
     }
 
 
-    categorieTarget(isToggled){
-        console.log(isToggled);
+    statusCategory(c){
+      let categorie  = new Categorie();
+      categorie.name = c.name;
+      categorie.id   = c.id;
+      categorie.status = c.status;
+      this.categorieProvider.updateCategorie(categorie).then(() => {               
+        //this.util.presentLoading(CategoriePage, false);
+        this.events.publish('updateScreen');
+      });
     }
 
 }

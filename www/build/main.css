@@ -65444,12 +65444,12 @@ page-categorie .save {
   font-weight: bold;
 }
 
-page-home .income {
-  color: #32db64;
+page-home .graphic {
+  color: #565656;
   position: absolute;
   width: 100%;
   padding-right: 220px;
-  padding-bottom: 30px;
+  padding-bottom: 195px;
   margin-top: 10px;
   margin-bottom: 0px;
   text-align: right;
@@ -65474,6 +65474,18 @@ page-home .expense {
   width: 100%;
   padding-right: 220px;
   padding-bottom: 85px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: right;
+  font-weight: bold;
+}
+
+page-home .income {
+  color: #32db64;
+  position: absolute;
+  width: 100%;
+  padding-right: 220px;
+  padding-bottom: 30px;
   margin-top: 10px;
   margin-bottom: 0px;
   text-align: right;

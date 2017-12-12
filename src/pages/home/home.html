@@ -18,13 +18,21 @@
 <ion-content padding>
     <ion-slides pager [ngClass]="{'ListBackdrop': fabButtonOpened == true }">
 
-          <ion-slide>
-
+        <ion-slide>
+                <!-- <div *ngIf="doughnutChartData.length == 0"> -->
+                <div>
+                    <p style="color:darkgray">"You not data in view page add new expesense
+                            for generate dynamic chart"</p>
+                   <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>
+                </div>
+        </ion-slide>
+        <ion-slide>
               <div *ngIf="doughnutChartData.length == 0">
                   <p style="color:darkgray">"You not data in view page add new expesense
                           for generate dynamic chart"</p>
                 <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>
               </div>
+
               <div *ngIf="doughnutChartData.length > 0" style="display: block">
                   <canvas baseChart height="350"
                               [data]="doughnutChartData"
@@ -33,9 +41,30 @@
                               (chartHover)="chartHovered($event)"
                               (chartClick)="chartClicked($event)"></canvas>
               </div>
-
           </ion-slide>
-
+          <ion-slide>
+                <!-- <div style="display: block;">
+                        <canvas baseChart width="400" height="400"
+                                    [datasets]="lineChartData"
+                                    [labels]="lineChartLabels"
+                                    [options]="lineChartOptions"
+                                    [colors]="lineChartColors"
+                                    [legend]="lineChartLegend"
+                                    [chartType]="lineChartType"
+                                    (chartHover)="chartHovered($event)"
+                                    (chartClick)="chartClicked($event)"></canvas>
+                        </div> -->
+                <div style="display: block;">
+                    <canvas baseChart width="400" height="400"
+                        [datasets]="lineChartData"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [legend]="lineChartLegend"
+                        [chartType]="lineChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+                 </div>
+          </ion-slide>
           <ion-slide>
               <p style="color:darkgray">Not list expenses.</p>
             <img src="assets/imgs/ica-slidebox-img-4.png" class="slide-image"/>
@@ -51,13 +80,15 @@
     <ion-fab right bottom #fab>
         <button ion-fab color="positive" (click)="penFabButton()"><ion-icon name="add"></ion-icon></button>
         <ion-fab-list side="top">
-            <ion-label class="income">Income</ion-label>
+            <ion-label class="graphic">Graphics</ion-label>
+            <ion-label class="income">Incomes</ion-label>
             <ion-label class="categorie">Categories</ion-label>
-            <ion-label class="expense">Expense</ion-label>
-            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-round-up"></ion-icon></button>
-            <button ion-fab style="color:#f53d3d" (click)="openExpense($event)"><ion-icon name="md-arrow-round-down"></ion-icon></button>
+            <ion-label class="expense">Expenses</ion-label>
+            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-dropup"></ion-icon></button>
+            <button ion-fab style="color:#f53d3d" (click)="openExpense($event)"><ion-icon name="md-arrow-dropdown"></ion-icon></button>
             <button ion-fab style="color:#488aff" (click)="openCategorie($event)"><ion-icon name="md-list"></ion-icon></button>
-      </ion-fab-list>
+            <button ion-fab style="color:#565656" (click)="openGraphic($event)"><ion-icon name="md-pie"></ion-icon></button>
+        </ion-fab-list>
     </ion-fab>
 </ion-content>
 

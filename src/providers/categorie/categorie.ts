@@ -21,6 +21,7 @@ export class CategorieProvider {
      .then((db: SQLiteObject) => {
       return db.executeSql('SELECT * FROM categorie',{})
       .then( data =>{
+        this.aCategorie = [];
          for(var i=0; i < data.rows.length;i++){
            let item = data.rows.item(i);
            let categorie = new Categorie();
@@ -48,8 +49,8 @@ export class CategorieProvider {
   updateCategorie(categorie: Categorie){
     return this.dbProvider.iniDb()
       .then((db: SQLiteObject) => {
-        let qry = 'UPDATE categorie SET name = ? WHERE id = ?';
-        let data = [categorie.name, categorie.id];
+        let qry = 'UPDATE categorie SET name = ?, status = ? WHERE id = ?';
+        let data = [categorie.name, categorie.status, categorie.id];
         return db.executeSql(qry,data).catch(e => console.error(e) );      
       }).catch(e => console.error(e) );
   }

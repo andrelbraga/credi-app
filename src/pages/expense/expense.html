@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>expense</ion-title>
+    <ion-title>Expenses</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +15,25 @@
 
 <ion-content padding>
 
+    <form [formGroup]="formExpense">
+        <ion-item  >
+          <ion-label floating>R$</ion-label>
+          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Price" maxlength="10" ></ion-input>
+        </ion-item> 
+      
+        <ion-item>
+          <ion-label floating>Note</ion-label>
+          <ion-input type="text" formControlName="formNote" [(ngModel)]="Note"></ion-input>
+        </ion-item>
+        <ion-item>
+          <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit()" >Submit</button>
+        </ion-item>
+      </form>
+
 </ion-content>
+
+<!-- <ion-footer>
+    <ion-toolbar>
+ {{today | date:'dd/MM/yyyy'}}
+    </ion-toolbar>
+</ion-footer> -->

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { FormGroup, FormControl } from '@angular/forms';
 /**
  * Generated class for the ExpensePage page.
  *
@@ -14,8 +14,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'expense.html',
 })
 export class ExpensePage {
+  public Note:any;
+  public Price:any;
 
+  formExpense: FormGroup;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.formExpense = new FormGroup({
+      formMoney: new FormControl(),
+      formDate: new FormControl(),
+      formNote: new FormControl()
+    });
+  }
+
+  submit(){
+    
   }
 
   ionViewDidLoad() {

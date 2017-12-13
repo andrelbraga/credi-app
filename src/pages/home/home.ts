@@ -40,7 +40,8 @@ public lineChartType:string = 'line';
 
 
   // Chart events
-  public chartClicked(e:any):void {
+  public chartClicked(e:any):void{
+    var d = document.getElementById('chartjs').getAttribute('ng-reflect-labels');
     console.log(e);
   }
 
@@ -77,6 +78,7 @@ public lineChartType:string = 'line';
     console.log('Rendas');    
   }
 
+  
   openGraphic(event){
 
   }

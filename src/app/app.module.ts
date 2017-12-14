@@ -17,8 +17,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database';
 //import { CategorieProvider } from '../providers/categorie/categorie';
-import { ExpenseProvider } from '../providers/expense/expense';
-import { IncomeProvider } from '../providers/income/income';
+//import { ExpenseProvider } from '../providers/expense/expense';
+//import { IncomeProvider } from '../providers/income/income';
 import { InvoiceProvider } from '../providers/invoice/invoice';
 
 @NgModule({
@@ -47,8 +47,8 @@ import { InvoiceProvider } from '../providers/invoice/invoice';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
     //CategorieProvider,
-    ExpenseProvider,
-    IncomeProvider,
+    //ExpenseProvider,
+    //IncomeProvider,
     InvoiceProvider
   ]
 })

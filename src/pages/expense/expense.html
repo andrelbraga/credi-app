@@ -14,19 +14,39 @@
 
 
 <ion-content padding>
-
     <form [formGroup]="formExpense">
-        <ion-item  >
+        <ion-item>
           <ion-label floating>R$</ion-label>
-          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Price" maxlength="10" ></ion-input>
-        </ion-item> 
-      
-        <ion-item>
-          <ion-label floating>Note</ion-label>
-          <ion-input type="text" formControlName="formNote" [(ngModel)]="Note"></ion-input>
+          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>
         </ion-item>
+        
+        <ion-list>
+            <ion-item>
+              <ion-label floating>Categories</ion-label>
+              <ion-select formControlName="formCategorie" [(ngModel)]="Expense.Categorie">
+                <ion-option *ngFor="let item of categories" [value]="item">
+                    <ion-list>
+                        <ion-item>
+                            {{item.name}}
+                        </ion-item>
+                      </ion-list>
+                </ion-option>
+              </ion-select>
+            </ion-item>
+        </ion-list>
+        
         <ion-item>
-          <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit()" >Submit</button>
+            <ion-label floating>Date</ion-label>
+            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.Date"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Note</ion-label>
+            <ion-input formControlName="formNote" [(ngModel)]="Expense.Note" clearInput></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>
         </ion-item>
       </form>
 

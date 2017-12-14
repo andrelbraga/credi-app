@@ -16,8 +16,12 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
   templateUrl: 'invoice.html',
 })
 export class InvoicePage {
-public categories: Array<string> = ['Banco','Lanche','Roupas'];
-public choice: any = { categories:"", date:"" };
+public categories:any = [ 
+                          {  name: 'Banco', icon: 'md-football' }, 
+                          {  name: 'Lanche', icon:'md-glasses'  },
+                          {  name: 'Roupas', icon:'md-cash'     } 
+                        ];
+public choice: any = { categorie:"", date:"" };
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController, public loadingCtrl: LoadingController ) {
   }
@@ -25,6 +29,7 @@ public choice: any = { categories:"", date:"" };
 
 
   ionViewDidLoad() {
+    console.log(this.categories);
     console.log('ionViewDidLoad InvoicePage');
   }
 

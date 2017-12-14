@@ -7,12 +7,47 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>income</ion-title>
+    <ion-title>Income</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+    <form [formGroup]="formIncome">
+        <ion-item>
+          <ion-label floating>R$</ion-label>
+          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>
+        </ion-item>
+        
+        <ion-list>
+            <ion-item>
+              <ion-label floating>Categories</ion-label>
+              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">
+                <ion-option *ngFor="let item of categories" [value]="item">
+                    <ion-list>
+                        <ion-item>
+                            {{item.name}}
+                        </ion-item>
+                      </ion-list>
+                </ion-option>
+              </ion-select>
+            </ion-item>
+        </ion-list>
+        
+        <ion-item>
+            <ion-label floating>Date</ion-label>
+            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Note</ion-label>
+            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>
+        </ion-item>
+      </form>
 
 </ion-content>

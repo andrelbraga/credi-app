@@ -1,4 +1,136 @@
 page-expense {
- 
+
+  ion-alert {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1000;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    contain: strict;
+  }
+
+  ion-alert.alert-top {
+    padding-top: 50px;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  ion-alert input {
+    width: 100%;
+  }
+
+  .alert-wrapper {
+    z-index: 10;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 250px;
+    max-height: 90%;
+    opacity: 0;
+    contain: content;
+  }
+
+  .alert-title {
+    margin: 0;
+    padding: 0;
+  }
+
+  .alert-sub-title {
+    margin: 5px 0 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  .alert-message {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .alert-input {
+    padding: 10px 0;
+    border: 0;
+    background: inherit;
+  }
+
+  .alert-input::-moz-placeholder {
+    color: #999;
+  }
+
+  .alert-input:-ms-input-placeholder {
+    color: #999;
+  }
+
+  .alert-input::-webkit-input-placeholder {
+    text-indent: 0;
+    color: #999;
+  }
+
+  .alert-button-group {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+
+  .alert-button-group-vertical {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+  }
+
+  .alert-button {
+    margin: 0;
+    z-index: 0;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .alert-tappable {
+    text-align: left;
+    text-align: start;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: inherit;
+    line-height: initial;
+    background: transparent;
+  }
+
 
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController  } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ClassUtil } from '../../util/classutil';
+import { ExpenseProvider } from '../../providers/expense/expense';
 
 /**
  * Generated class for the ExpensePage page.
@@ -13,23 +15,28 @@ import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'page-expense',
   templateUrl: 'expense.html',
-  
+  providers: [ExpenseProvider, ClassUtil]
+
 })
 export class ExpensePage {
   public Expense:any = {
         'Note' : '',
         'Price':0,
         'Date':'',
-        'Categorie':'' 
+        'Categorie':''
       }
-  public categories:any = [ 
-    {  name: 'Banco', icon: 'md-football' }, 
+  public categories:any = [
+    {  name: 'Banco', icon: 'md-football' },
     {  name: 'Lanche', icon:'md-glasses'  },
-    {  name: 'Roupas', icon:'md-cash'     } 
+    {  name: 'Roupas', icon:'md-cash'     }
   ];
 
   formExpense: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    private util: ClassUtil,
+    private expenseProvider: ExpenseProvider) {
     this.formExpense = new FormGroup({
       formMoney: new FormControl(),
       formDate: new FormControl(),
@@ -39,9 +46,9 @@ export class ExpensePage {
   }
 
   submit(E){
-  
     console.log(this.formExpense);
     console.log(E);
+    return this.util.alert(E);
   }
 
 

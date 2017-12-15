@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { ToastController, Events } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
-import { ClassUtil } from '../../util/ClassUtil';
+import { ClassUtil } from '../../util/classutil';
 
 /**
  * Generated class for the CategoriePage page.
@@ -37,7 +37,7 @@ export class CategoriePage implements OnInit{
         this.getAll();
       })
      });
-    
+
     }
 
     ngOnInit(){
@@ -45,7 +45,7 @@ export class CategoriePage implements OnInit{
       this.getAll();
     }
 
-    
+
 
     //ionViewCanEnter() {
     //   this.getAll();
@@ -84,7 +84,7 @@ export class CategoriePage implements OnInit{
               categorie.name = data.Categorie;
               categorie.id   = c.id;
               categorie.status = c.status;
-              this.categorieProvider.updateCategorie(categorie).then(() => {               
+              this.categorieProvider.updateCategorie(categorie).then(() => {
                 //this.util.presentLoading(CategoriePage, false);
                 this.events.publish('updateScreen');
               });
@@ -106,7 +106,7 @@ export class CategoriePage implements OnInit{
       categorie.name = c.name;
       categorie.id   = c.id;
       categorie.status = c.status;
-      this.categorieProvider.updateCategorie(categorie).then(() => {               
+      this.categorieProvider.updateCategorie(categorie).then(() => {
         //this.util.presentLoading(CategoriePage, false);
         this.events.publish('updateScreen');
       });

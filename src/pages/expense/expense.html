@@ -12,14 +12,14 @@
 
 </ion-header>
 
-
 <ion-content padding>
+    <div id="alert"></div>
     <form [formGroup]="formExpense">
         <ion-item>
           <ion-label floating>R$</ion-label>
           <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>
         </ion-item>
-        
+
         <ion-list>
             <ion-item>
               <ion-label floating>Categories</ion-label>
@@ -34,7 +34,7 @@
               </ion-select>
             </ion-item>
         </ion-list>
-        
+
         <ion-item>
             <ion-label floating>Date</ion-label>
             <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.Date"></ion-datetime>

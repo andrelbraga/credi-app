@@ -3,7 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { CategoriePage } from './categorie';
 import { SQLite } from '@ionic-native/sqlite';
 import { CategorieProvider } from '../../providers/categorie/categorie';
-import { ClassUtil } from '../../util/ClassUtil';
+import { ClassUtil } from '../../util/classutil';
 
 @NgModule({
   declarations: [

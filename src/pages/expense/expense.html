@@ -13,9 +13,8 @@
 </ion-header>
 
 <ion-content padding>
-    <!-- <alert-default  [nomeObj]="arrayObj"></alert-default> -->
-
     <form [formGroup]="formExpense">
+      <alert-default [obj]="categories" *ngIf="showCategorie"></alert-default>
       <ion-item>
         <ion-label floating>Name Expense</ion-label>
           <ion-input formControlName="formName" [(ngModel)]="Expense.Name" clearInput></ion-input>
@@ -25,7 +24,7 @@
           <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>
         </ion-item>
 
-        <ion-list>
+        <!-- <ion-list>
             <ion-item>
               <ion-label floating>Categories</ion-label>
               <ion-select formControlName="formCategorie" [(ngModel)]="Expense.Categorie">
@@ -38,7 +37,14 @@
                 </ion-option>
               </ion-select>
             </ion-item>
-        </ion-list>
+        </ion-list> -->
+        <ion-item *ngIf="categorieName != ''">
+            <ion-label>{{categorieName}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <button ion-button block color="bluedevider" (click)="showCategories()" prompt>Categories</button>
+        </ion-item>
+        
 
         <ion-item>
             <ion-label floating>Date</ion-label>

@@ -1,0 +1,10 @@
+          <div class="alert-body">
+            <ion-content padding>
+                <ion-list radio-group>
+                  <ion-item *ngFor="let c of obj">
+                      <ion-radio (ionSelect)="emit(c)" value="{{c.name}}"></ion-radio>
+                      <ion-label>{{c.name}}</ion-label>
+                  </ion-item>
+                </ion-list>
+          </ion-content>
+        </div>

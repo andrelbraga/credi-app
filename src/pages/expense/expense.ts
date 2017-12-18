@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ClassUtil } from '../../util/classutil';
 import { ExpenseProvider, Expense } from '../../providers/expense/expense';
 
 
 //Providers importeds
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
-
-
+import { AlertDefaultComponent } from '../../components/alert-default/alert-default';
 
 /**
  * Generated class for the ExpensePage page.
@@ -21,10 +19,13 @@ import { CategorieProvider, Categorie } from '../../providers/categorie/categori
 @Component({
   selector: 'page-expense',
   templateUrl: 'expense.html',
-  providers: [ExpenseProvider, ClassUtil]
+  providers: [ExpenseProvider, AlertDefaultComponent]
 
 })
 export class ExpensePage {
+  public showCategorie : boolean = false;
+  public shouldToggle : boolean = false;
+  public categorieName : string = "";
 
   public arrayObj:any;
 
@@ -42,10 +43,13 @@ export class ExpensePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
-    private util: ClassUtil,
     private expenseProvider: ExpenseProvider,
     private categorieProvider: CategorieProvider,
     public toastCtrl: ToastController) {
+
+      this.categorieName = this.navParams.data.name; 
+
+      console.log(this.navParams.data);
 
     new Promise(() => {
     
@@ -65,11 +69,7 @@ export class ExpensePage {
       formName: new FormControl()
     });
 
-this.arrayObj = [{  name: 'Banco', icon: 'md-football' },
-                  {  name: 'Lanche', icon:'md-glasses'  },
-                  {  name: 'Roupas', icon:'md-cash'     }];
-
-}
+  }
 
   submit(E){
     let e = new Expense();
@@ -78,7 +78,7 @@ this.arrayObj = [{  name: 'Banco', icon: 'md-football' },
     e.resume = E.Note;
     e.entrada = E.Price;
     e.datain = new Date(E.Date);
-    e.categorie_id = E.Categorie.id;
+    e.categorie_id = this.navParams.data.id;
     this.expenseProvider.insertExpense(e).then( e => {
       console.log(e);
       let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
@@ -88,7 +88,7 @@ this.arrayObj = [{  name: 'Banco', icon: 'md-football' },
       let msg = this.toastCtrl.create({message:'Not Ok!', duration: 3000, position: 'top'});
       msg.present();
     });
-    }
+  }
 
 
 
@@ -96,8 +96,10 @@ this.arrayObj = [{  name: 'Banco', icon: 'md-football' },
     console.log('ionViewDidLoad ExpensePage');
   }
 
-  saveCategorie(e){
-    console.log(e);
+  showCategories(){
+    if(this.showCategorie)
+      return this.showCategorie = false;
+    return this.showCategorie = true;
   }
 
 }

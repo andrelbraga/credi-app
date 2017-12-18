@@ -4,18 +4,21 @@ import { InvoicePage } from '../invoice/invoice';
 import { IncomePage } from '../income/income';
 import { ExpensePage } from '../expense/expense';
 import { CategoriePage } from '../categorie/categorie';
+import { ExpenseProvider } from '../../providers/expense/expense';
+
 
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers:[ ExpenseProvider ]
 })
 export class HomePage {
   
 
  /// Doughnut data
- public doughnutChartLabels: Array<string> = ['A','B','C'];
- public doughnutChartData: Array<number> = [100, 200, 400];
+ public doughnutChartLabels: Array<string> = [];
+ public doughnutChartData: Array<number> = [];
  public doughnutChartType: string = 'doughnut';
  
 // Line Chart
@@ -32,8 +35,19 @@ public lineChartLegend:boolean = true;
 public lineChartType:string = 'line';
 
  public fabButtonOpened: any;
-  constructor(public navCtrl: NavController) {
-      this.fabButtonOpened = false; 
+
+  constructor(public navCtrl: NavController, public expenseProvider: ExpenseProvider) {
+    this.expenseProvider.getAllEpense().then(( result ) => {
+      if(result.length > 0){
+        for(var i=0;i < result.length; i++ ){
+          this.doughnutChartData.push(result[i].entrada);
+          this.doughnutChartLabels.push(result[i].name);
+        }
+      }
+      
+    });  
+    
+    this.fabButtonOpened = false; 
   }
   
 
@@ -41,7 +55,6 @@ public lineChartType:string = 'line';
 
   // Chart events
   public chartClicked(e:any):void{
-    var d = document.getElementById('chartjs').getAttribute('ng-reflect-labels');
     console.log(e);
   }
 

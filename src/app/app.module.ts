@@ -19,9 +19,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database';
 //import { CategorieProvider } from '../providers/categorie/categorie';
-//import { ExpenseProvider } from '../providers/expense/expense';
+import { ExpenseProvider } from '../providers/expense/expense';
 //import { IncomeProvider } from '../providers/income/income';
 import { InvoiceProvider } from '../providers/invoice/invoice';
+//Components Module
+import { ComponentsModule } from '../components/components.module';
+
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { InvoiceProvider } from '../providers/invoice/invoice';
     IncomePageModule,
     ExpensePageModule,
     CategoriePageModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -49,7 +54,7 @@ import { InvoiceProvider } from '../providers/invoice/invoice';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider,
     //CategorieProvider,
-    //ExpenseProvider,
+    ExpenseProvider,
     //IncomeProvider,
     InvoiceProvider
   ]

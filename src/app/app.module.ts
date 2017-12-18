@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+//my components
+
 import { InvoicePageModule } from '../pages/invoice/invoice.module';
 import { IncomePageModule } from '../pages/income/income.module';
 import { ExpensePageModule } from '../pages/expense/expense.module';

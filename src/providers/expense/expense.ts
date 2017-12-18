@@ -33,7 +33,7 @@ export class ExpenseProvider {
           expense.datain = item.datain;
           expense.dataout = item.dataout;
           expense.dataput = item.dataput;
-          expense.categorieid = item.categorieid;
+          expense.categorie_id = item.categorieid;
         }
         console.log(this.aExpense);
         return this.aExpense;

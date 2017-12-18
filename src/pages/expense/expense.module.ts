@@ -7,15 +7,14 @@ import { ExpenseProvider } from '../../providers/expense/expense';
 @NgModule({
   declarations: [ ExpensePage ],
   imports: [ 
-    
     IonicPageModule.forChild(ExpensePage) 
-  ],
-  entryComponents:[ 
-
   ],
   exports: [],
   providers: [ 
     ExpenseProvider 
+  ],
+  entryComponents:[
+   
   ]
 })
 export class ExpensePageModule {}

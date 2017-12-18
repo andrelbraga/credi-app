@@ -25,6 +25,9 @@ import { CategorieProvider, Categorie } from '../../providers/categorie/categori
 
 })
 export class ExpensePage {
+
+  public arrayObj:any;
+
   public Expense:any = {
         'Note' : '',
         'Price':0,
@@ -61,7 +64,12 @@ export class ExpensePage {
       formCategorie: new FormControl(),
       formName: new FormControl()
     });
-  }
+
+this.arrayObj = [{  name: 'Banco', icon: 'md-football' },
+                  {  name: 'Lanche', icon:'md-glasses'  },
+                  {  name: 'Roupas', icon:'md-cash'     }];
+
+}
 
   submit(E){
     let e = new Expense();
@@ -86,6 +94,10 @@ export class ExpensePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ExpensePage');
+  }
+
+  saveCategorie(e){
+    console.log(e);
   }
 
 }

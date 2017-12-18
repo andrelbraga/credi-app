@@ -1,0 +1,53 @@
+<!-- Generated template for the AlertDefaultComponent component -->
+<!-- <div *ngFor="let a of nomeObj">
+ Categoria: {{a.name}}<p>
+ Icone: {{a.icon}}<p>
+<input type="checkbox">
+</div> -->
+<ion-content padding>
+    <div >
+      <!-- <ion-list no-border no-lines *ngFor="let c of categories">
+
+        <button ion-item (click)="RenameCategory(c)">
+            <ion-toggle [(ngModel)]="c.status" (ionChange)="statusCategory(c)" checked="c.status"></ion-toggle>
+            <ion-label>{{c.name}}</ion-label>
+            <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
+        </button>
+
+      </ion-list> -->
+
+      <ion-list>
+        <ion-list-header>
+          Action
+        </ion-list-header>
+        <ion-item>Terminator II</ion-item>
+        <ion-item>The Empire Strikes Back</ion-item>
+        <ion-item>Blade Runner</ion-item>
+        <ion-item>Terminator II</ion-item>
+        <ion-item>The Empire Strikes Back</ion-item>
+        <ion-item>Blade Runner</ion-item>
+        <ion-item>Terminator II</ion-item>
+        <ion-item>The Empire Strikes Back</ion-item>
+        <ion-item>Blade Runner</ion-item>
+        <ion-item>Terminator II</ion-item>
+        <ion-item>The Empire Strikes Back</ion-item>
+        <ion-item>Blade Runner</ion-item>
+        <ion-item>Terminator II</ion-item>
+        <ion-item>The Empire Strikes Back</ion-item>
+        <ion-item>Blade Runner</ion-item>
+        <ion-item>Terminator II</ion-item>
+        <ion-item>The Empire Strikes Back</ion-item>
+        <ion-item>Blade Runner</ion-item>
+      </ion-list>
+
+
+      <ion-fab right bottom #fab>
+          <button ion-fab color="positive"><ion-icon name="md-settings"></ion-icon></button>
+           <ion-fab-list side="top">
+             <ion-label class="save">Save</ion-label>
+             <button ion-fab style="color:#488aff" (click)="saveCategorie($event)"><ion-icon name="md-thumbs-up"></ion-icon></button>
+           </ion-fab-list>
+      </ion-fab>
+    </div>
+
+  </ion-content>

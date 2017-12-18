@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+//my components
+
 import { InvoicePageModule } from '../pages/invoice/invoice.module';
 import { IncomePageModule } from '../pages/income/income.module';
 import { ExpensePageModule } from '../pages/expense/expense.module';
@@ -20,6 +22,8 @@ import { DatabaseProvider } from '../providers/database/database';
 //import { ExpenseProvider } from '../providers/expense/expense';
 //import { IncomeProvider } from '../providers/income/income';
 import { InvoiceProvider } from '../providers/invoice/invoice';
+import { AlertDefaultComponent } from '../components/alert-default/alert-default';
+import {  ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -33,12 +37,14 @@ import { InvoiceProvider } from '../providers/invoice/invoice';
     IncomePageModule,
     ExpensePageModule,
     CategoriePageModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    AlertDefaultComponent
   ],
   providers: [
     StatusBar,

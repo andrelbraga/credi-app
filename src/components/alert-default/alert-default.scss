@@ -1,0 +1,22 @@
+.ios, .md{
+
+alert-default {
+
+
+      z-index: 1;
+      position: absolute;
+      width:290px;
+      height:90%;
+      opacity: 1;
+      font-family: "Roboto", "Helvetica Neue", sans-serif;
+      font-size: 1.4rem;
+      background-color: #fff;
+      border-radius: 2px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+      @media (width: 290px) {
+
+      }
+  }
+}
+

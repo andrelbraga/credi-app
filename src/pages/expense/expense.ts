@@ -19,6 +19,9 @@ import { ExpenseProvider } from '../../providers/expense/expense';
 
 })
 export class ExpensePage {
+
+  public arrayObj:any;
+
   public Expense:any = {
         'Note' : '',
         'Price':0,
@@ -43,7 +46,12 @@ export class ExpensePage {
       formNote: new FormControl(),
       formCategorie: new FormControl()
     });
-  }
+
+this.arrayObj = [{  name: 'Banco', icon: 'md-football' },
+                  {  name: 'Lanche', icon:'md-glasses'  },
+                  {  name: 'Roupas', icon:'md-cash'     }];
+
+}
 
   submit(E){
     console.log(this.formExpense);
@@ -55,6 +63,10 @@ export class ExpensePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ExpensePage');
+  }
+
+  saveCategorie(e){
+    console.log(e);
   }
 
 }

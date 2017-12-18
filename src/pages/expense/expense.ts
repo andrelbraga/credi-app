@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ClassUtil } from '../../util/classutil';
-import { ExpenseProvider } from '../../providers/expense/expense';
+import { ExpenseProvider, Expense } from '../../providers/expense/expense';
+
+
+//Providers importeds
+import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
+
+
 
 /**
  * Generated class for the ExpensePage page.
@@ -23,33 +29,58 @@ export class ExpensePage {
         'Note' : '',
         'Price':0,
         'Date':'',
-        'Categorie':''
+        'Categorie':'',
+        'Name':''
       }
-  public categories:any = [
-    {  name: 'Banco', icon: 'md-football' },
-    {  name: 'Lanche', icon:'md-glasses'  },
-    {  name: 'Roupas', icon:'md-cash'     }
-  ];
+
+  public categories:Array<Categorie> = [];
 
   formExpense: FormGroup;
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
     private util: ClassUtil,
-    private expenseProvider: ExpenseProvider) {
+    private expenseProvider: ExpenseProvider,
+    private categorieProvider: CategorieProvider,
+    public toastCtrl: ToastController) {
+
+    new Promise(() => {
+    
+      this.categorieProvider.getAllCategorie()
+        .then((result) => {
+          this.categories = result;
+          return this.categories;
+      }).catch(e =>  console.log(e));
+    
+    }).catch(e =>  console.log(e)); 
+      
     this.formExpense = new FormGroup({
       formMoney: new FormControl(),
       formDate: new FormControl(),
       formNote: new FormControl(),
-      formCategorie: new FormControl()
+      formCategorie: new FormControl(),
+      formName: new FormControl()
     });
   }
 
   submit(E){
-    console.log(this.formExpense);
-    console.log(E);
-    return this.util.alert(E);
-  }
+    let e = new Expense();
+    e.name = E.Name;
+    e.status = 1;
+    e.resume = E.Note;
+    e.entrada = E.Price;
+    e.datain = new Date(E.Date);
+    e.categorie_id = E.Categorie.id;
+    this.expenseProvider.insertExpense(e).then( e => {
+      console.log(e);
+      let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
+      msg.present();
+    }).catch( e => {
+      console.log(e);
+      let msg = this.toastCtrl.create({message:'Not Ok!', duration: 3000, position: 'top'});
+      msg.present();
+    });
+    }
 
 
 

@@ -6,8 +6,16 @@ import { ExpenseProvider } from '../../providers/expense/expense';
 
 @NgModule({
   declarations: [ ExpensePage ],
-  imports: [ IonicPageModule.forChild(ExpensePage) ],
+  imports: [ 
+    
+    IonicPageModule.forChild(ExpensePage) 
+  ],
+  entryComponents:[ 
+
+  ],
   exports: [],
-  providers: [ ExpenseProvider ]
+  providers: [ 
+    ExpenseProvider 
+  ]
 })
 export class ExpensePageModule {}

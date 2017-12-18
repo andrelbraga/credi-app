@@ -32,40 +32,7 @@ export class ClassUtil{
  }
 
 
-   public template: string =
-  "<div class='alert-content'>"
-  +"<div class='alert-head'>"
-  +"<div class='alert-title'>"
-  +"<div class='alert-sub-title'>"
-  +"<div class='alert-body'>"
-  +"<div class='alert-footer'"
-  +"<div class=''>"
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +""
-  +"";
 
-alert(e){
-document.getElementById('alert').innerHTML = '<div>A</div>';
-}
 
 
 }

@@ -50,10 +50,8 @@ public insertDataDefaultTableCategorie(db: SQLiteObject){
           ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Contact','md-contacts','contacts','true']],
           ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Tv','md-desktop','desktop','true']],
           ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Football','md-football','football','true']],
-          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['CreditCard','md-card','card','true']],
-          //Categories Income
           ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['CreditCard','md-card','card','true']]
-          
+          //Categories Income
       ]).then(()=>{
         console.info('Insert Categorie Conclude!');
       })
@@ -71,7 +69,7 @@ db.sqlBatch([
   ['CREATE TABLE IF NOT EXISTS categorie (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, color TEXT, status TEXT)'],
   ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)'],
   ['CREATE TABLE IF NOT EXISTS graphic (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)'],
-  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)']
+  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datain DATETIME, dataout DATETIME, dataput DATETIME, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))']
 ]).then(() => {
   console.info('Create DBs!');
 }).catch(e => {

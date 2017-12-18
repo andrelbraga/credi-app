@@ -241,7 +241,7 @@ var CategoriePage = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CategorieProvider; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Categorie; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -342,9 +342,14 @@ var ExpensePageModule = (function () {
     ExpensePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [__WEBPACK_IMPORTED_MODULE_2__expense__["a" /* ExpensePage */]],
-            imports: [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__expense__["a" /* ExpensePage */])],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__expense__["a" /* ExpensePage */])
+            ],
+            entryComponents: [],
             exports: [],
-            providers: [__WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["a" /* ExpenseProvider */]]
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["b" /* ExpenseProvider */]
+            ]
         })
     ], ExpensePageModule);
     return ExpensePageModule;
@@ -364,6 +369,7 @@ var ExpensePageModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_classutil__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_expense_expense__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_categorie_categorie__ = __webpack_require__(167);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -378,6 +384,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+//Providers importeds
+
 /**
  * Generated class for the ExpensePage page.
  *
@@ -385,50 +393,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ExpensePage = (function () {
-    function ExpensePage(navCtrl, navParams, modalCtrl, util, expenseProvider) {
+    function ExpensePage(navCtrl, navParams, modalCtrl, util, expenseProvider, categorieProvider, toastCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.modalCtrl = modalCtrl;
         this.util = util;
         this.expenseProvider = expenseProvider;
+        this.categorieProvider = categorieProvider;
+        this.toastCtrl = toastCtrl;
         this.Expense = {
             'Note': '',
             'Price': 0,
             'Date': '',
-            'Categorie': ''
+            'Categorie': '',
+            'Name': ''
         };
-        this.categories = [
-            { name: 'Banco', icon: 'md-football' },
-            { name: 'Lanche', icon: 'md-glasses' },
-            { name: 'Roupas', icon: 'md-cash' }
-        ];
+        this.categories = [];
+        new Promise(function () {
+            _this.categorieProvider.getAllCategorie()
+                .then(function (result) {
+                _this.categories = result;
+                return _this.categories;
+            }).catch(function (e) { return console.log(e); });
+        }).catch(function (e) { return console.log(e); });
         this.formExpense = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormGroup */]({
             formMoney: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
             formDate: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
             formNote: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
-            formCategorie: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]()
+            formCategorie: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
+            formName: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]()
         });
     }
     ExpensePage.prototype.submit = function (E) {
-        console.log(this.formExpense);
-        console.log(E);
-        return this.util.alert(E);
+        var _this = this;
+        var e = new __WEBPACK_IMPORTED_MODULE_4__providers_expense_expense__["a" /* Expense */]();
+        e.name = E.Name;
+        e.status = 1;
+        e.resume = E.Note;
+        e.entrada = E.Price;
+        e.datain = new Date(E.Date);
+        e.categorie_id = E.Categorie.id;
+        this.expenseProvider.insertExpense(e).then(function (e) {
+            console.log(e);
+            var msg = _this.toastCtrl.create({ message: 'Ok!', duration: 3000, position: 'top' });
+            msg.present();
+        }).catch(function (e) {
+            console.log(e);
+            var msg = _this.toastCtrl.create({ message: 'Not Ok!', duration: 3000, position: 'top' });
+            msg.present();
+        });
     };
     ExpensePage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad ExpensePage');
     };
     ExpensePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-expense',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/'<!--\n  Generated template for the ExpensePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Expenses</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <div id="alert"></div>\n    <form [formGroup]="formExpense">\n        <ion-item>\n          <ion-label floating>R$</ion-label>\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>\n        </ion-item>\n\n        <ion-list>\n            <ion-item>\n              <ion-label floating>Categories</ion-label>\n              <ion-select formControlName="formCategorie" [(ngModel)]="Expense.Categorie">\n                <ion-option *ngFor="let item of categories" [value]="item">\n                    <ion-list>\n                        <ion-item>\n                            {{item.name}}\n                        </ion-item>\n                      </ion-list>\n                </ion-option>\n              </ion-select>\n            </ion-item>\n        </ion-list>\n\n        <ion-item>\n            <ion-label floating>Date</ion-label>\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.Date"></ion-datetime>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Note</ion-label>\n            <ion-input formControlName="formNote" [(ngModel)]="Expense.Note" clearInput></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>\n        </ion-item>\n      </form>\n\n</ion-content>\n\n<!-- <ion-footer>\n    <ion-toolbar>\n {{today | date:\'dd/MM/yyyy\'}}\n    </ion-toolbar>\n</ion-footer> -->\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/,
-            providers: [__WEBPACK_IMPORTED_MODULE_4__providers_expense_expense__["a" /* ExpenseProvider */], __WEBPACK_IMPORTED_MODULE_3__util_classutil__["a" /* ClassUtil */]]
+            selector: 'page-expense',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/'<!--\n\n  Generated template for the ExpensePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Expenses</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <form [formGroup]="formExpense">\n\n      <ion-item>\n\n        <ion-label floating>Name Expense</ion-label>\n\n          <ion-input formControlName="formName" [(ngModel)]="Expense.Name" clearInput></ion-input>\n\n      </ion-item>\n\n        <ion-item>\n\n          <ion-label floating>R$</ion-label>\n\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-list>\n\n            <ion-item>\n\n              <ion-label floating>Categories</ion-label>\n\n              <ion-select formControlName="formCategorie" [(ngModel)]="Expense.Categorie">\n\n                <ion-option *ngFor="let item of categories" [value]="item">\n\n                    <ion-list>\n\n                        <ion-item>\n\n                            {{item.name}}\n\n                        </ion-item>\n\n                      </ion-list>\n\n                </ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n        </ion-list>\n\n\n\n        <ion-item>\n\n            <ion-label floating>Date</ion-label>\n\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.Date"></ion-datetime>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n            <ion-label floating>Note</ion-label>\n\n            <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.Note"></ion-textarea>\n\n        </ion-item>\n\n\n\n        \n\n        <ion-item>\n\n          <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>\n\n        </ion-item>\n\n      </form>\n\n\n\n</ion-content>\n\n\n\n<ion-footer>\n\n    <ion-toolbar>\n\n\n\n    </ion-toolbar>\n\n</ion-footer>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_4__providers_expense_expense__["b" /* ExpenseProvider */], __WEBPACK_IMPORTED_MODULE_3__util_classutil__["a" /* ClassUtil */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__util_classutil__["a" /* ClassUtil */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_expense_expense__["a" /* ExpenseProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__util_classutil__["a" /* ClassUtil */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__util_classutil__["a" /* ClassUtil */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_expense_expense__["b" /* ExpenseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_expense_expense__["b" /* ExpenseProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__providers_categorie_categorie__["b" /* CategorieProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_categorie_categorie__["b" /* CategorieProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]) === "function" && _g || Object])
     ], ExpensePage);
     return ExpensePage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=expense.js.map
@@ -439,8 +466,10 @@ var ExpensePage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExpenseProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ExpenseProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Expense; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -451,6 +480,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 /*
   Generated class for the ExpenseProvider provider.
 
@@ -458,14 +488,67 @@ var __metadata = (this && this.__metadata) || function (k, v) {
   and Angular DI.
 */
 var ExpenseProvider = (function () {
-    function ExpenseProvider() {
+    function ExpenseProvider(dbProvider) {
+        this.dbProvider = dbProvider;
+        this.aExpense = Array();
         console.log('Hello ExpenseProvider Provider');
     }
+    ExpenseProvider.prototype.getAllEpense = function () {
+        var _this = this;
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            return db.executeSql('SELECT * FROM expense', {}).then(function (data) {
+                _this.aExpense = [];
+                for (var i = 0; i < data.rows.length; i++) {
+                    var item = data.rows.item(i);
+                    var expense = new Expense();
+                    expense.id = item.id;
+                    expense.name = item.name;
+                    expense.status = item.status;
+                    expense.entrada = item.entrada;
+                    expense.saida = item.saida;
+                    expense.resume = item.resume;
+                    expense.datain = item.datain;
+                    expense.dataout = item.dataout;
+                    expense.dataput = item.dataput;
+                    expense.categorieid = item.categorieid;
+                }
+                console.log(_this.aExpense);
+                return _this.aExpense;
+            });
+        });
+    };
+    ExpenseProvider.prototype.insertExpense = function (e) {
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            var sql = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) values(?,?,?,?,?,?)";
+            var query = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
+            return db.executeSql(sql, query);
+        });
+    };
+    ExpenseProvider.prototype.removeExpense = function (e) {
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            var sql = "DELETE FROM expense WHERE id = ?";
+            var query = [e.id];
+            return db.executeSql(sql, query).then(function (e) { return console.log(e); });
+        });
+    };
     ExpenseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__database_database__["a" /* DatabaseProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__database_database__["a" /* DatabaseProvider */]) === "function" && _a || Object])
     ], ExpenseProvider);
     return ExpenseProvider;
+    var _a;
+}());
+
+var Expense = (function () {
+    function Expense() {
+        this.dataout = new Date();
+        this.datain = new Date();
+        this.dataput = new Date();
+    }
+    return Expense;
 }());
 
 //# sourceMappingURL=expense.js.map
@@ -570,7 +653,7 @@ var IncomePage = (function () {
     };
     IncomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\income.html"*/'<!--\n\n  Generated template for the IncomePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Income</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n    <form [formGroup]="formIncome">\n\n        <ion-item>\n\n          <ion-label floating>R$</ion-label>\n\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>\n\n        </ion-item>\n\n        \n\n        <ion-list>\n\n            <ion-item>\n\n              <ion-label floating>Categories</ion-label>\n\n              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">\n\n                <ion-option *ngFor="let item of categories" [value]="item">\n\n                    <ion-list>\n\n                        <ion-item>\n\n                            {{item.name}}\n\n                        </ion-item>\n\n                      </ion-list>\n\n                </ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n        </ion-list>\n\n        \n\n        <ion-item>\n\n            <ion-label floating>Date</ion-label>\n\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n            <ion-label floating>Note</ion-label>\n\n            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>\n\n        </ion-item>\n\n      </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\income.html"*/,
+            selector: 'page-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\income.html"*/'<!--\n  Generated template for the IncomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Income</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n    <form [formGroup]="formIncome">\n        <ion-item>\n          <ion-label floating>R$</ion-label>\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>\n        </ion-item>\n        \n        <ion-list>\n            <ion-item>\n              <ion-label floating>Categories</ion-label>\n              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">\n                <ion-option *ngFor="let item of categories" [value]="item">\n                    <ion-list>\n                        <ion-item>\n                            {{item.name}}\n                        </ion-item>\n                      </ion-list>\n                </ion-option>\n              </ion-select>\n            </ion-item>\n        </ion-list>\n        \n        <ion-item>\n            <ion-label floating>Date</ion-label>\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Note</ion-label>\n            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>\n        </ion-item>\n      </form>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\income.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], IncomePage);
@@ -701,7 +784,7 @@ var InvoicePage = (function () {
     };
     InvoicePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-invoice',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/'<!--\n\n  Generated template for the InvoicePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>invoice</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item>\n\n          <ion-label>Categoria</ion-label>\n\n          <ion-select [(ngModel)]="choice.categorie">\n\n            <ion-option *ngFor="let item of categories" [value]="item">\n\n                <ion-list>\n\n                    <ion-item>\n\n                      <ion-icon name="item.icon" item-start></ion-icon>\n\n                        {{item.name}}\n\n                    </ion-item>\n\n                  </ion-list>\n\n            </ion-option>\n\n          </ion-select>\n\n        </ion-item>\n\n    </ion-list>\n\n      \n\n      <ion-item>\n\n          <ion-label>Data</ion-label>\n\n          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="choice.date"></ion-datetime>\n\n      </ion-item>\n\n\n\n\n\n      <ion-content padding>\n\n        <button ion-button color="positive" block (click)="showPromptSaveExpense(choice)">Save Expense</button>\n\n      </ion-content>\n\n      \n\n\n\n</ion-content>\n\n\n\n<ion-footer>\n\n    <ion-toolbar>\n\n\n\n    </ion-toolbar>\n\n</ion-footer>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/,
+            selector: 'page-invoice',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/'<!--\n  Generated template for the InvoicePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>invoice</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n        <ion-item>\n          <ion-label>Categoria</ion-label>\n          <ion-select [(ngModel)]="choice.categorie">\n            <ion-option *ngFor="let item of categories" [value]="item">\n                <ion-list>\n                    <ion-item>\n                      <ion-icon name="item.icon" item-start></ion-icon>\n                        {{item.name}}\n                    </ion-item>\n                  </ion-list>\n            </ion-option>\n          </ion-select>\n        </ion-item>\n    </ion-list>\n      \n      <ion-item>\n          <ion-label>Data</ion-label>\n          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="choice.date"></ion-datetime>\n      </ion-item>\n\n\n      <ion-content padding>\n        <button ion-button color="positive" block (click)="showPromptSaveExpense(choice)">Save Expense</button>\n      </ion-content>\n      \n\n</ion-content>\n\n<ion-footer>\n    <ion-toolbar>\n\n    </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
@@ -840,7 +923,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng2_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_home__ = __webpack_require__(336);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_database_database__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_database_database__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_invoice_invoice__ = __webpack_require__(467);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1219,7 +1302,7 @@ webpackContext.id = 448;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(336);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_database_database__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_database_database__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1257,7 +1340,7 @@ var MyApp = (function () {
         this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Projetos\credi-app\src\app\app.html"*/'<ion-menu [content]="content">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <!-- <ion-list>\n        <button ion-item (click)="openPage(homePage)">\n          Home\n        </button>\n        <button ion-item (click)="openPage(friendsPage)">\n          Friends\n        </button>\n        <button ion-item (click)="openPage(eventsPage)">\n          Events\n        </button>\n        <button ion-item (click)="closeMenu()">\n          Close Menu\n        </button>\n      </ion-list> -->\n    </ion-content>\n  </ion-menu>\n  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\app\app.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Projetos\credi-app\src\app\app.html"*/'<ion-menu [content]="content">\n\n    <ion-header>\n\n      <ion-toolbar>\n\n        <ion-title>Menu</ion-title>\n\n      </ion-toolbar>\n\n    </ion-header>\n\n    <ion-content>\n\n      <!-- <ion-list>\n\n        <button ion-item (click)="openPage(homePage)">\n\n          Home\n\n        </button>\n\n        <button ion-item (click)="openPage(friendsPage)">\n\n          Friends\n\n        </button>\n\n        <button ion-item (click)="openPage(eventsPage)">\n\n          Events\n\n        </button>\n\n        <button ion-item (click)="closeMenu()">\n\n          Close Menu\n\n        </button>\n\n      </ion-list> -->\n\n    </ion-content>\n\n  </ion-menu>\n\n  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\app\app.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_5__providers_database_database__["a" /* DatabaseProvider */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
@@ -1310,7 +1393,7 @@ var InvoiceProvider = (function () {
 
 /***/ }),
 
-/***/ 84:
+/***/ 52:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1374,9 +1457,8 @@ var DatabaseProvider = (function () {
                     ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['Contact', 'md-contacts', 'contacts', 'true']],
                     ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['Tv', 'md-desktop', 'desktop', 'true']],
                     ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['Football', 'md-football', 'football', 'true']],
-                    ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['CreditCard', 'md-card', 'card', 'true']],
-                    //Categories Income
                     ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['CreditCard', 'md-card', 'card', 'true']]
+                    //Categories Income
                 ]).then(function () {
                     console.info('Insert Categorie Conclude!');
                 })
@@ -1393,7 +1475,7 @@ var DatabaseProvider = (function () {
             ['CREATE TABLE IF NOT EXISTS categorie (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, color TEXT, status TEXT)'],
             ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)'],
             ['CREATE TABLE IF NOT EXISTS graphic (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)'],
-            ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)']
+            ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datain DATETIME, dataout DATETIME, dataput DATETIME, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))']
         ]).then(function () {
             console.info('Create DBs!');
         }).catch(function (e) {
@@ -1402,9 +1484,10 @@ var DatabaseProvider = (function () {
     };
     DatabaseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["l" /* ToastController */]) === "function" && _b || Object])
     ], DatabaseProvider);
     return DatabaseProvider;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=database.js.map
@@ -1440,35 +1523,6 @@ var ClassUtil = (function () {
         this.alertCtrl = alertCtrl;
         this.loadingCtrl = loadingCtrl;
         this.toastCtrl = toastCtrl;
-        this.template = "<div class='alert-content'>"
-            + "<div class='alert-head'>"
-            + "<div class='alert-title'>"
-            + "<div class='alert-sub-title'>"
-            + "<div class='alert-body'>"
-            + "<div class='alert-footer'"
-            + "<div class=''>"
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + ""
-            + "";
     }
     ClassUtil.prototype.presentLoading = function (ctrl, active) {
         var _this = this;
@@ -1482,9 +1536,6 @@ var ClassUtil = (function () {
                 _this.navCtrl.push(ctrl);
             }
         }, 3000);
-    };
-    ClassUtil.prototype.alert = function (e) {
-        document.getElementById('alert').innerHTML = '<div>A</div>';
     };
     ClassUtil = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),

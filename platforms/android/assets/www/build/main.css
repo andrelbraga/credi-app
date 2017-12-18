@@ -65444,14 +65444,6 @@ page-categorie .save {
   font-weight: bold;
 }
 
-page-expense .alert-md .alert-wrapper {
-  border-radius: 2px;
-  max-width: 280px;
-  background-color: #fafafa;
-  -webkit-box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 16px 20px rgba(0, 0, 0, 0.4);
-}
-
 page-home .graphic {
   color: #565656;
   position: absolute;

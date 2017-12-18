@@ -13,8 +13,11 @@
 </ion-header>
 
 <ion-content padding>
-    <div id="alert"></div>
     <form [formGroup]="formExpense">
+      <ion-item>
+        <ion-label floating>Name Expense</ion-label>
+          <ion-input formControlName="formName" [(ngModel)]="Expense.Name" clearInput></ion-input>
+      </ion-item>
         <ion-item>
           <ion-label floating>R$</ion-label>
           <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>
@@ -42,9 +45,10 @@
 
         <ion-item>
             <ion-label floating>Note</ion-label>
-            <ion-input formControlName="formNote" [(ngModel)]="Expense.Note" clearInput></ion-input>
+            <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.Note"></ion-textarea>
         </ion-item>
 
+        
         <ion-item>
           <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>
         </ion-item>
@@ -52,8 +56,8 @@
 
 </ion-content>
 
-<!-- <ion-footer>
+<ion-footer>
     <ion-toolbar>
- {{today | date:'dd/MM/yyyy'}}
+
     </ion-toolbar>
-</ion-footer> -->
+</ion-footer>

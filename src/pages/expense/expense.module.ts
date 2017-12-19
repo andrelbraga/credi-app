@@ -5,20 +5,27 @@ import { ExpenseProvider } from '../../providers/expense/expense';
 
 import { ComponentsModule } from '../../components/components.module';
 import { AlertDefaultComponent } from '../../components/alert-default/alert-default';
+import { ListCategoriesPage } from '../list-categories/list-categories';
+
 
 
 @NgModule({
-  declarations: [ ExpensePage ],
-  imports: [ 
+  declarations: [
+    ExpensePage,
+    ListCategoriesPage
+
+  ],
+  imports: [
     ComponentsModule,
-    IonicPageModule.forChild(ExpensePage) 
+    IonicPageModule.forChild(ExpensePage)
   ],
   exports: [],
-  providers: [ 
-    ExpenseProvider 
+  providers: [
+    ExpenseProvider
   ],
   entryComponents:[
-    AlertDefaultComponent
+    AlertDefaultComponent,
+    ListCategoriesPage
   ]
 })
 export class ExpensePageModule {}

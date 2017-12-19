@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { InvoicePage } from '../invoice/invoice';
 import { IncomePage } from '../income/income';
@@ -13,14 +13,14 @@ import { ExpenseProvider } from '../../providers/expense/expense';
   templateUrl: 'home.html',
   providers:[ ExpenseProvider ]
 })
-export class HomePage {
-  
+export class HomePage implements AfterViewInit{
+
 
  /// Doughnut data
  public doughnutChartLabels: Array<string> = [];
  public doughnutChartData: Array<number> = [];
  public doughnutChartType: string = 'doughnut';
- 
+
 // Line Chart
 public lineChartData:Array<any> = [
   {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
@@ -44,12 +44,12 @@ public lineChartType:string = 'line';
           this.doughnutChartLabels.push(result[i].name);
         }
       }
-      
-    });  
-    
-    this.fabButtonOpened = false; 
+
+    });
+
+    this.fabButtonOpened = false;
   }
-  
+
 
 
 
@@ -88,12 +88,16 @@ public lineChartType:string = 'line';
 
   openIncome(event){
     this.navCtrl.push(IncomePage);
-    console.log('Rendas');    
+    console.log('Rendas');
   }
 
-  
+
   openGraphic(event){
 
+  }
+
+  ngAfterViewInit() {
+    console.log("ngAfterViewInit");
   }
 
 

@@ -1,5 +1,12 @@
 page-expense {
-
+#category{
+  -webkit-transition-property: width; /* Safari */
+  -webkit-transition-duration: 5s; /* Safari */
+  -webkit-transition-delay: 2s; /* Safari */
+  transition-property: width;
+  transition-duration: 5s;
+  transition-delay: 2s;
+}
   //   left: 0;
   //   right: 0;
   //   top: 0;

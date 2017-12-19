@@ -7,6 +7,7 @@ import { ExpenseProvider, Expense } from '../../providers/expense/expense';
 //Providers importeds
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
 import { AlertDefaultComponent } from '../../components/alert-default/alert-default';
+import { ListCategoriesPage } from '../list-categories/list-categories';
 
 /**
  * Generated class for the ExpensePage page.
@@ -47,20 +48,20 @@ export class ExpensePage {
     private categorieProvider: CategorieProvider,
     public toastCtrl: ToastController) {
 
-      this.categorieName = this.navParams.data.name; 
+      this.categorieName = this.navParams.data.name;
 
       console.log(this.navParams.data);
 
     new Promise(() => {
-    
+
       this.categorieProvider.getAllCategorie()
         .then((result) => {
           this.categories = result;
           return this.categories;
       }).catch(e =>  console.log(e));
-    
-    }).catch(e =>  console.log(e)); 
-      
+
+    }).catch(e =>  console.log(e));
+
     this.formExpense = new FormGroup({
       formMoney: new FormControl(),
       formDate: new FormControl(),
@@ -96,10 +97,24 @@ export class ExpensePage {
     console.log('ionViewDidLoad ExpensePage');
   }
 
-  showCategories(){
-    if(this.showCategorie)
-      return this.showCategorie = false;
-    return this.showCategorie = true;
-  }
+showCategories(){
+
+let d =[
+{name: 'Andre'},
+{name: 'Braga'},
+{name: 'Candido'}
+]
+  let opnModal = this.modalCtrl.create(ListCategoriesPage, {data: d});
+  opnModal.onDidDismiss(data => {
+    console.log(data);
+    });
+  opnModal.present();
+}
+
+  // showCategories(){
+  //   if(this.showCategorie)
+  //     return this.showCategorie = false;
+  //   return this.showCategorie = true;
+  // }
 
 }

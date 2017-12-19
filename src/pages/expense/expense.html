@@ -14,7 +14,7 @@
 
 <ion-content padding>
     <form [formGroup]="formExpense">
-      <alert-default [obj]="categories" *ngIf="showCategorie"></alert-default>
+      <alert-default [obj]="categories" *ngIf="showCategorie" id="category"></alert-default>
       <ion-item>
         <ion-label floating>Name Expense</ion-label>
           <ion-input formControlName="formName" [(ngModel)]="Expense.Name" clearInput></ion-input>
@@ -44,7 +44,7 @@
         <ion-item>
             <button ion-button block color="bluedevider" (click)="showCategories()" prompt>Categories</button>
         </ion-item>
-        
+
 
         <ion-item>
             <ion-label floating>Date</ion-label>
@@ -56,7 +56,7 @@
             <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.Note"></ion-textarea>
         </ion-item>
 
-        
+
         <ion-item>
           <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>
         </ion-item>

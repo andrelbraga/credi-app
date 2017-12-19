@@ -65498,6 +65498,18 @@ page-categorie .save {
   font-weight: bold;
 }
 
+page-expense #category {
+  -webkit-transition-property: width;
+  /* Safari */
+  -webkit-transition-duration: 5s;
+  /* Safari */
+  -webkit-transition-delay: 2s;
+  /* Safari */
+  transition-property: width;
+  transition-duration: 5s;
+  transition-delay: 2s;
+}
+
 page-home .graphic {
   color: #565656;
   position: absolute;

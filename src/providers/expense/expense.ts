@@ -34,6 +34,7 @@ export class ExpenseProvider {
           expense.dataout = item.dataout;
           expense.dataput = item.dataput;
           expense.categorie_id = item.categorie_id;
+          this.aExpense.push(expense);
         }
         console.log(this.aExpense);
         return this.aExpense;

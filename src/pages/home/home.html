@@ -16,7 +16,7 @@
 
 
 <ion-content padding>
-    <ion-slides pager [ngClass]="{'ListBackdrop': fabButtonOpened == true }">
+    <ion-slides pager [ngClass]="{'ListBackdrop': fabButtonOpened == true }" (ionSlideDidChange)="slideChanged()">
 
         <ion-slide>
                 <!-- <div *ngIf="doughnutChartData.length == 0"> -->

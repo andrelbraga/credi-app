@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { ExpensePage } from '../expense/expense';
 
 /**
  * Generated class for the ListCategoriesPage page.

@@ -17,6 +17,7 @@
     <ion-item *ngFor="let c of obj">
         <ion-radio (ionSelect)="emit(c)" value="{{c.name}}"></ion-radio>
         <ion-label>{{c.name}}</ion-label>
+        <ion-icon color="c.color" name="c.icon"></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

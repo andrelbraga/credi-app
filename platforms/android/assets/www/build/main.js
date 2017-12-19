@@ -41,7 +41,7 @@ var ListCategoriesPage = (function () {
     };
     ListCategoriesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-list-categories',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\list-categories\list-categories.html"*/'<!--\n  Generated template for the ListCategoriesPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>list-categories</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list radio-group>\n    <ion-item *ngFor="let c of obj">\n        <ion-radio (ionSelect)="emit(c)" value="{{c.name}}"></ion-radio>\n        <ion-label>{{c.name}}</ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\list-categories\list-categories.html"*/,
+            selector: 'page-list-categories',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\list-categories\list-categories.html"*/'<!--\n\n  Generated template for the ListCategoriesPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>list-categories</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <ion-list radio-group>\n\n    <ion-item *ngFor="let c of obj">\n\n        <ion-radio (ionSelect)="emit(c)" value="{{c.name}}"></ion-radio>\n\n        <ion-label>{{c.name}}</ion-label>\n\n        <ion-icon color="c.color" name="c.icon"></ion-icon>\n\n    </ion-item>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\list-categories\list-categories.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]])
     ], ListCategoriesPage);
@@ -74,10 +74,10 @@ webpackEmptyAsyncContext.id = 126;
 
 var map = {
 	"../pages/categorie/categorie.module": [
-		212
+		169
 	],
 	"../pages/expense/expense.module": [
-		169
+		173
 	],
 	"../pages/income/income.module": [
 		215
@@ -111,112 +111,13 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExpensePageModule", function() { return ExpensePageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__expense__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__ = __webpack_require__(113);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-
-
-
-
-var ExpensePageModule = (function () {
-    function ExpensePageModule() {
-    }
-    ExpensePageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__expense__["a" /* ExpensePage */],
-                __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__["a" /* ListCategoriesPage */]
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* ComponentsModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__expense__["a" /* ExpensePage */])
-            ],
-            exports: [],
-            providers: [
-                __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["b" /* ExpenseProvider */]
-            ],
-            entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__["a" /* AlertDefaultComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__["a" /* ListCategoriesPage */]
-            ]
-        })
-    ], ExpensePageModule);
-    return ExpensePageModule;
-}());
-
-//# sourceMappingURL=expense.module.js.map
-
-/***/ }),
-
-/***/ 171:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__ = __webpack_require__(172);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var ComponentsModule = (function () {
-    function ComponentsModule() {
-    }
-    ComponentsModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__["a" /* AlertDefaultComponent */]
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__["a" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__["a" /* AlertDefaultComponent */])
-            ],
-            exports: [
-                __WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__["a" /* AlertDefaultComponent */]
-            ],
-            schemas: [
-                __WEBPACK_IMPORTED_MODULE_0__angular_core__["CUSTOM_ELEMENTS_SCHEMA"]
-            ]
-        })
-    ], ComponentsModule);
-    return ComponentsModule;
-}());
-
-//# sourceMappingURL=components.module.js.map
-
-/***/ }),
-
-/***/ 212:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CategoriePageModule", function() { return CategoriePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__categorie__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__categorie__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_sqlite__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_categorie_categorie__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_classutil__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_categorie_categorie__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_classutil__ = __webpack_require__(172);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -254,15 +155,15 @@ var CategoriePageModule = (function () {
 
 /***/ }),
 
-/***/ 213:
+/***/ 170:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategoriePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_categorie_categorie__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_classutil__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_categorie_categorie__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_classutil__ = __webpack_require__(172);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -389,7 +290,7 @@ var CategoriePage = (function () {
 
 /***/ }),
 
-/***/ 214:
+/***/ 172:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -444,6 +345,105 @@ var ClassUtil = (function () {
 }());
 
 //# sourceMappingURL=classutil.js.map
+
+/***/ }),
+
+/***/ 173:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExpensePageModule", function() { return ExpensePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__expense__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__ = __webpack_require__(113);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+var ExpensePageModule = (function () {
+    function ExpensePageModule() {
+    }
+    ExpensePageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__expense__["a" /* ExpensePage */],
+                __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__["a" /* ListCategoriesPage */]
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* ComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__expense__["a" /* ExpensePage */])
+            ],
+            exports: [],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["b" /* ExpenseProvider */]
+            ],
+            entryComponents: [
+                __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__["a" /* AlertDefaultComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__["a" /* ListCategoriesPage */]
+            ]
+        })
+    ], ExpensePageModule);
+    return ExpensePageModule;
+}());
+
+//# sourceMappingURL=expense.module.js.map
+
+/***/ }),
+
+/***/ 174:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__ = __webpack_require__(175);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var ComponentsModule = (function () {
+    function ComponentsModule() {
+    }
+    ComponentsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__["a" /* AlertDefaultComponent */]
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular_module__["a" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__["a" /* AlertDefaultComponent */])
+            ],
+            exports: [
+                __WEBPACK_IMPORTED_MODULE_1__alert_default_alert_default__["a" /* AlertDefaultComponent */]
+            ],
+            schemas: [
+                __WEBPACK_IMPORTED_MODULE_0__angular_core__["CUSTOM_ELEMENTS_SCHEMA"]
+            ]
+        })
+    ], ComponentsModule);
+    return ComponentsModule;
+}());
+
+//# sourceMappingURL=components.module.js.map
 
 /***/ }),
 
@@ -545,7 +545,7 @@ var IncomePage = (function () {
     };
     IncomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\income.html"*/'<!--\n\n  Generated template for the IncomePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Income</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n    <form [formGroup]="formIncome">\n\n        <ion-item>\n\n          <ion-label floating>R$</ion-label>\n\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>\n\n        </ion-item>\n\n        \n\n        <ion-list>\n\n            <ion-item>\n\n              <ion-label floating>Categories</ion-label>\n\n              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">\n\n                <ion-option *ngFor="let item of categories" [value]="item">\n\n                    <ion-list>\n\n                        <ion-item>\n\n                            {{item.name}}\n\n                        </ion-item>\n\n                      </ion-list>\n\n                </ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n        </ion-list>\n\n        \n\n        <ion-item>\n\n            <ion-label floating>Date</ion-label>\n\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n            <ion-label floating>Note</ion-label>\n\n            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>\n\n        </ion-item>\n\n      </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\income.html"*/,
+            selector: 'page-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\income.html"*/'<!--\n  Generated template for the IncomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Income</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n    <form [formGroup]="formIncome">\n        <ion-item>\n          <ion-label floating>R$</ion-label>\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>\n        </ion-item>\n        \n        <ion-list>\n            <ion-item>\n              <ion-label floating>Categories</ion-label>\n              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">\n                <ion-option *ngFor="let item of categories" [value]="item">\n                    <ion-list>\n                        <ion-item>\n                            {{item.name}}\n                        </ion-item>\n                      </ion-list>\n                </ion-option>\n              </ion-select>\n            </ion-item>\n        </ion-list>\n        \n        <ion-item>\n            <ion-label floating>Date</ion-label>\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Note</ion-label>\n            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>\n        </ion-item>\n      </form>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\income.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], IncomePage);
@@ -676,7 +676,7 @@ var InvoicePage = (function () {
     };
     InvoicePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-invoice',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/'<!--\n\n  Generated template for the InvoicePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>invoice</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-list>\n\n        <ion-item>\n\n          <ion-label>Categoria</ion-label>\n\n          <ion-select [(ngModel)]="choice.categorie">\n\n            <ion-option *ngFor="let item of categories" [value]="item">\n\n                <ion-list>\n\n                    <ion-item>\n\n                      <ion-icon name="item.icon" item-start></ion-icon>\n\n                        {{item.name}}\n\n                    </ion-item>\n\n                  </ion-list>\n\n            </ion-option>\n\n          </ion-select>\n\n        </ion-item>\n\n    </ion-list>\n\n      \n\n      <ion-item>\n\n          <ion-label>Data</ion-label>\n\n          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="choice.date"></ion-datetime>\n\n      </ion-item>\n\n\n\n\n\n      <ion-content padding>\n\n        <button ion-button color="positive" block (click)="showPromptSaveExpense(choice)">Save Expense</button>\n\n      </ion-content>\n\n      \n\n\n\n</ion-content>\n\n\n\n<ion-footer>\n\n    <ion-toolbar>\n\n\n\n    </ion-toolbar>\n\n</ion-footer>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/,
+            selector: 'page-invoice',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/'<!--\n  Generated template for the InvoicePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>invoice</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n        <ion-item>\n          <ion-label>Categoria</ion-label>\n          <ion-select [(ngModel)]="choice.categorie">\n            <ion-option *ngFor="let item of categories" [value]="item">\n                <ion-list>\n                    <ion-item>\n                      <ion-icon name="item.icon" item-start></ion-icon>\n                        {{item.name}}\n                    </ion-item>\n                  </ion-list>\n            </ion-option>\n          </ion-select>\n        </ion-item>\n    </ion-list>\n      \n      <ion-item>\n          <ion-label>Data</ion-label>\n          <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="choice.date"></ion-datetime>\n      </ion-item>\n\n\n      <ion-content padding>\n        <button ion-button color="positive" block (click)="showPromptSaveExpense(choice)">Save Expense</button>\n      </ion-content>\n      \n\n</ion-content>\n\n<ion-footer>\n    <ion-toolbar>\n\n    </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\invoice\invoice.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
@@ -697,9 +697,9 @@ var InvoicePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invoice_invoice__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__income_income__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__expense_expense__ = __webpack_require__(86);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__categorie_categorie__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_expense_expense__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__expense_expense__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__categorie_categorie__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_expense_expense__ = __webpack_require__(53);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -717,15 +717,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HomePage = (function () {
-    function HomePage(navCtrl, expenseProvider) {
-        var _this = this;
+    //End Line Chart
+    //Constructor HomePage
+    function HomePage(navCtrl, events, expenseProvider, zone) {
         this.navCtrl = navCtrl;
+        this.events = events;
         this.expenseProvider = expenseProvider;
-        /// Doughnut data
+        this.zone = zone;
+        //Begin Doughnut data
         this.doughnutChartLabels = [];
         this.doughnutChartData = [];
         this.doughnutChartType = 'doughnut';
-        // Line Chart
+        //End data
+        //Begin Line Chart
         this.lineChartData = [
             { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
             { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
@@ -737,16 +741,21 @@ var HomePage = (function () {
         };
         this.lineChartLegend = true;
         this.lineChartType = 'line';
-        this.expenseProvider.getAllEpense().then(function (result) {
-            if (result.length > 0) {
-                for (var i = 0; i < result.length; i++) {
-                    _this.doughnutChartData.push(result[i].entrada);
-                    _this.doughnutChartLabels.push(result[i].name);
-                }
-            }
-        });
-        this.fabButtonOpened = false;
     }
+    HomePage.prototype.ionViewDidLoad = function () {
+        this.populateChartWithExpense();
+    };
+    HomePage.prototype.ionViewWillEnter = function () {
+        this.populateChartWithExpense();
+    };
+    HomePage.prototype.ngOnInit = function () {
+        this.fabButtonOpened = false;
+        this.populateChartWithExpense();
+    };
+    HomePage.prototype.slideChanged = function () {
+        this.populateChartWithExpense();
+    };
+    //Begin Functions Chart
     // Chart events
     HomePage.prototype.chartClicked = function (e) {
         console.log(e);
@@ -755,6 +764,8 @@ var HomePage = (function () {
     HomePage.prototype.chartHovered = function (e) {
         console.log(e);
     };
+    //End Functions Chart
+    //Begin Functions Fab
     HomePage.prototype.addInvoice = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__invoice_invoice__["a" /* InvoicePage */]);
         console.log('Add Invoice');
@@ -781,15 +792,27 @@ var HomePage = (function () {
     };
     HomePage.prototype.openGraphic = function (event) {
     };
-    HomePage.prototype.ngAfterViewInit = function () {
-        console.log("ngAfterViewInit");
+    //End Functions Fab
+    //Begin Methods
+    HomePage.prototype.populateChartWithExpense = function () {
+        var _this = this;
+        this.expenseProvider.getAllEpense().then(function (result) {
+            _this.doughnutChartData = [];
+            _this.doughnutChartLabels = [];
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    _this.doughnutChartData.push(result[i].entrada);
+                    _this.doughnutChartLabels.push(result[i].name);
+                }
+            }
+        });
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\home\home.html"*/'<ion-header>\n\n    <ion-navbar>\n\n      <button ion-button menuToggle icon-only>\n\n        <ion-icon name=\'menu\'></ion-icon>\n\n      </button>\n\n    <ion-title>Home</ion-title>\n\n    <ion-buttons end>\n\n        <button ion-button icon-only>\n\n            <ion-icon name="md-notifications">\n\n            <ion-badge id="notifications-badge">5</ion-badge>\n\n            </ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-slides pager [ngClass]="{\'ListBackdrop\': fabButtonOpened == true }">\n\n\n\n        <ion-slide>\n\n                <!-- <div *ngIf="doughnutChartData.length == 0"> -->\n\n                <div>\n\n                    <p style="color:darkgray">"You not data in view page add new expesense\n\n                            for generate dynamic chart"</p>\n\n                   <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>\n\n                </div>\n\n        </ion-slide>\n\n        <ion-slide>\n\n              <div *ngIf="doughnutChartData.length == 0">\n\n                  <p style="color:darkgray">"You not data in view page add new expesense\n\n                          for generate dynamic chart"</p>\n\n                <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>\n\n              </div>\n\n\n\n              <div *ngIf="doughnutChartData.length > 0" style="display: block">\n\n                  <canvas     baseChart height="350"\n\n                              [data]="doughnutChartData"\n\n                              [labels]="doughnutChartLabels"\n\n                              [chartType]="doughnutChartType"\n\n                              (chartHover)="chartHovered($event)"\n\n                              (chartClick)="chartClicked($event)" id="chartjs"></canvas>\n\n              </div>\n\n          </ion-slide>\n\n          <ion-slide>\n\n                <!-- <div style="display: block;">\n\n                        <canvas baseChart width="400" height="400"\n\n                                    [datasets]="lineChartData"\n\n                                    [labels]="lineChartLabels"\n\n                                    [options]="lineChartOptions"\n\n                                    [colors]="lineChartColors"\n\n                                    [legend]="lineChartLegend"\n\n                                    [chartType]="lineChartType"\n\n                                    (chartHover)="chartHovered($event)"\n\n                                    (chartClick)="chartClicked($event)"></canvas>\n\n                        </div> -->\n\n                <div style="display: block;">\n\n                    <canvas baseChart width="400" height="400"\n\n                        [datasets]="lineChartData"\n\n                        [labels]="lineChartLabels"\n\n                        [options]="lineChartOptions"\n\n                        [legend]="lineChartLegend"\n\n                        [chartType]="lineChartType"\n\n                        (chartHover)="chartHovered($event)"\n\n                        (chartClick)="chartClicked($event)"></canvas>\n\n                 </div>\n\n          </ion-slide>\n\n          <ion-slide>\n\n              <p style="color:darkgray">Not list expenses.</p>\n\n            <img src="assets/imgs/ica-slidebox-img-4.png" class="slide-image"/>\n\n          </ion-slide>\n\n\n\n    </ion-slides>\n\n\n\n\n\n\n\n\n\n\n\n\n\n    <ion-fab right bottom #fab>\n\n        <button ion-fab color="positive" (click)="penFabButton()"><ion-icon name="add"></ion-icon></button>\n\n        <ion-fab-list side="top">\n\n            <ion-label class="graphic">Graphics</ion-label>\n\n            <ion-label class="income">Incomes</ion-label>\n\n            <ion-label class="categorie">Categories</ion-label>\n\n            <ion-label class="expense">Expenses</ion-label>\n\n            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-dropup"></ion-icon></button>\n\n            <button ion-fab style="color:#f53d3d" (click)="openExpense($event)"><ion-icon name="md-arrow-dropdown"></ion-icon></button>\n\n            <button ion-fab style="color:#488aff" (click)="openCategorie($event)"><ion-icon name="md-list"></ion-icon></button>\n\n            <button ion-fab style="color:#565656" (click)="openGraphic($event)"><ion-icon name="md-pie"></ion-icon></button>\n\n        </ion-fab-list>\n\n    </ion-fab>\n\n</ion-content>\n\n\n\n\n\n<ion-footer>\n\n    <ion-toolbar>\n\n<!-- {{today | date:\'dd/MM/yyyy\'}} -->\n\n    </ion-toolbar>\n\n</ion-footer>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\home\home.html"*/,
+            selector: 'page-home',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\home\home.html"*/'<ion-header>\n\n    <ion-navbar>\n\n      <button ion-button menuToggle icon-only>\n\n        <ion-icon name=\'menu\'></ion-icon>\n\n      </button>\n\n    <ion-title>Home</ion-title>\n\n    <ion-buttons end>\n\n        <button ion-button icon-only>\n\n            <ion-icon name="md-notifications">\n\n            <ion-badge id="notifications-badge">5</ion-badge>\n\n            </ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n    <ion-slides pager [ngClass]="{\'ListBackdrop\': fabButtonOpened == true }" (ionSlideDidChange)="slideChanged()">\n\n\n\n        <ion-slide>\n\n                <!-- <div *ngIf="doughnutChartData.length == 0"> -->\n\n                <div>\n\n                    <p style="color:darkgray">"You not data in view page add new expesense\n\n                            for generate dynamic chart"</p>\n\n                   <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>\n\n                </div>\n\n        </ion-slide>\n\n        <ion-slide>\n\n              <div *ngIf="doughnutChartData.length == 0">\n\n                  <p style="color:darkgray">"You not data in view page add new expesense\n\n                          for generate dynamic chart"</p>\n\n                <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>\n\n              </div>\n\n\n\n              <div *ngIf="doughnutChartData.length > 0" style="display: block">\n\n                  <canvas     baseChart height="350"\n\n                              [data]="doughnutChartData"\n\n                              [labels]="doughnutChartLabels"\n\n                              [chartType]="doughnutChartType"\n\n                              (chartHover)="chartHovered($event)"\n\n                              (chartClick)="chartClicked($event)" id="chartjs"></canvas>\n\n              </div>\n\n          </ion-slide>\n\n          <ion-slide>\n\n                <!-- <div style="display: block;">\n\n                        <canvas baseChart width="400" height="400"\n\n                                    [datasets]="lineChartData"\n\n                                    [labels]="lineChartLabels"\n\n                                    [options]="lineChartOptions"\n\n                                    [colors]="lineChartColors"\n\n                                    [legend]="lineChartLegend"\n\n                                    [chartType]="lineChartType"\n\n                                    (chartHover)="chartHovered($event)"\n\n                                    (chartClick)="chartClicked($event)"></canvas>\n\n                        </div> -->\n\n                <div style="display: block;">\n\n                    <canvas baseChart width="400" height="400"\n\n                        [datasets]="lineChartData"\n\n                        [labels]="lineChartLabels"\n\n                        [options]="lineChartOptions"\n\n                        [legend]="lineChartLegend"\n\n                        [chartType]="lineChartType"\n\n                        (chartHover)="chartHovered($event)"\n\n                        (chartClick)="chartClicked($event)"></canvas>\n\n                 </div>\n\n          </ion-slide>\n\n          <ion-slide>\n\n              <p style="color:darkgray">Not list expenses.</p>\n\n            <img src="assets/imgs/ica-slidebox-img-4.png" class="slide-image"/>\n\n          </ion-slide>\n\n\n\n    </ion-slides>\n\n\n\n\n\n\n\n\n\n\n\n\n\n    <ion-fab right bottom #fab>\n\n        <button ion-fab color="positive" (click)="penFabButton()"><ion-icon name="add"></ion-icon></button>\n\n        <ion-fab-list side="top">\n\n            <ion-label class="graphic">Graphics</ion-label>\n\n            <ion-label class="income">Incomes</ion-label>\n\n            <ion-label class="categorie">Categories</ion-label>\n\n            <ion-label class="expense">Expenses</ion-label>\n\n            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-dropup"></ion-icon></button>\n\n            <button ion-fab style="color:#f53d3d" (click)="openExpense($event)"><ion-icon name="md-arrow-dropdown"></ion-icon></button>\n\n            <button ion-fab style="color:#488aff" (click)="openCategorie($event)"><ion-icon name="md-list"></ion-icon></button>\n\n            <button ion-fab style="color:#565656" (click)="openGraphic($event)"><ion-icon name="md-pie"></ion-icon></button>\n\n        </ion-fab-list>\n\n    </ion-fab>\n\n</ion-content>\n\n\n\n\n\n<ion-footer>\n\n    <ion-toolbar>\n\n<!-- {{today | date:\'dd/MM/yyyy\'}} -->\n\n    </ion-toolbar>\n\n</ion-footer>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\home\home.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_6__providers_expense_expense__["b" /* ExpenseProvider */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__providers_expense_expense__["b" /* ExpenseProvider */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_6__providers_expense_expense__["b" /* ExpenseProvider */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"]])
     ], HomePage);
     return HomePage;
 }());
@@ -824,16 +847,16 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_invoice_invoice_module__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_income_income_module__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_expense_expense_module__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_categorie_categorie_module__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_expense_expense_module__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_categorie_categorie_module__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_charts__ = __webpack_require__(418);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_ng2_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(469);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_home__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_database_database__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_expense_expense__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_database_database__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_expense_expense__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__providers_invoice_invoice__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_components_module__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_components_module__ = __webpack_require__(174);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -880,8 +903,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_15__components_components_module__["a" /* ComponentsModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_10__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/expense/expense.module#ExpensePageModule', name: 'ExpensePage', segment: 'expense', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/categorie/categorie.module#CategoriePageModule', name: 'CategoriePage', segment: 'categorie', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/expense/expense.module#ExpensePageModule', name: 'ExpensePage', segment: 'expense', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/income/income.module#IncomePageModule', name: 'IncomePage', segment: 'income', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invoice/invoice.module#InvoicePageModule', name: 'InvoicePage', segment: 'invoice', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/list-categories/list-categories.module#ListCategoriesPageModule', name: 'ListCategoriesPage', segment: 'list-categories', priority: 'low', defaultHistory: [] }
@@ -1216,7 +1239,7 @@ webpackContext.id = 451;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_database_database__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_database_database__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1254,7 +1277,7 @@ var MyApp = (function () {
         this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
     };
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Projetos\credi-app\src\app\app.html"*/'<ion-menu [content]="content">\n    <ion-header>\n      <ion-toolbar>\n        <ion-title>Menu</ion-title>\n      </ion-toolbar>\n    </ion-header>\n    <ion-content>\n      <!-- <ion-list>\n        <button ion-item (click)="openPage(homePage)">\n          Home\n        </button>\n        <button ion-item (click)="openPage(friendsPage)">\n          Friends\n        </button>\n        <button ion-item (click)="openPage(eventsPage)">\n          Events\n        </button>\n        <button ion-item (click)="closeMenu()">\n          Close Menu\n        </button>\n      </ion-list> -->\n    </ion-content>\n  </ion-menu>\n  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\app\app.html"*/,
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Projetos\credi-app\src\app\app.html"*/'<ion-menu [content]="content">\n\n    <ion-header>\n\n      <ion-toolbar>\n\n        <ion-title>Menu</ion-title>\n\n      </ion-toolbar>\n\n    </ion-header>\n\n    <ion-content>\n\n      <!-- <ion-list>\n\n        <button ion-item (click)="openPage(homePage)">\n\n          Home\n\n        </button>\n\n        <button ion-item (click)="openPage(friendsPage)">\n\n          Friends\n\n        </button>\n\n        <button ion-item (click)="openPage(eventsPage)">\n\n          Events\n\n        </button>\n\n        <button ion-item (click)="closeMenu()">\n\n          Close Menu\n\n        </button>\n\n      </ion-list> -->\n\n    </ion-content>\n\n  </ion-menu>\n\n  <ion-nav id="nav" #content [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\app\app.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_5__providers_database_database__["a" /* DatabaseProvider */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
@@ -1308,98 +1331,6 @@ var InvoiceProvider = (function () {
 /***/ }),
 
 /***/ 52:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ExpenseProvider; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Expense; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(53);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/*
-  Generated class for the ExpenseProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var ExpenseProvider = (function () {
-    function ExpenseProvider(dbProvider) {
-        this.dbProvider = dbProvider;
-        this.aExpense = Array();
-        console.log('Hello ExpenseProvider Provider');
-    }
-    ExpenseProvider.prototype.getAllEpense = function () {
-        var _this = this;
-        return this.dbProvider.iniDb()
-            .then(function (db) {
-            return db.executeSql('SELECT * FROM expense', {}).then(function (data) {
-                _this.aExpense = [];
-                for (var i = 0; i < data.rows.length; i++) {
-                    var item = data.rows.item(i);
-                    var expense = new Expense();
-                    expense.id = item.id;
-                    expense.name = item.name;
-                    expense.status = item.status;
-                    expense.entrada = item.entrada;
-                    expense.saida = item.saida;
-                    expense.resume = item.resume;
-                    expense.datain = item.datain;
-                    expense.dataout = item.dataout;
-                    expense.dataput = item.dataput;
-                    expense.categorie_id = item.categorie_id;
-                }
-                console.log(_this.aExpense);
-                return _this.aExpense;
-            });
-        });
-    };
-    ExpenseProvider.prototype.insertExpense = function (e) {
-        return this.dbProvider.iniDb()
-            .then(function (db) {
-            var sql = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) values(?,?,?,?,?,?)";
-            var query = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
-            return db.executeSql(sql, query);
-        });
-    };
-    ExpenseProvider.prototype.removeExpense = function (e) {
-        return this.dbProvider.iniDb()
-            .then(function (db) {
-            var sql = "DELETE FROM expense WHERE id = ?";
-            var query = [e.id];
-            return db.executeSql(sql, query).then(function (e) { return console.log(e); });
-        });
-    };
-    ExpenseProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__database_database__["a" /* DatabaseProvider */]])
-    ], ExpenseProvider);
-    return ExpenseProvider;
-}());
-
-var Expense = (function () {
-    function Expense() {
-        this.dataout = new Date();
-        this.datain = new Date();
-        this.dataput = new Date();
-    }
-    return Expense;
-}());
-
-//# sourceMappingURL=expense.js.map
-
-/***/ }),
-
-/***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1499,18 +1430,14 @@ var DatabaseProvider = (function () {
 
 /***/ }),
 
-/***/ 86:
+/***/ 53:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExpensePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ExpenseProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Expense; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_categorie_categorie__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1522,116 +1449,88 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+/*
+  Generated class for the ExpenseProvider provider.
 
-
-//Providers importeds
-
-
-
-/**
- * Generated class for the ExpensePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ExpensePage = (function () {
-    function ExpensePage(navCtrl, navParams, modalCtrl, expenseProvider, categorieProvider, toastCtrl) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.modalCtrl = modalCtrl;
-        this.expenseProvider = expenseProvider;
-        this.categorieProvider = categorieProvider;
-        this.toastCtrl = toastCtrl;
-        this.showCategorie = false;
-        this.shouldToggle = false;
-        this.categorieName = "";
-        this.Expense = {
-            'Note': '',
-            'Price': 0,
-            'Date': '',
-            'Categorie': '',
-            'Name': ''
-        };
-        this.categories = [];
-        this.categorieName = this.navParams.data.name;
-        console.log(this.navParams.data);
-        new Promise(function () {
-            _this.categorieProvider.getAllCategorie()
-                .then(function (result) {
-                _this.categories = result;
-                return _this.categories;
-            }).catch(function (e) { return console.log(e); });
-        }).catch(function (e) { return console.log(e); });
-        this.formExpense = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormGroup */]({
-            formMoney: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
-            formDate: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
-            formNote: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
-            formCategorie: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
-            formName: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]()
-        });
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var ExpenseProvider = (function () {
+    function ExpenseProvider(dbProvider) {
+        this.dbProvider = dbProvider;
+        this.aExpense = Array();
+        console.log('Hello ExpenseProvider Provider');
     }
-    ExpensePage.prototype.submit = function (E) {
+    ExpenseProvider.prototype.getAllEpense = function () {
         var _this = this;
-        var e = new __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["a" /* Expense */]();
-        e.name = E.Name;
-        e.status = 1;
-        e.resume = E.Note;
-        e.entrada = E.Price;
-        e.datain = new Date(E.Date);
-        e.categorie_id = this.navParams.data.id;
-        this.expenseProvider.insertExpense(e).then(function (e) {
-            console.log(e);
-            var msg = _this.toastCtrl.create({ message: 'Ok!', duration: 3000, position: 'top' });
-            msg.present();
-        }).catch(function (e) {
-            console.log(e);
-            var msg = _this.toastCtrl.create({ message: 'Not Ok!', duration: 3000, position: 'top' });
-            msg.present();
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            return db.executeSql('SELECT * FROM expense', {}).then(function (data) {
+                _this.aExpense = [];
+                for (var i = 0; i < data.rows.length; i++) {
+                    var item = data.rows.item(i);
+                    var expense = new Expense();
+                    expense.id = item.id;
+                    expense.name = item.name;
+                    expense.status = item.status;
+                    expense.entrada = item.entrada;
+                    expense.saida = item.saida;
+                    expense.resume = item.resume;
+                    expense.datain = item.datain;
+                    expense.dataout = item.dataout;
+                    expense.dataput = item.dataput;
+                    expense.categorie_id = item.categorie_id;
+                    _this.aExpense.push(expense);
+                }
+                console.log(_this.aExpense);
+                return _this.aExpense;
+            });
         });
     };
-    ExpensePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ExpensePage');
-    };
-    ExpensePage.prototype.showCategories = function () {
-        var d = [
-            { name: 'Andre' },
-            { name: 'Braga' },
-            { name: 'Candido' }
-        ];
-        var opnModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__["a" /* ListCategoriesPage */], { data: d });
-        opnModal.onDidDismiss(function (data) {
-            console.log(data);
+    ExpenseProvider.prototype.insertExpense = function (e) {
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            var sql = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) values(?,?,?,?,?,?)";
+            var query = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
+            return db.executeSql(sql, query);
         });
-        opnModal.present();
     };
-    ExpensePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-expense',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/'<!--\n  Generated template for the ExpensePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Expenses</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n    <form [formGroup]="formExpense">\n      <alert-default [obj]="categories" *ngIf="showCategorie" id="category"></alert-default>\n      <ion-item>\n        <ion-label floating>Name Expense</ion-label>\n          <ion-input formControlName="formName" [(ngModel)]="Expense.Name" clearInput></ion-input>\n      </ion-item>\n        <ion-item>\n          <ion-label floating>R$</ion-label>\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>\n        </ion-item>\n\n        <!-- <ion-list>\n            <ion-item>\n              <ion-label floating>Categories</ion-label>\n              <ion-select formControlName="formCategorie" [(ngModel)]="Expense.Categorie">\n                <ion-option *ngFor="let item of categories" [value]="item">\n                    <ion-list>\n                        <ion-item>\n                            {{item.name}}\n                        </ion-item>\n                      </ion-list>\n                </ion-option>\n              </ion-select>\n            </ion-item>\n        </ion-list> -->\n        <ion-item *ngIf="categorieName != \'\'">\n            <ion-label>{{categorieName}}</ion-label>\n        </ion-item>\n        <ion-item>\n            <button ion-button block color="bluedevider" (click)="showCategories()" prompt>Categories</button>\n        </ion-item>\n\n\n        <ion-item>\n            <ion-label floating>Date</ion-label>\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.Date"></ion-datetime>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Note</ion-label>\n            <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.Note"></ion-textarea>\n        </ion-item>\n\n\n        <ion-item>\n          <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>\n        </ion-item>\n      </form>\n\n</ion-content>\n\n<ion-footer>\n    <ion-toolbar>\n\n    </ion-toolbar>\n</ion-footer>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/,
-            providers: [__WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["b" /* ExpenseProvider */], __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__["a" /* AlertDefaultComponent */]]
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["b" /* ExpenseProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_categorie_categorie__["b" /* CategorieProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
-    ], ExpensePage);
-    return ExpensePage;
+    ExpenseProvider.prototype.removeExpense = function (e) {
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            var sql = "DELETE FROM expense WHERE id = ?";
+            var query = [e.id];
+            return db.executeSql(sql, query).then(function (e) { return console.log(e); });
+        });
+    };
+    ExpenseProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__database_database__["a" /* DatabaseProvider */]])
+    ], ExpenseProvider);
+    return ExpenseProvider;
+}());
+
+var Expense = (function () {
+    function Expense() {
+        this.dataout = new Date();
+        this.datain = new Date();
+        this.dataput = new Date();
+    }
+    return Expense;
 }());
 
 //# sourceMappingURL=expense.js.map
 
 /***/ }),
 
-/***/ 90:
+/***/ 86:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CategorieProvider; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Categorie; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__database_database__ = __webpack_require__(52);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1706,6 +1605,124 @@ var Categorie = (function () {
 
 /***/ }),
 
+/***/ 90:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExpensePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_categorie_categorie__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__ = __webpack_require__(113);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+//Providers importeds
+
+
+
+/**
+ * Generated class for the ExpensePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ExpensePage = (function () {
+    function ExpensePage(navCtrl, navParams, modalCtrl, expenseProvider, categorieProvider, toastCtrl) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.modalCtrl = modalCtrl;
+        this.expenseProvider = expenseProvider;
+        this.categorieProvider = categorieProvider;
+        this.toastCtrl = toastCtrl;
+        this.showCategorie = false;
+        this.shouldToggle = false;
+        this.Expense = {
+            'Note': '',
+            'Price': 0,
+            'Date': '',
+            'Categorie': '',
+            'Name': ''
+        };
+        this.categories = [];
+        new Promise(function () {
+            _this.categorieProvider.getAllCategorie()
+                .then(function (result) {
+                _this.categories = result;
+                return _this.categories;
+            }).catch(function (e) { return console.log(e); });
+        }).catch(function (e) { return console.log(e); });
+        this.formExpense = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormGroup */]({
+            formMoney: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
+            formDate: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
+            formNote: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
+            formCategorie: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */](),
+            formName: new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormControl */]()
+        });
+    }
+    ExpensePage.prototype.submit = function (E) {
+        var _this = this;
+        var e = new __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["a" /* Expense */]();
+        e.name = E.Name;
+        e.status = 1;
+        e.resume = E.Note;
+        e.entrada = E.Price;
+        e.datain = new Date(E.Date);
+        e.categorie_id = this.categorieName.id;
+        this.expenseProvider.insertExpense(e).then(function (e) {
+            console.log(e);
+            var msg = _this.toastCtrl.create({ message: 'Ok!', duration: 3000, position: 'top' });
+            msg.present();
+        }).catch(function (e) {
+            console.log(e);
+            var msg = _this.toastCtrl.create({ message: 'Not Ok!', duration: 3000, position: 'top' });
+            msg.present();
+        });
+    };
+    ExpensePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ExpensePage');
+    };
+    ExpensePage.prototype.showCategories = function () {
+        var _this = this;
+        var opnModal = this.modalCtrl.create(__WEBPACK_IMPORTED_MODULE_6__list_categories_list_categories__["a" /* ListCategoriesPage */], { data: this.categories });
+        opnModal.onDidDismiss(function (data) {
+            _this.categorieName = data;
+        });
+        opnModal.present();
+    };
+    ExpensePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-expense',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/'<!--\n\n  Generated template for the ExpensePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Expenses</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n    <form [formGroup]="formExpense">\n\n      <!-- <alert-default [obj]="categories" *ngIf="showCategorie" id="category"></alert-default> -->\n\n        \n\n        <ion-item>\n\n          <ion-label floating>Name Expense</ion-label>\n\n          <ion-input formControlName="formName" [(ngModel)]="Expense.Name" clearInput></ion-input>\n\n        </ion-item>\n\n        \n\n        <ion-item>\n\n          <ion-label floating>R$</ion-label>\n\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n            <ion-label floating>Date</ion-label>\n\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.Date"></ion-datetime>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n            <ion-label floating>Note</ion-label>\n\n            <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.Note"></ion-textarea>\n\n        </ion-item>\n\n\n\n        <button ion-item block (click)="showCategories()">\n\n          <ion-label>{{ categorieName != null ? categorieName.name : \'Add Categories\'}}</ion-label>\n\n          <ion-icon color="{{categorieName != null ? categorieName.color : \'primary\'}}" name="{{categorieName != null ? categorieName.icon : \'md-add\'}}" item-start></ion-icon>\n\n        </button>\n\n\n\n        <p>Conclusion expense.</p>\n\n        <ion-item>\n\n          <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>\n\n        </ion-item>\n\n      </form>\n\n\n\n</ion-content>\n\n\n\n<ion-footer>\n\n    <ion-toolbar>\n\n\n\n    </ion-toolbar>\n\n</ion-footer>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\expense\expense.html"*/,
+            providers: [__WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["b" /* ExpenseProvider */], __WEBPACK_IMPORTED_MODULE_5__components_alert_default_alert_default__["a" /* AlertDefaultComponent */]]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_expense_expense__["b" /* ExpenseProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_categorie_categorie__["b" /* CategorieProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+    ], ExpensePage);
+    return ExpensePage;
+}());
+
+//# sourceMappingURL=expense.js.map
+
+/***/ }),
+
 /***/ 91:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1713,7 +1730,7 @@ var Categorie = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlertDefaultComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_expense_expense__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_expense_expense__ = __webpack_require__(90);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1773,7 +1790,7 @@ var AlertDefaultComponent = (function () {
     ], AlertDefaultComponent.prototype, "obj", void 0);
     AlertDefaultComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'alert-default',template:/*ion-inline-start:"C:\Projetos\credi-app\src\components\alert-default\alert-default.html"*/'          <div class="alert-body">\n\n            <ion-content padding>\n\n                <ion-list radio-group>\n\n                  <ion-item *ngFor="let c of obj">\n\n                      <ion-radio (ionSelect)="emit(c)" value="{{c.name}}"></ion-radio>\n\n                      <ion-label>{{c.name}}</ion-label>\n\n                  </ion-item>\n\n                </ion-list>\n\n          </ion-content>\n\n        </div>'/*ion-inline-end:"C:\Projetos\credi-app\src\components\alert-default\alert-default.html"*/
+            selector: 'alert-default',template:/*ion-inline-start:"C:\Projetos\credi-app\src\components\alert-default\alert-default.html"*/'          <div class="alert-body">\n            <ion-content padding>\n                <ion-list radio-group>\n                  <ion-item *ngFor="let c of obj">\n                      <ion-radio (ionSelect)="emit(c)" value="{{c.name}}"></ion-radio>\n                      <ion-label>{{c.name}}</ion-label>\n                  </ion-item>\n                </ion-list>\n          </ion-content>\n        </div>'/*ion-inline-end:"C:\Projetos\credi-app\src\components\alert-default\alert-default.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]])
     ], AlertDefaultComponent);

@@ -26,9 +26,7 @@ import { ListCategoriesPage } from '../list-categories/list-categories';
 export class ExpensePage {
   public showCategorie : boolean = false;
   public shouldToggle : boolean = false;
-  public categorieName : string = "";
-
-  public arrayObj:any;
+  public categorieName: Categorie;
 
   public Expense:any = {
         'Note' : '',
@@ -47,11 +45,7 @@ export class ExpensePage {
     private expenseProvider: ExpenseProvider,
     private categorieProvider: CategorieProvider,
     public toastCtrl: ToastController) {
-
-      this.categorieName = this.navParams.data.name;
-
-      console.log(this.navParams.data);
-
+      
     new Promise(() => {
 
       this.categorieProvider.getAllCategorie()
@@ -79,7 +73,7 @@ export class ExpensePage {
     e.resume = E.Note;
     e.entrada = E.Price;
     e.datain = new Date(E.Date);
-    e.categorie_id = this.navParams.data.id;
+    e.categorie_id = this.categorieName.id;
     this.expenseProvider.insertExpense(e).then( e => {
       console.log(e);
       let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
@@ -99,15 +93,11 @@ export class ExpensePage {
 
 showCategories(){
 
-let d =[
-{name: 'Andre'},
-{name: 'Braga'},
-{name: 'Candido'}
-]
-  let opnModal = this.modalCtrl.create(ListCategoriesPage, {data: d});
+
+  let opnModal = this.modalCtrl.create(ListCategoriesPage, {data: this.categories});
   opnModal.onDidDismiss(data => {
-    console.log(data);
-    });
+    this.categorieName = data;
+  });
   opnModal.present();
 }
 

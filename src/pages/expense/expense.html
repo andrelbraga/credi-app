@@ -14,37 +14,17 @@
 
 <ion-content padding>
     <form [formGroup]="formExpense">
-      <alert-default [obj]="categories" *ngIf="showCategorie" id="category"></alert-default>
-      <ion-item>
-        <ion-label floating>Name Expense</ion-label>
+      <!-- <alert-default [obj]="categories" *ngIf="showCategorie" id="category"></alert-default> -->
+        
+        <ion-item>
+          <ion-label floating>Name Expense</ion-label>
           <ion-input formControlName="formName" [(ngModel)]="Expense.Name" clearInput></ion-input>
-      </ion-item>
+        </ion-item>
+        
         <ion-item>
           <ion-label floating>R$</ion-label>
           <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.Price" maxlength="10"></ion-input>
         </ion-item>
-
-        <!-- <ion-list>
-            <ion-item>
-              <ion-label floating>Categories</ion-label>
-              <ion-select formControlName="formCategorie" [(ngModel)]="Expense.Categorie">
-                <ion-option *ngFor="let item of categories" [value]="item">
-                    <ion-list>
-                        <ion-item>
-                            {{item.name}}
-                        </ion-item>
-                      </ion-list>
-                </ion-option>
-              </ion-select>
-            </ion-item>
-        </ion-list> -->
-        <ion-item *ngIf="categorieName != ''">
-            <ion-label>{{categorieName}}</ion-label>
-        </ion-item>
-        <ion-item>
-            <button ion-button block color="bluedevider" (click)="showCategories()" prompt>Categories</button>
-        </ion-item>
-
 
         <ion-item>
             <ion-label floating>Date</ion-label>
@@ -56,7 +36,12 @@
             <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.Note"></ion-textarea>
         </ion-item>
 
+        <button ion-item block (click)="showCategories()">
+          <ion-label>{{ categorieName != null ? categorieName.name : 'Add Categories'}}</ion-label>
+          <ion-icon color="{{categorieName != null ? categorieName.color : 'primary'}}" name="{{categorieName != null ? categorieName.icon : 'md-add'}}" item-start></ion-icon>
+        </button>
 
+        <p>Conclusion expense.</p>
         <ion-item>
           <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>
         </ion-item>

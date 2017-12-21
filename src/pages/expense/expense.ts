@@ -6,8 +6,7 @@ import { ExpenseProvider, Expense } from '../../providers/expense/expense';
 
 //Providers importeds
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
-import { AlertDefaultComponent } from '../../components/alert-default/alert-default';
-import { ListCategoriesPage } from '../list-categories/list-categories';
+import { ListCategoriesPage } from './list-categories/list-categories';
 
 /**
  * Generated class for the ExpensePage page.
@@ -20,20 +19,19 @@ import { ListCategoriesPage } from '../list-categories/list-categories';
 @Component({
   selector: 'page-expense',
   templateUrl: 'expense.html',
-  providers: [ExpenseProvider, AlertDefaultComponent]
-
+  providers: [ ExpenseProvider ]
 })
+
 export class ExpensePage {
   public showCategorie : boolean = false;
   public shouldToggle : boolean = false;
   public categorieName: Categorie;
 
   public Expense:any = {
-        'Note' : '',
-        'Price':0,
-        'Date':'',
-        'Categorie':'',
-        'Name':''
+        'resume' : '',
+        'entrada':0,
+        'datein':'',
+        'name':''
       }
 
   public categories:Array<Categorie> = [];
@@ -66,14 +64,10 @@ export class ExpensePage {
 
   }
 
-  submit(E){
-    let e = new Expense();
-    e.name = E.Name;
-    e.status = 1;
-    e.resume = E.Note;
-    e.entrada = E.Price;
-    e.datain = new Date(E.Date);
-    e.categorie_id = this.categorieName.id;
+  submit(data){
+    let e = new Expense(data);
+        e.datain = new Date(data.datain);
+        e.categorie_id = this.categorieName.id;
     this.expenseProvider.insertExpense(e).then( e => {
       console.log(e);
       let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});

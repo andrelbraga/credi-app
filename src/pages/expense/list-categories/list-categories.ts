@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
@@ -13,11 +13,12 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   selector: 'page-list-categories',
   templateUrl: 'list-categories.html',
 })
-export class ListCategoriesPage {
+export class ListCategoriesPage implements OnInit {
 public obj:any =[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
-    console.log(this.navParams);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) { }
+
+  ngOnInit(){
     this.obj = this.navParams.get('data');
   }
 
@@ -29,4 +30,10 @@ public obj:any =[];
     this.viewCtrl.dismiss(data);
   }
 
+  close(data){
+    data = null;
+    this.viewCtrl.dismiss(data);
+  }
+
+  
 }

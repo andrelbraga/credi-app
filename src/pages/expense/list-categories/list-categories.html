@@ -5,9 +5,13 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>list-categories</ion-title>
+    <ion-title>Categories</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="close(data)">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -17,7 +21,7 @@
     <ion-item *ngFor="let c of obj">
         <ion-radio (ionSelect)="emit(c)" value="{{c.name}}"></ion-radio>
         <ion-label>{{c.name}}</ion-label>
-        <ion-icon color="c.color" name="c.icon"></ion-icon>
+        <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -10,30 +10,28 @@ import { DatabaseProvider } from '../database/database';
 */
 @Injectable()
 export class ExpenseProvider {
-  public aExpense = Array<Expense>()
+  //public aExpense: Array<Expense> = [];
+  public aExpense: any = [];
 
   constructor(public dbProvider: DatabaseProvider) {
     console.log('Hello ExpenseProvider Provider');
   }
 
-  getAllEpense(){
+  getAllEpense(status: number = 1, lazy: boolean = false){
     return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
-      return db.executeSql('SELECT * FROM expense',{}).then((data) => {
+      let sql = "SELECT expense.*, categorie.name as c_name FROM expense";
+      if(lazy){
+        sql += " INNER JOIN categorie ON expense.categorie_id = categorie.id";
+      }       
+      sql += " WHERE expense.id = ?";
+      let data = [1];
+      return db.executeSql(sql,data).then((data) => {
         this.aExpense = [];
         for(var i=0; i < data.rows.length; i++){
           let item = data.rows.item(i);
-          let expense = new Expense();
-          expense.id = item.id;
-          expense.name = item.name;
-          expense.status = item.status;
-          expense.entrada = item.entrada;
-          expense.saida = item.saida;
-          expense.resume = item.resume;
-          expense.datain = item.datain;
-          expense.dataout = item.dataout;
-          expense.dataput = item.dataput;
-          expense.categorie_id = item.categorie_id;
+          let expense: any = item;
+
           this.aExpense.push(expense);
         }
         console.log(this.aExpense);
@@ -66,10 +64,17 @@ export class ExpenseProvider {
 }
 export class Expense{
   
-  constructor() {
-    this.dataout = new Date();
-    this.datain = new Date();
-    this.dataput = new Date(); 
+  constructor(data) {
+    this.dataout = new Date() || data.dataout;
+    this.datain = new Date() || data.datain;
+    this.dataput = new Date() || data.datain;
+    this.id = data.id;
+    this.name = data.name;
+    this.status = 1 || data.status;
+    this.entrada = data.entrada;
+    this.saida = data.saida;
+    this.resume = data.resume;
+    this.categorie_id = data.categorie_id; 
   }
 
   id: number;

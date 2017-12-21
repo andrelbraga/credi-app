@@ -6,7 +6,7 @@
     <ion-title>Home</ion-title>
     <ion-buttons end>
         <button ion-button icon-only>
-            <ion-icon name="md-notifications">
+            <ion-icon name="md-notifications" tabBadge="0">
             <ion-badge id="notifications-badge">5</ion-badge>
             </ion-icon>
         </button>
@@ -30,7 +30,7 @@
               <div *ngIf="doughnutChartData.length == 0">
                   <p style="color:darkgray">"You not data in view page add new expesense
                           for generate dynamic chart"</p>
-                <img src="assets/imgs/ica-slidebox-img-1.png" class="slide-image"/>
+                <img src="assets/imgs/404.png" class="slide-image"/>
               </div>
 
               <div *ngIf="doughnutChartData.length > 0" style="display: block">
@@ -74,9 +74,6 @@
 
 
 
-
-
-
     <ion-fab right bottom #fab>
         <button ion-fab color="positive" (click)="penFabButton()"><ion-icon name="add"></ion-icon></button>
         <ion-fab-list side="top">
@@ -90,11 +87,5 @@
             <button ion-fab style="color:#565656" (click)="openGraphic($event)"><ion-icon name="md-pie"></ion-icon></button>
         </ion-fab-list>
     </ion-fab>
+
 </ion-content>
-
-
-<ion-footer>
-    <ion-toolbar>
-<!-- {{today | date:'dd/MM/yyyy'}} -->
-    </ion-toolbar>
-</ion-footer>

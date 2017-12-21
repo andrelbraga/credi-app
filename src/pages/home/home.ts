@@ -1,17 +1,14 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, Events } from 'ionic-angular';
-import { InvoicePage } from '../invoice/invoice';
 import { IncomePage } from '../income/income';
 import { ExpensePage } from '../expense/expense';
 import { CategoriePage } from '../categorie/categorie';
-import { ExpenseProvider } from '../../providers/expense/expense';
 
 
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  providers:[ ExpenseProvider ]
 })
 export class HomePage implements OnInit{
 
@@ -38,23 +35,22 @@ public fabButtonOpened: any;
 //End Line Chart
 
 //Constructor HomePage
-constructor(public navCtrl: NavController, public events: Events, public expenseProvider: ExpenseProvider, public zone: NgZone) { }
+constructor(public navCtrl: NavController, public events: Events, public zone: NgZone) { }
 
   ionViewDidLoad() {
-    this.populateChartWithExpense();
+    
   }
 
   ionViewWillEnter() {
-    this.populateChartWithExpense();
+   
   }
 
   ngOnInit() {
     this.fabButtonOpened = false;
-    this.populateChartWithExpense();    
   }
 
   slideChanged(){
-    this.populateChartWithExpense();
+    
   }
 
 
@@ -74,10 +70,6 @@ constructor(public navCtrl: NavController, public events: Events, public expense
 
 
   //Begin Functions Fab
-  public addInvoice():void{
-    this.navCtrl.push(InvoicePage);
-    console.log('Add Invoice');
-  }
   
   penFabButton(){
     if(this.fabButtonOpened==false){
@@ -109,18 +101,6 @@ constructor(public navCtrl: NavController, public events: Events, public expense
 
 
   //Begin Methods
-  populateChartWithExpense(){
-    this.expenseProvider.getAllEpense().then(( result ) => {
-      this.doughnutChartData = [];
-      this.doughnutChartLabels = [];
-      if(result.length > 0){
-        for(var i=0;i < result.length; i++ ){
-          this.doughnutChartData.push(result[i].entrada);
-          this.doughnutChartLabels.push(result[i].name);
-        }
-      }
-    })
-  }
 
   //End Methods
 

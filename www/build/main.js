@@ -568,7 +568,10 @@ var ListExpensePage = (function () {
         this.getAll();
     };
     ListExpensePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ListExpensePage');
+        this.getAll();
+    };
+    ListExpensePage.prototype.ionViewWillEnter = function () {
+        this.getAll();
     };
     ListExpensePage.prototype.getAll = function () {
         var _this = this;
@@ -1945,12 +1948,12 @@ var ExpenseProvider = (function () {
         if (lazy === void 0) { lazy = false; }
         return this.dbProvider.iniDb()
             .then(function (db) {
-            var sql = "SELECT expense.*, categorie.name as c_name FROM expense";
+            var sql = "SELECT expense.*, categorie.icon, categorie.color, categorie.name as c_name FROM expense";
             if (lazy) {
                 sql += " INNER JOIN categorie ON expense.categorie_id = categorie.id";
             }
-            sql += " WHERE expense.id = ?";
-            var data = [1];
+            sql += " WHERE expense.status = ?";
+            var data = [status];
             return db.executeSql(sql, data).then(function (data) {
                 _this.aExpense = [];
                 for (var i = 0; i < data.rows.length; i++) {

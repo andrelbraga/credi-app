@@ -24,13 +24,16 @@ public expense: any = [];
   }
 
   ngOnInit(){
-      this.getAll();
+    this.getAll();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListExpensePage');
+    this.getAll();
   }
 
+  ionViewWillEnter() {
+    this.getAll();
+  }
 
   getAll(){
     this.expenseProvider.getAllEpense(1, true) .then(( result ) => {

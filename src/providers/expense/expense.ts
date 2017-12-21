@@ -20,12 +20,12 @@ export class ExpenseProvider {
   getAllEpense(status: number = 1, lazy: boolean = false){
     return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
-      let sql = "SELECT expense.*, categorie.name as c_name FROM expense";
+      let sql = "SELECT expense.*, categorie.icon, categorie.color, categorie.name as c_name FROM expense";
       if(lazy){
         sql += " INNER JOIN categorie ON expense.categorie_id = categorie.id";
       }       
-      sql += " WHERE expense.id = ?";
-      let data = [1];
+      sql += " WHERE expense.status = ?";
+      let data = [status];
       return db.executeSql(sql,data).then((data) => {
         this.aExpense = [];
         for(var i=0; i < data.rows.length; i++){

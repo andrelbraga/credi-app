@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ListExpensePage } from './list-expense';
 
@@ -9,5 +9,8 @@ import { ListExpensePage } from './list-expense';
   imports: [
     IonicPageModule.forChild(ListExpensePage),
   ],
+  providers:[
+    //{provide: LOCALE_ID, useValue: 'pt-BR'},
+  ]
 })
 export class ListExpensePageModule {}

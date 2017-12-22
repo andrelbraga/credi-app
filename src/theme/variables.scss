@@ -51,9 +51,6 @@ $colors: (
   card:       #0a6e9c,
   contacts:   #550a9c,
   document:   #0a6e9c
-
-
-
 );
 
 
@@ -67,8 +64,21 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
+$toolbar-md-title-text-color: #ffffff;
+$toolbar-ios-title-text-color: #ffffff;
+$toolbar-wp-title-text-color: #ffffff;
 
+$toolbar-ios-background: #3399ff;
+$toolbar-md-background: #3399ff;
+$toolbar-wp-background: #3399ff;
 
+$tabs-md-background: #3399ff;
+$tabs-ios-background: #3399ff;
+$tabs-wp-background: #3399ff;
+
+$tabs-md-tab-icon-color: rgba(255, 255, 255, 1);
+$tabs-ios-tab-icon-color: rgba(255, 255, 255, 1);
+$tabs-wp-tab-icon-color: rgba(255, 255, 255, 1);
 
 
 // App Windows Variables

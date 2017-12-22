@@ -40,13 +40,40 @@ export class ExpenseProvider {
     })
   }
 
-
-  insertExpense(e){
+  getAllbyMothEspense(month){
     return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
-      let sql = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) values(?,?,?,?,?,?)";
-      let query = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
-      return db.executeSql(sql,query);
+      let sql = "SELECT expense.*, categorie.icon, categorie.color, categorie.name as c_name FROM expense";
+          sql += " INNER JOIN categorie ON expense.categorie_id = categorie.id";   
+          sql += " WHERE expense.status = 1 AND strftime('%m',date(expense.datain)) = ?";
+      let data = [month];
+      return db.executeSql(sql,data).then((data) => {
+        this.aExpense = [];
+        for(var i=0; i < data.rows.length; i++){
+          let item = data.rows.item(i);
+          let expense: any = item;
+          this.aExpense.push(expense);
+        }
+        console.log(this.aExpense);
+        return this.aExpense;
+      });
+    })
+  }
+
+
+  insertExpense(e){
+    //e.datain = e.datain.toLocaleString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'});
+    return this.dbProvider.iniDb()
+    .then((db: SQLiteObject) => {
+      let sql1 = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) VALUES (?,?,?,?,?,?)";
+      let query1 = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
+        let m = new Date(e.datain);
+        let mReal = m.getMonth() + 1;
+        db.executeSql(sql1,query1).then((res) => {
+          let sql2 = "INSERT INTO month_has_expense (expense_id, month_id) VALUES (?,?)";
+          let query2 = [res.insertId, mReal];
+          return db.executeSql(sql2,query2);
+        }); 
     });
   }
 

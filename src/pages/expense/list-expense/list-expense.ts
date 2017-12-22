@@ -36,7 +36,7 @@ public expense: any = [];
   }
 
   getAll(){
-    this.expenseProvider.getAllEpense(1, true) .then(( result ) => {
+    this.expenseProvider.getAllEpense(1, true).then((result) => {
       if(result.length > 0){
         this.expense = [];
         for(var i=0;i < result.length; i++ ){
@@ -45,6 +45,19 @@ public expense: any = [];
         return this.expense;
       }
     })
+
+    this.expenseProvider.getAllbyMothEspense("01").then((result) =>{
+      console.log(result);
+    })
+
+    //return this.expense = this.mock;
   }
+
+  public mock = [
+    {name:"First", c_name:"First", resume:"AAAAAAAAAAAAAA", entrada:"1250", color:"cash", icon:"md-cash", datain:new Date()},
+    {name:"Second", c_name:"Second", resume:"BBBBBBBBBBBBBBBB", entrada:"1500", color:"contacts", icon:"md-apps", datain:new Date()},
+    {name:"Three", c_name:"Three", resume:"CCCCCCCCCCCCCC", entrada:"1900", color:"flame", icon:"md-archive", datain:new Date()},
+    {name:"Four", c_name:"Four", resume:"DDDDDDDDDDDDD", entrada:"1800", color:"car", icon:"md-arrow-round-forward", datain:new Date()},
+  ]
 
 }

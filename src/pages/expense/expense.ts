@@ -66,7 +66,7 @@ export class ExpensePage {
 
   submit(data){
     let e = new Expense(data);
-        e.datain = new Date(data.datain);
+        e.datain = data.datain.toLocaleDateString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'}) ;
         e.categorie_id = this.categorieName.id;
     this.expenseProvider.insertExpense(e).then( e => {
       console.log(e);

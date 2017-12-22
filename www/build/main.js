@@ -522,6 +522,7 @@ var ListExpensePageModule = (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__list_expense__["a" /* ListExpensePage */]),
             ],
+            providers: []
         })
     ], ListExpensePageModule);
     return ListExpensePageModule;
@@ -563,6 +564,12 @@ var ListExpensePage = (function () {
         this.navParams = navParams;
         this.expenseProvider = expenseProvider;
         this.expense = [];
+        this.mock = [
+            { name: "First", c_name: "First", resume: "AAAAAAAAAAAAAA", entrada: "1250", color: "cash", icon: "md-cash", datain: new Date() },
+            { name: "Second", c_name: "Second", resume: "BBBBBBBBBBBBBBBB", entrada: "1500", color: "contacts", icon: "md-apps", datain: new Date() },
+            { name: "Three", c_name: "Three", resume: "CCCCCCCCCCCCCC", entrada: "1900", color: "flame", icon: "md-archive", datain: new Date() },
+            { name: "Four", c_name: "Four", resume: "DDDDDDDDDDDDD", entrada: "1800", color: "car", icon: "md-arrow-round-forward", datain: new Date() },
+        ];
     }
     ListExpensePage.prototype.ngOnInit = function () {
         this.getAll();
@@ -584,10 +591,14 @@ var ListExpensePage = (function () {
                 return _this.expense;
             }
         });
+        this.expenseProvider.getAllbyMothEspense("01").then(function (result) {
+            console.log(result);
+        });
+        //return this.expense = this.mock;
     };
     ListExpensePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-list-expense',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\expense\list-expense\list-expense.html"*/'<!--\n  Generated template for the ListExpensePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>List Expense</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n    <ion-card *ngFor="let e of expense">\n\n        <ion-item>\n          <ion-avatar item-start>\n           <ion-icon color="{{e.color}}" name="{{e.icon}}" style="zoom:2.0;"></ion-icon>\n          </ion-avatar>\n          <h2>{{e.name}}</h2>\n          <p>{{e.c_name}}</p>\n        </ion-item>\n      \n        <ion-card-content>\n          <p>{{e.resume}}</p>\n        </ion-card-content>\n      \n        <ion-row>\n          <ion-col>\n            <button ion-button icon-left clear small>\n              <ion-icon name="thumbs-up"></ion-icon>\n              <div>Paid</div>\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button icon-left clear small>\n              <ion-icon name="text"></ion-icon>\n              <div>Edit</div>\n            </button>\n          </ion-col>\n          <ion-col center text-center>\n            <ion-note>\n              {{e.datain}}\n            </ion-note>\n          </ion-col>\n        </ion-row>\n      \n      </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\expense\list-expense\list-expense.html"*/,
+            selector: 'page-list-expense',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\expense\list-expense\list-expense.html"*/'<!--\n\n  Generated template for the ListExpensePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>List Expense</ion-title>\n\n    <ion-buttons end>\n\n        <button ion-button icon-only>\n\n            <ion-icon name="md-funnel"></ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-navbar>\n\n      <ion-buttons left>\n\n          <button ion-button icon-only>\n\n              <ion-icon name="md-arrow-dropleft"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n      <div style="text-align:center; color:white; font-size:20px;">\n\n        MESES R$2.590,00\n\n      </div>\n\n      <ion-buttons right>\n\n          <button ion-button icon-only>\n\n              <ion-icon name="md-arrow-dropright"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n    <div *ngIf="expense.length == 0">\n\n      <img src="assets/imgs/404.png" />\n\n    </div>\n\n\n\n    <ion-card *ngFor="let e of expense"> \n\n\n\n        <ion-item>\n\n          <ion-avatar item-start>\n\n           <ion-icon color="{{e.color}}" name="{{e.icon}}" style="zoom:2.0;"></ion-icon>\n\n          </ion-avatar>\n\n          <h2>{{e.name}}</h2>\n\n          <p>{{e.c_name}}</p>\n\n        </ion-item>\n\n      \n\n        <ion-card-content>\n\n            <ion-row>\n\n                <ion-col align-self-start col-6>\n\n          <p>{{e.resume}}</p>\n\n               </ion-col>\n\n               <ion-col align-self-end col-6>\n\n                <span style="font-size:20px;">{{e.entrada | currency:\'BRL\':true:\'2.2-2\'}}</span>\n\n               </ion-col>\n\n          </ion-row>\n\n        \n\n        </ion-card-content>\n\n      \n\n        <ion-row>\n\n          <ion-col>\n\n            <button ion-button icon-left clear small>\n\n              <ion-icon name="thumbs-up"></ion-icon>\n\n              <div>Paid</div>\n\n            </button>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button icon-left clear small>\n\n              <ion-icon name="text"></ion-icon>\n\n              <div>Edit</div>\n\n            </button>\n\n          </ion-col>\n\n          <ion-col center text-center>\n\n            <ion-note>\n\n              {{e.datain | date:\'dd/MM/yyyy\'}}\n\n            </ion-note>\n\n          </ion-col>\n\n        </ion-row>\n\n      \n\n      </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\expense\list-expense\list-expense.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__providers_expense_expense__["b" /* ExpenseProvider */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_expense_expense__["b" /* ExpenseProvider */]])
@@ -739,7 +750,7 @@ var IncomePage = (function () {
     };
     IncomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\income.html"*/'<!--\n  Generated template for the IncomePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Income</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n    <form [formGroup]="formIncome">\n        <ion-item>\n          <ion-label floating>R$</ion-label>\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>\n        </ion-item>\n        \n        <ion-list>\n            <ion-item>\n              <ion-label floating>Categories</ion-label>\n              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">\n                <ion-option *ngFor="let item of categories" [value]="item">\n                    <ion-list>\n                        <ion-item>\n                            {{item.name}}\n                        </ion-item>\n                      </ion-list>\n                </ion-option>\n              </ion-select>\n            </ion-item>\n        </ion-list>\n        \n        <ion-item>\n            <ion-label floating>Date</ion-label>\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>\n        </ion-item>\n\n        <ion-item>\n            <ion-label floating>Note</ion-label>\n            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>\n        </ion-item>\n      </form>\n\n</ion-content>\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\income.html"*/,
+            selector: 'page-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\income.html"*/'<!--\n\n  Generated template for the IncomePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Income</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n    <form [formGroup]="formIncome">\n\n        <ion-item>\n\n          <ion-label floating>R$</ion-label>\n\n          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>\n\n        </ion-item>\n\n        \n\n        <ion-list>\n\n            <ion-item>\n\n              <ion-label floating>Categories</ion-label>\n\n              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">\n\n                <ion-option *ngFor="let item of categories" [value]="item">\n\n                    <ion-list>\n\n                        <ion-item>\n\n                            {{item.name}}\n\n                        </ion-item>\n\n                      </ion-list>\n\n                </ion-option>\n\n              </ion-select>\n\n            </ion-item>\n\n        </ion-list>\n\n        \n\n        <ion-item>\n\n            <ion-label floating>Date</ion-label>\n\n            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n            <ion-label floating>Note</ion-label>\n\n            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>\n\n        </ion-item>\n\n\n\n        <ion-item>\n\n          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>\n\n        </ion-item>\n\n      </form>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\income.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], IncomePage);
@@ -914,7 +925,7 @@ var RootPage = (function () {
     };
     RootPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-root',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\root\root.html"*/'<!--\n  Generated template for the RootPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-tabs>\n  <ion-tab tabIcon="md-home" [root]="tabHome" tabBadgeStyle="primary"></ion-tab>\n  <!-- <ion-tab tabIcon="md-thumbs-up" [root]="tabInvoice" tabBadge="14" tabBadgeStyle="danger"></ion-tab> -->\n  <ion-tab tabIcon="md-thumbs-up" [root]="tabInvoice" tabBadge="0" tabBadgeStyle="secondary"></ion-tab>\n  <ion-tab tabIcon="md-thumbs-down" [root]="tabExpense" tabBadge="0" tabBadgeStyle="danger"></ion-tab>\n</ion-tabs>'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\root\root.html"*/,
+            selector: 'page-root',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\root\root.html"*/'<!--\n\n  Generated template for the RootPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-tabs>\n\n  <ion-tab tabIcon="md-home" [root]="tabHome" tabBadgeStyle="primary"></ion-tab>\n\n  <!-- <ion-tab tabIcon="md-thumbs-up" [root]="tabInvoice" tabBadge="14" tabBadgeStyle="danger"></ion-tab> -->\n\n  <ion-tab tabIcon="md-thumbs-up" [root]="tabInvoice" tabBadge="0" tabBadgeStyle="secondary"></ion-tab>\n\n  <ion-tab tabIcon="md-thumbs-down" [root]="tabExpense" tabBadge="0" tabBadgeStyle="danger"></ion-tab>\n\n</ion-tabs>'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\root\root.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], RootPage);
@@ -1039,8 +1050,8 @@ var HomePage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__categorie_categorie__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__database_database__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__expense_expense__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__income_income__ = __webpack_require__(472);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invoice_invoice__ = __webpack_require__(478);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__income_income__ = __webpack_require__(473);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__invoice_invoice__ = __webpack_require__(479);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1100,18 +1111,20 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(420);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(183);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_database_database__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_pages_module__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_providers_module__ = __webpack_require__(344);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ng2_charts__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_locales_pt__ = __webpack_require__(420);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(421);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_home_home__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_database_database__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_pages_module__ = __webpack_require__(422);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_providers_module__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng2_charts__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_ng2_charts__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1123,6 +1136,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+Object(__WEBPACK_IMPORTED_MODULE_5__angular_common__["i" /* registerLocaleData */])(__WEBPACK_IMPORTED_MODULE_6__angular_common_locales_pt__["a" /* default */]);
 
 
 
@@ -1137,15 +1153,15 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */]
+                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_8__pages_pages_module__["a" /* PagesModule */],
-                __WEBPACK_IMPORTED_MODULE_9__providers_providers_module__["a" /* ProvidersModule */],
-                __WEBPACK_IMPORTED_MODULE_10_ng2_charts__["ChartsModule"],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_10__pages_pages_module__["a" /* PagesModule */],
+                __WEBPACK_IMPORTED_MODULE_11__providers_providers_module__["a" /* ProvidersModule */],
+                __WEBPACK_IMPORTED_MODULE_12_ng2_charts__["ChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/categorie/categorie.module#CategoriePageModule', name: 'CategoriePage', segment: 'categorie', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/expense/edit-expense/edit-expense.module#EditExpensePageModule', name: 'EditExpensePage', segment: 'edit-expense', priority: 'low', defaultHistory: [] },
@@ -1161,15 +1177,15 @@ var AppModule = (function () {
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */]
+                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_8__pages_home_home__["a" /* HomePage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["LOCALE_ID"], useValue: 'pt-BR' },
+                //{provide: LOCALE_ID, useValue: 'pt-BR'},
                 { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_7__providers_database_database__["a" /* DatabaseProvider */],
+                __WEBPACK_IMPORTED_MODULE_9__providers_database_database__["a" /* DatabaseProvider */],
             ]
         })
     ], AppModule);
@@ -1270,7 +1286,7 @@ var EditIncomePage = (function () {
 
 /***/ }),
 
-/***/ 420:
+/***/ 421:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1331,7 +1347,7 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 421:
+/***/ 422:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1395,7 +1411,7 @@ var PagesModule = (function () {
 
 /***/ }),
 
-/***/ 454:
+/***/ 455:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -1644,7 +1660,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 454;
+webpackContext.id = 455;
 
 /***/ }),
 
@@ -1712,10 +1728,22 @@ var DatabaseProvider = (function () {
                     ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['Contact', 'md-contacts', 'contacts', 'true']],
                     ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['Tv', 'md-desktop', 'desktop', 'true']],
                     ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['Football', 'md-football', 'football', 'true']],
-                    ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['CreditCard', 'md-card', 'card', 'true']]
-                    //Categories Income
+                    ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)', ['CreditCard', 'md-card', 'card', 'true']],
+                    //Month
+                    ['INSERT INTO month (name) VALUES (?)', ['Janeiro']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Feveiro']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Março']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Abril']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Maio']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Junho']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Julho']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Agosto']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Setembro']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Outubro']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Novembro']],
+                    ['INSERT INTO month (name) VALUES (?)', ['Dezembro']]
                 ]).then(function () {
-                    console.info('Insert Categorie Conclude!');
+                    console.info('Insert Categorie with Month Conclude!');
                 })
                     .catch(function (e) {
                     console.error(e);
@@ -1728,9 +1756,11 @@ var DatabaseProvider = (function () {
     DatabaseProvider.prototype.createTables = function (db) {
         db.sqlBatch([
             ['CREATE TABLE IF NOT EXISTS categorie (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, color TEXT, status TEXT)'],
-            ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)'],
+            ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT)'],
             ['CREATE TABLE IF NOT EXISTS graphic (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)'],
-            ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datain DATETIME, dataout DATETIME, dataput DATETIME, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))']
+            ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datain TEXT, dataout TEXT, dataput TEXT, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))'],
+            ['CREATE TABLE IF NOT EXISTS month (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)'],
+            ['CREATE TABLE IF NOT EXISTS month_has_expense (id INTEGER PRIMARY KEY AUTOINCREMENT, expense_id INTEGER, month_id INTEGER, FOREIGN KEY(expense_id) REFERENCES expense(id), FOREIGN KEY(month_id) REFERENCES month(id))']
         ]).then(function () {
             console.info('Create DBs!');
         }).catch(function (e) {
@@ -1748,7 +1778,7 @@ var DatabaseProvider = (function () {
 
 /***/ }),
 
-/***/ 472:
+/***/ 473:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1788,7 +1818,7 @@ var IncomeProvider = (function () {
 
 /***/ }),
 
-/***/ 478:
+/***/ 479:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1966,12 +1996,39 @@ var ExpenseProvider = (function () {
             });
         });
     };
-    ExpenseProvider.prototype.insertExpense = function (e) {
+    ExpenseProvider.prototype.getAllbyMothEspense = function (month) {
+        var _this = this;
         return this.dbProvider.iniDb()
             .then(function (db) {
-            var sql = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) values(?,?,?,?,?,?)";
-            var query = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
-            return db.executeSql(sql, query);
+            var sql = "SELECT expense.*, categorie.icon, categorie.color, categorie.name as c_name FROM expense";
+            sql += " INNER JOIN categorie ON expense.categorie_id = categorie.id";
+            sql += " WHERE expense.status = 1 AND strftime('%m',date(expense.datain)) = ?";
+            var data = [month];
+            return db.executeSql(sql, data).then(function (data) {
+                _this.aExpense = [];
+                for (var i = 0; i < data.rows.length; i++) {
+                    var item = data.rows.item(i);
+                    var expense = item;
+                    _this.aExpense.push(expense);
+                }
+                console.log(_this.aExpense);
+                return _this.aExpense;
+            });
+        });
+    };
+    ExpenseProvider.prototype.insertExpense = function (e) {
+        //e.datain = e.datain.toLocaleString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'});
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            var sql1 = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) VALUES (?,?,?,?,?,?)";
+            var query1 = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
+            var m = new Date(e.datain);
+            var mReal = m.getMonth() + 1;
+            db.executeSql(sql1, query1).then(function (res) {
+                var sql2 = "INSERT INTO month_has_expense (expense_id, month_id) VALUES (?,?)";
+                var query2 = [res.insertId, mReal];
+                return db.executeSql(sql2, query2);
+            });
         });
     };
     ExpenseProvider.prototype.removeExpense = function (e) {

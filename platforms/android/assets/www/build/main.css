@@ -65456,6 +65456,10 @@ page-expense #category {
   transition-delay: 2s;
 }
 
+page-list-expense .content {
+  background-image: url("../assets/imgs/blue-waves.jpg");
+}
+
 page-home .graphic {
   color: #565656;
   position: absolute;

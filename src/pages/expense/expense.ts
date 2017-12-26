@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ExpenseProvider, Expense } from '../../providers/expense/expense';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 
 //Providers importeds
@@ -66,13 +68,14 @@ export class ExpensePage {
 
   submit(data){
     let e = new Expense(data);
-        e.datain = data.datain.toLocaleDateString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'}) ;
+        //e.datain = data.datain.toLocaleDateString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'});
+        e.datain =  moment(data.datain).format();
         e.categorie_id = this.categorieName.id;
     this.expenseProvider.insertExpense(e).then( e => {
-      console.log(e);
-      let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
-      msg.present();
-    }).catch( e => {
+          console.log(e);
+          let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
+          msg.present();
+        }).catch( e => {
       console.log(e);
       let msg = this.toastCtrl.create({message:'Not Ok!', duration: 3000, position: 'top'});
       msg.present();
@@ -86,8 +89,6 @@ export class ExpensePage {
   }
 
 showCategories(){
-
-
   let opnModal = this.modalCtrl.create(ListCategoriesPage, {data: this.categories});
   opnModal.onDidDismiss(data => {
     this.categorieName = data;
@@ -95,10 +96,6 @@ showCategories(){
   opnModal.present();
 }
 
-  // showCategories(){
-  //   if(this.showCategorie)
-  //     return this.showCategorie = false;
-  //   return this.showCategorie = true;
-  // }
+
 
 }

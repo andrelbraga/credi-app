@@ -16,15 +16,15 @@
   </ion-navbar>
   <ion-navbar>
       <ion-buttons left>
-          <button ion-button icon-only>
+          <button ion-button icon-only (click)="beforeMonth()">
               <ion-icon name="md-arrow-dropleft"></ion-icon>
           </button>
       </ion-buttons>
       <div style="text-align:center; color:white; font-size:20px;">
-        MESES R$2.590,00
+        {{currentMonth.name}} - {{(amountExpense | currency:'BRL':true:'2.2-2') || 'R$0,00' }}
       </div>
       <ion-buttons right>
-          <button ion-button icon-only>
+          <button ion-button icon-only (click)="afterMonth()">
               <ion-icon name="md-arrow-dropright"></ion-icon>
           </button>
       </ion-buttons>
@@ -33,9 +33,9 @@
 
 <ion-content padding>
 
-    <div *ngIf="expense.length == 0">
+    <!-- <div *ngIf="expense.length == 0">
       <img src="assets/imgs/404.png" />
-    </div>
+    </div> -->
 
     <ion-card *ngFor="let e of expense"> 
 
@@ -63,13 +63,13 @@
           <ion-col>
             <button ion-button icon-left clear small>
               <ion-icon name="thumbs-up"></ion-icon>
-              <div>Paid</div>
+              <div>Pago</div>
             </button>
           </ion-col>
           <ion-col>
             <button ion-button icon-left clear small>
               <ion-icon name="text"></ion-icon>
-              <div>Edit</div>
+              <div>Editar</div>
             </button>
           </ion-col>
           <ion-col center text-center>

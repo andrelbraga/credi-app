@@ -43,9 +43,12 @@ export class ExpenseProvider {
   getAllbyMothEspense(month){
     return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
-      let sql = "SELECT expense.*, categorie.icon, categorie.color, categorie.name as c_name FROM expense";
-          sql += " INNER JOIN categorie ON expense.categorie_id = categorie.id";   
-          sql += " WHERE expense.status = 1 AND strftime('%m',date(expense.datain)) = ?";
+      let sql = "SELECT expense.*, categorie.icon, categorie.color, month.name as m_name, categorie.name as c_name";
+          sql += " FROM month_has_expense";
+          sql += " INNER JOIN expense ON month_has_expense.expense_id = expense.id";
+          sql += " INNER JOIN categorie ON expense.categorie_id = categorie.id";
+          sql += " INNER JOIN month ON month.id = month_has_expense.month_id"   
+          sql += " WHERE expense.status = 1 AND month_has_expense.month_id = ?";
       let data = [month];
       return db.executeSql(sql,data).then((data) => {
         this.aExpense = [];
@@ -63,7 +66,7 @@ export class ExpenseProvider {
 
   insertExpense(e){
     //e.datain = e.datain.toLocaleString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'});
-    return this.dbProvider.iniDb()
+  return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
       let sql1 = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) VALUES (?,?,?,?,?,?)";
       let query1 = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
@@ -110,8 +113,8 @@ export class Expense{
   entrada: number;
   saida: number;
   resume: string;
-  datain: Date;
-  dataout: Date;
-  dataput: Date;
+  datain: string;
+  dataout: string;
+  dataput: string;
   categorie_id: number;
 }

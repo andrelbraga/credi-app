@@ -17,7 +17,7 @@
       <!-- <alert-default [obj]="categories" *ngIf="showCategorie" id="category"></alert-default> -->
         
         <ion-item>
-          <ion-label floating>Name Expense</ion-label>
+          <ion-label floating>Despesa</ion-label>
           <ion-input formControlName="formName" [(ngModel)]="Expense.name" clearInput></ion-input>
         </ion-item>
         
@@ -27,12 +27,12 @@
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Date</ion-label>
+            <ion-label floating>Data</ion-label>
             <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.datain"></ion-datetime>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Note</ion-label>
+            <ion-label floating>Nota</ion-label>
             <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.resume"></ion-textarea>
         </ion-item>
 
@@ -41,7 +41,6 @@
           <ion-icon color="{{categorieName != null ? categorieName.color : 'primary'}}" name="{{categorieName != null ? categorieName.icon : 'md-add'}}" item-start></ion-icon>
         </button>
 
-        <p>Conclusion expense.</p>
         <ion-item>
           <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>
         </ion-item>

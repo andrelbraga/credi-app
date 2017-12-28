@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, ViewController, NavParams, Events, PopoverController } from 'ionic-angular';
 import { ExpenseProvider } from '../../../providers/expense/expense';
+import { PopoverPage } from './popover/popover';
 
 
 /**
@@ -14,7 +15,7 @@ import { ExpenseProvider } from '../../../providers/expense/expense';
 @Component({
   selector: 'page-list-expense',
   templateUrl: 'list-expense.html',
-  providers:[ ExpenseProvider ]
+  providers:[ ExpenseProvider ],
 })
 export class ListExpensePage implements OnInit{
 public mock = [
@@ -46,7 +47,8 @@ public amountExpense: any;
     public navParams: NavParams, 
     public expenseProvider: ExpenseProvider,
     public zone: NgZone,
-    public events: Events) {
+    public events: Events,
+    public popover: PopoverController) {
 
       this.events.subscribe('updateScreen',()=>{
         this.zone.run((e)=>{
@@ -75,16 +77,6 @@ public amountExpense: any;
   }
 
   getAll(e){
-    // this.expenseProvider.getAllEpense(1, true).then((result) => {
-    //   if(result.length > 0){
-    //     this.expense = [];
-    //     for(var i=0;i < result.length; i++ ){
-    //       this.expense.push(result[i]);
-    //     }
-    //     return this.expense;
-    //   }
-    // })
-
     this.expenseProvider.getAllbyMothEspense(e).then((result) =>{
       if(result.length > 0){
         this.expense = [];
@@ -96,19 +88,6 @@ public amountExpense: any;
         return this.expense;
       }
     })
-
-    //return this.expense = this.mock;
-  }
-
-  realMonth(): number{
-    let m = new Date();
-    let mReal = m.getMonth() + 1;
-    return mReal;
-  }
-
-  currentMonthFn(){
-    let n = new Date().getMonth();
-    this.currentMonth = this.month[n];  
   }
 
   beforeMonth(){
@@ -142,6 +121,23 @@ public amountExpense: any;
     }
   }
 
+
+  realMonth(): number{
+    let m = new Date();
+    let mReal = m.getMonth() + 1;
+    return mReal;
+  }
+
+  currentMonthFn(){
+    let n = new Date().getMonth();
+    this.currentMonth = this.month[n];  
+  }
+
+
+  showMenuPopup(){
+    let p = this.popover.create(PopoverPage, {ev: 'DADOS'});
+    p.present();
+  }
 
 
 }

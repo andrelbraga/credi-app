@@ -45,9 +45,9 @@ export class CategoriePage implements OnInit{
 
 
 
-    //ionViewCanEnter() {
-    //   this.getAll();
-    //}
+    ionViewCanEnter() {
+       this.getAll();
+    }
 
     getAll(){
       this.categories = [];
@@ -101,7 +101,6 @@ export class CategoriePage implements OnInit{
     statusCategory(data){
       let categorie  = new Categorie(data);
       this.categorieProvider.updateCategorie(categorie).then(() => {
-        //this.util.presentLoading(CategoriePage, false);
         this.events.publish('updateScreen');
       });
     }

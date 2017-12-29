@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ListExpensePage } from './list-expense';
-import { PopoverPageModule } from './popover/popover.module';
+import { ListExpensePage, Popup } from './list-expense';
 
 
 @NgModule({
   declarations: [
-    ListExpensePage
+    ListExpensePage,
+    Popup
   ],
   imports: [
-    PopoverPageModule,
     IonicPageModule.forChild(ListExpensePage),
   ],
   providers:[
   ],
   entryComponents:[
+    ListExpensePage,
+    Popup
   ]
 })
 export class ListExpensePageModule {}

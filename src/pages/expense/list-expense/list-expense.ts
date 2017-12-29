@@ -1,7 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { IonicPage, NavController, ViewController, NavParams, Events, PopoverController } from 'ionic-angular';
 import { ExpenseProvider } from '../../../providers/expense/expense';
-import { PopoverPage } from './popover/popover';
 
 
 /**
@@ -11,7 +10,32 @@ import { PopoverPage } from './popover/popover';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@Component({
+  template: `
+    <ion-list>
+      <ion-list-header>Ordenar</ion-list-header>
+      <button ion-item (click)="close()">Alfabético</button>
+      <button ion-item (click)="close()">Dias</button>
+      <button ion-item (click)="close()">Categorias</button>
+      <button ion-item (click)="close()">Todos</button>
+      <button ion-item (click)="close()">Alfabético</button>
+      <button ion-item (click)="close()">Dias</button>
+      <button ion-item (click)="close()">Categorias</button>
+      <button ion-item (click)="close()">Todos</button>
+      <button ion-item (click)="close()">Alfabético</button>
+      <button ion-item (click)="close()">Dias</button>
+      <button ion-item (click)="close()">Categorias</button>
+      <button ion-item (click)="close()">Todos</button>
+    </ion-list>`
+})
+export class Popup{
+
+
+
+}
+
+
+//@IonicPage()
 @Component({
   selector: 'page-list-expense',
   templateUrl: 'list-expense.html',
@@ -43,12 +67,12 @@ public month: any = [
 public currentMonth: any;
 public amountExpense: any;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
     public expenseProvider: ExpenseProvider,
     public zone: NgZone,
     public events: Events,
-    public popover: PopoverController) {
+    public popoverCtrl: PopoverController) {
 
       this.events.subscribe('updateScreen',()=>{
         this.zone.run((e)=>{
@@ -57,12 +81,12 @@ public amountExpense: any;
           this.getAll(this.currentMonth.id);
         })
        });
-  
+
   }
 
 
   ngOnInit(){
-    this.currentMonthFn();   
+    this.currentMonthFn();
     this.getAll(this.realMonth());
   }
 
@@ -96,14 +120,14 @@ public amountExpense: any;
       --m;
       if(m <= 11 && m >= 0){
         this.currentMonth = this.month[m];
-        this.events.publish('updateScreen');        
+        this.events.publish('updateScreen');
       }
     } else {
       let a = this.month.indexOf(this.currentMonth);
-      this.currentMonth = this.month[a]; 
+      this.currentMonth = this.month[a];
       this.events.publish('updateScreen');
     }
-    
+
   }
 
   afterMonth(){
@@ -112,12 +136,12 @@ public amountExpense: any;
       m++;
       if(m >= 0 && m <= 11){
         this.currentMonth = this.month[m];
-        this.events.publish('updateScreen');  
+        this.events.publish('updateScreen');
       }
     } else {
       let a = this.month.indexOf(this.currentMonth);
-      this.currentMonth = this.month[a]; 
-      this.events.publish('updateScreen');  
+      this.currentMonth = this.month[a];
+      this.events.publish('updateScreen');
     }
   }
 
@@ -130,12 +154,22 @@ public amountExpense: any;
 
   currentMonthFn(){
     let n = new Date().getMonth();
-    this.currentMonth = this.month[n];  
+    this.currentMonth = this.month[n];
   }
 
 
   showMenuPopup(){
-    let p = this.popover.create(PopoverPage, {ev: 'DADOS'});
+    let opt = {
+      showBackdrop: true,
+      enableBackdropDismiss: true,
+      cssClass:'backdropOpacityPopover'
+    }
+
+
+    let p = this.popoverCtrl.create(Popup, {ev: 'DADOS'}, opt);
+        p.onDidDismiss(data => {
+          console.log(data);
+        });
     p.present();
   }
 

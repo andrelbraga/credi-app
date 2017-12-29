@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
+import { IonicPage, PopoverController, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ExpenseProvider, Expense } from '../../providers/expense/expense';
 import * as moment from 'moment';
@@ -44,8 +44,9 @@ export class ExpensePage {
     public modalCtrl: ModalController,
     private expenseProvider: ExpenseProvider,
     private categorieProvider: CategorieProvider,
-    public toastCtrl: ToastController) {
-      
+    public toastCtrl: ToastController,
+    public popoverCtrl: PopoverController) {
+
     new Promise(() => {
 
       this.categorieProvider.getAllCategorie()
@@ -89,7 +90,13 @@ export class ExpensePage {
   }
 
 showCategories(){
-  let opnModal = this.modalCtrl.create(ListCategoriesPage, {data: this.categories});
+  let opt = {
+    showBackdrop: true,
+    enableBackdropDismiss: true,
+    cssClass:'backdropOpacityPopover'
+  }
+
+  let opnModal = this.popoverCtrl.create(ListCategoriesPage, {data: this.categories}, opt);
   opnModal.onDidDismiss(data => {
     this.categorieName = data;
   });

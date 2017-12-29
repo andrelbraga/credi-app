@@ -24,12 +24,7 @@ export class CategorieProvider {
         this.aCategorie = [];
          for(var i=0; i < data.rows.length;i++){
            let item = data.rows.item(i);
-           let categorie = new Categorie();
-           categorie.id = item.id;
-           categorie.name = item.name;
-           categorie.color = item.color;
-           categorie.icon = item.icon;
-           categorie.status = item.status;
+           let categorie = new Categorie(item);
            this.aCategorie.push(categorie);
          }
          console.table(this.aCategorie);
@@ -58,6 +53,15 @@ export class CategorieProvider {
 }
 
 export class Categorie{
+  
+  constructor(data) {
+    this.id = data.id;
+    this.name = data.name;
+    this.icon = data.icon;
+    this.color = data.color;
+    this.status = data.status;  
+  }
+
   id: number;
   name: string;
   icon: string;

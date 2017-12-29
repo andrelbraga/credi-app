@@ -2,7 +2,6 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { ToastController, Events } from 'ionic-angular';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
-import { ClassUtil } from '../../util/ClassUtil';
 
 /**
  * Generated class for the CategoriePage page.
@@ -15,7 +14,7 @@ import { ClassUtil } from '../../util/ClassUtil';
 @Component({
   selector: 'page-categorie',
   templateUrl: 'categorie.html',
-  providers:[CategorieProvider, ClassUtil]
+  providers:[CategorieProvider]
 })
 
 
@@ -27,7 +26,6 @@ export class CategoriePage implements OnInit{
     public loadingCtrl: LoadingController,
     private categorieProvider: CategorieProvider,
     public toastCtrl: ToastController,
-    public util: ClassUtil,
     public zone: NgZone,
     public events: Events
    ) {
@@ -37,7 +35,7 @@ export class CategoriePage implements OnInit{
         this.getAll();
       })
      });
-    
+
     }
 
     ngOnInit(){
@@ -45,11 +43,11 @@ export class CategoriePage implements OnInit{
       this.getAll();
     }
 
-    
 
-    //ionViewCanEnter() {
-    //   this.getAll();
-    //}
+
+    ionViewCanEnter() {
+       this.getAll();
+    }
 
     getAll(){
       this.categories = [];
@@ -80,12 +78,11 @@ export class CategoriePage implements OnInit{
           {
             text: 'Save',
             handler: (data) => {
-              let categorie  = new Categorie();
+              let categorie  = new Categorie(data);
               categorie.name = data.Categorie;
               categorie.id   = c.id;
               categorie.status = c.status;
-              this.categorieProvider.updateCategorie(categorie).then(() => {               
-                //this.util.presentLoading(CategoriePage, false);
+              this.categorieProvider.updateCategorie(categorie).then(() => {
                 this.events.publish('updateScreen');
               });
             }
@@ -101,13 +98,9 @@ export class CategoriePage implements OnInit{
     }
 
 
-    statusCategory(c){
-      let categorie  = new Categorie();
-      categorie.name = c.name;
-      categorie.id   = c.id;
-      categorie.status = c.status;
-      this.categorieProvider.updateCategorie(categorie).then(() => {               
-        //this.util.presentLoading(CategoriePage, false);
+    statusCategory(data){
+      let categorie  = new Categorie(data);
+      this.categorieProvider.updateCategorie(categorie).then(() => {
         this.events.publish('updateScreen');
       });
     }

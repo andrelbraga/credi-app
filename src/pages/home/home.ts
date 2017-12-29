@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { InvoicePage } from '../invoice/invoice';
+import { Component, NgZone, OnInit } from '@angular/core';
+import { NavController, Events } from 'ionic-angular';
 import { IncomePage } from '../income/income';
 import { ExpensePage } from '../expense/expense';
 import { CategoriePage } from '../categorie/categorie';
 
 
+
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
-export class HomePage {
-  
+export class HomePage implements OnInit{
 
- /// Doughnut data
- public doughnutChartLabels: Array<string> = ['A','B','C'];
- public doughnutChartData: Array<number> = [100, 200, 400];
+
+ //Begin Doughnut data
+ public doughnutChartLabels: Array<string> = [];
+ public doughnutChartData: Array<number> = [];
  public doughnutChartType: string = 'doughnut';
- 
-// Line Chart
+//End data
+
+//Begin Line Chart
 public lineChartData:Array<any> = [
   {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
   {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
@@ -30,17 +31,32 @@ public lineChartOptions:any = {
 };
 public lineChartLegend:boolean = true;
 public lineChartType:string = 'line';
+public fabButtonOpened: any;
+//End Line Chart
 
- public fabButtonOpened: any;
-  constructor(public navCtrl: NavController) {
-      this.fabButtonOpened = false; 
+//Constructor HomePage
+constructor(public navCtrl: NavController, public events: Events, public zone: NgZone) { }
+
+  ionViewDidLoad() {
+    
   }
-  
+
+  ionViewWillEnter() {
+   
+  }
+
+  ngOnInit() {
+    this.fabButtonOpened = false;
+  }
+
+  slideChanged(){
+    
+  }
 
 
-
+  //Begin Functions Chart
   // Chart events
-  public chartClicked(e:any):void {
+  public chartClicked(e:any):void{
     console.log(e);
   }
 
@@ -48,12 +64,13 @@ public lineChartType:string = 'line';
   public chartHovered(e:any):void {
     console.log(e);
   }
+  //End Functions Chart
 
-  public addInvoice():void{
-    this.navCtrl.push(InvoicePage);
-    console.log('Add Invoice');
-  }
 
+
+
+  //Begin Functions Fab
+  
   penFabButton(){
     if(this.fabButtonOpened==false){
         this.fabButtonOpened=true;
@@ -74,12 +91,18 @@ public lineChartType:string = 'line';
 
   openIncome(event){
     this.navCtrl.push(IncomePage);
-    console.log('Rendas');    
+    console.log('Rendas');
   }
-
+  
   openGraphic(event){
 
   }
+  //End Functions Fab
+
+
+  //Begin Methods
+
+  //End Methods
 
 
 }

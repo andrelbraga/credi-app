@@ -50,9 +50,22 @@ public insertDataDefaultTableCategorie(db: SQLiteObject){
           ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Contact','md-contacts','contacts','true']],
           ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Tv','md-desktop','desktop','true']],
           ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['Football','md-football','football','true']],
-          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['CreditCard','md-card','card','true']]
+          ['INSERT INTO categorie (name,icon,color,status) VALUES (?,?,?,?)',['CreditCard','md-card','card','true']],
+          //Month
+          ['INSERT INTO month (id,name) VALUES (?,?)',[1,'Janeiro']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[2,'Feveiro']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[3,'Março']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[4,'Abril']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[5,'Maio']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[6,'Junho']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[7,'Julho']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[8,'Agosto']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[9,'Setembro']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[10,'Outubro']],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[11,'Novembro',]],
+          ['INSERT INTO month (id,name) VALUES (?,?)',[12,'Dezembro']]
       ]).then(()=>{
-        console.info('Insert Categorie Conclude!');
+        console.info('Insert Categorie with Month Conclude!');
       })
       .catch(e => {
         console.error(e);
@@ -66,8 +79,11 @@ public insertDataDefaultTableCategorie(db: SQLiteObject){
 public createTables(db: SQLiteObject){
 db.sqlBatch([
   ['CREATE TABLE IF NOT EXISTS categorie (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, color TEXT, status TEXT)'],
-  ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)'],
-  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada TEXT, saida TEXT, resume TEXT)']
+  ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT)'],
+  ['CREATE TABLE IF NOT EXISTS graphic (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)'],
+  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datain TEXT, dataout TEXT, dataput TEXT, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))'],
+  ['CREATE TABLE IF NOT EXISTS month (id INTEGER PRIMARY KEY, name TEXT)'],
+  ['CREATE TABLE IF NOT EXISTS month_has_expense (id INTEGER PRIMARY KEY AUTOINCREMENT, expense_id INTEGER, month_id INTEGER, FOREIGN KEY(expense_id) REFERENCES expense(id), FOREIGN KEY(month_id) REFERENCES month(id))']
 ]).then(() => {
   console.info('Create DBs!');
 }).catch(e => {

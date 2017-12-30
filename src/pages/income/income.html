@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Income</ion-title>
+    <ion-title>Rendas</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,33 +17,23 @@
     <form [formGroup]="formIncome">
         <ion-item>
           <ion-label floating>R$</ion-label>
-          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.Price" maxlength="10"></ion-input>
+          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.entrada" maxlength="10"></ion-input>
         </ion-item>
-        
-        <ion-list>
-            <ion-item>
-              <ion-label floating>Categories</ion-label>
-              <ion-select formControlName="formCategorie" [(ngModel)]="Income.Categorie">
-                <ion-option *ngFor="let item of categories" [value]="item">
-                    <ion-list>
-                        <ion-item>
-                            {{item.name}}
-                        </ion-item>
-                      </ion-list>
-                </ion-option>
-              </ion-select>
-            </ion-item>
-        </ion-list>
-        
+       
         <ion-item>
-            <ion-label floating>Date</ion-label>
-            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.Date"></ion-datetime>
+            <ion-label floating>Data</ion-label>
+            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.datain"></ion-datetime>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Note</ion-label>
-            <ion-input formControlName="formNote" [(ngModel)]="Income.Note" clearInput></ion-input>
+            <ion-label floating>Nota</ion-label>
+            <ion-input formControlName="formNote" [(ngModel)]="Income.resume" clearInput></ion-input>
         </ion-item>
+
+        <button ion-item block (click)="showCategories()">
+          <ion-label>{{ categorieName != null ? categorieName.name : 'Add Categories'}}</ion-label>
+          <ion-icon color="{{categorieName != null ? categorieName.color : 'primary'}}" name="{{categorieName != null ? categorieName.icon : 'md-add'}}" item-start></ion-icon>
+        </button>
 
         <ion-item>
           <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>

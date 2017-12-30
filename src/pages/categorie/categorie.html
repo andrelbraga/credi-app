@@ -16,22 +16,36 @@
 <ion-content padding>
 
     <ion-list no-border no-lines *ngFor="let c of categories">
-
-      <button ion-item (click)="RenameCategory(c)">
-          <ion-toggle [(ngModel)]="c.status" (ionChange)="statusCategory(c)" checked="c.status"></ion-toggle>
-          <ion-label>{{c.name}}</ion-label>
-          <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
-      </button>
-
+        <div class="expense-back">
+            <button ion-item (click)="RenameCategory(c)">
+                <ion-toggle [(ngModel)]="c.status" (ionChange)="statusCategory(c)" checked="c.status"></ion-toggle>
+                <ion-label>{{c.name}}</ion-label>
+                <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
+            </button>
+        </div>
+        <!--<div *ngIf="c.type == 'I'" class="income-back">
+            <button ion-item (click)="RenameCategory(c)">
+                <ion-toggle [(ngModel)]="c.status" (ionChange)="statusCategory(c)" checked="c.status"></ion-toggle>
+                <ion-label>{{c.name}}</ion-label>
+                <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
+            </button>
+        </div> -->
     </ion-list>
 
+    <ion-fab top right edge>
+      <button ion-fab color="vibrant" mini><ion-icon name="add"></ion-icon></button>
+      <ion-fab-list>
+          <button ion-fab [style.background-color]="color">
+              <ion-icon name="md-arrow-dropup" color="secondary"></ion-icon>
+              <div style="color:#32db64;" class="label" dir="rtl">Rendas</div>
+          </button>
+          
+          <button ion-fab [style.background-color]="color">
+              <ion-icon name="md-arrow-dropdown" color="danger"></ion-icon>
+              <div style="color:#f53d3d;" class="label" dir="rtl">Despesas</div>
+          </button>
 
-    <ion-fab right bottom #fab>
-        <button ion-fab color="positive"><ion-icon name="md-settings"></ion-icon></button>
-         <ion-fab-list side="top">
-           <ion-label class="save">Save</ion-label>
-           <button ion-fab style="color:#488aff" (click)="saveCategorie($event)"><ion-icon name="md-thumbs-up"></ion-icon></button>
-         </ion-fab-list>
+      </ion-fab-list>
     </ion-fab>
 
 </ion-content>

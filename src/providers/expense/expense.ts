@@ -72,9 +72,10 @@ export class ExpenseProvider {
       let query1 = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
         let m = new Date(e.datain);
         let mReal = m.getMonth() + 1;
+        let yReal = m.getFullYear();
         db.executeSql(sql1,query1).then((res) => {
-          let sql2 = "INSERT INTO month_has_expense (expense_id, month_id) VALUES (?,?)";
-          let query2 = [res.insertId, mReal];
+          let sql2 = "INSERT INTO month_has_expense (expense_id,month_id,year_in) VALUES (?,?,?)";
+          let query2 = [res.insertId, mReal, yReal];
           return db.executeSql(sql2,query2);
         }); 
     });

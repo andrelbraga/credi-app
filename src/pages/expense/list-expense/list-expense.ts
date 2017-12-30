@@ -30,12 +30,12 @@ import { ExpenseProvider } from '../../../providers/expense/expense';
 })
 export class Popup{
 
-
+  constructor(){}
 
 }
 
 
-//@IonicPage()
+@IonicPage()
 @Component({
   selector: 'page-list-expense',
   templateUrl: 'list-expense.html',

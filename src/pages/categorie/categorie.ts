@@ -105,5 +105,10 @@ export class CategoriePage implements OnInit{
       });
     }
 
+    addCategories(){
+      console.log()
+    }
+
+
 }
 

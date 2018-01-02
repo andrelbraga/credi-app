@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, PopoverController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
+
+
+//Providers importeds
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
+import { IncomeProvider, Income } from '../../providers/income/income';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 /**
  * Generated class for the IncomePage page.
@@ -9,6 +15,7 @@ import { CategorieProvider, Categorie } from '../../providers/categorie/categori
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
 @Component({
   template:`<ion-list radio-group no-lines>
               <ion-item *ngFor="let c of obj">
@@ -48,12 +55,13 @@ export class Popup implements OnInit{
 @Component({
   selector: 'page-income',
   templateUrl: 'income.html',
+  providers: [ IncomeProvider ]
 })
 export class IncomePage {
   public categories:Array<Categorie> = [];
   public categorieName: Categorie;
 
-  public Income:any = {
+  public income:any = {
     'resume' : '',
     'entrada':0,
     'datein':'',
@@ -65,17 +73,20 @@ formIncome: FormGroup;
 constructor(public navCtrl: NavController, 
             public navParams: NavParams, 
             public popoverCtrl: PopoverController,
-            public categorieProvider: CategorieProvider) {
+            public categorieProvider: CategorieProvider,
+            public incomeProvider: IncomeProvider,
+            public toastCtrl: ToastController) {
 
-              new Promise(() => {
+            new Promise(() => {
                 this.categorieProvider.getAllCategorie()
                   .then((result) => {
-                    this.categories = result;
+                    this.categories = result.filter((c: Categorie) => c.type === 'I');
                     return this.categories;
                 }).catch(e =>  console.log(e));
               }).catch(e =>  console.log(e));
 
           this.formIncome = new FormGroup({
+              formName: new FormControl(),
               formMoney: new FormControl(),
               formDate: new FormControl(),
               formNote: new FormControl(),
@@ -84,8 +95,19 @@ constructor(public navCtrl: NavController,
 }
 
 
-  submit(I){
-   
+  submit(data){
+   let i = new Income(data);
+       i.datein = moment(data.datein).format();
+       i.categorie_id = this.categorieName.id;
+    this.incomeProvider.insertIncome(i).then( e => {
+      console.log(e);
+      let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
+      msg.present();
+    }).catch( e => {
+      console.log(e);
+      let msg = this.toastCtrl.create({message:'Not Ok!', duration: 3000, position: 'top'});
+      msg.present();
+    })
   }
 
   ionViewDidLoad() {
@@ -95,15 +117,13 @@ constructor(public navCtrl: NavController,
   showCategories(){
     let opt = {
       showBackdrop: true,
-      enableBackdropDismiss: true,
-      //cssClass:'backdropOpacityPopover'
+      enableBackdropDismiss: true
     }
-    let popover = this.popoverCtrl.create(Popup,{data: this.categories}, opt );
-    popover.onDidDismiss(data => {
+    let opnModal = this.popoverCtrl.create(Popup,{data: this.categories}, opt );
+    opnModal.onDidDismiss(data => {
       this.categorieName = data;
     });
-
-    popover.present();
+    opnModal.present();
   }
 
 }

@@ -14,22 +14,22 @@
 
 
 <ion-content padding>
-
-    <ion-list no-border no-lines *ngFor="let c of categories">
-        <div class="expense-back">
-            <button ion-item (click)="RenameCategory(c)">
-                <ion-toggle [(ngModel)]="c.status" (ionChange)="statusCategory(c)" checked="c.status"></ion-toggle>
-                <ion-label>{{c.name}}</ion-label>
-                <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
-            </button>
-        </div>
-        <!--<div *ngIf="c.type == 'I'" class="income-back">
-            <button ion-item (click)="RenameCategory(c)">
-                <ion-toggle [(ngModel)]="c.status" (ionChange)="statusCategory(c)" checked="c.status"></ion-toggle>
-                <ion-label>{{c.name}}</ion-label>
-                <ion-icon color="{{c.color}}" name="{{c.icon}}" item-start></ion-icon>
-            </button>
-        </div> -->
+  <ion-label><b>Despesas</b></ion-label>
+    <ion-list no-border no-lines *ngFor="let e of expense">
+        <button ion-item (click)="RenameCategory(e)">
+              <ion-toggle [(ngModel)]="e.status" (ionChange)="statusCategory(e)" checked="e.status"></ion-toggle>
+              <ion-label>{{e.name}}</ion-label>
+              <ion-icon color="{{e.color}}" name="{{e.icon}}" item-start></ion-icon>
+          </button>     
+    </ion-list>
+    <hr>
+    <ion-label><b>Rendas</b></ion-label>
+    <ion-list no-border no-lines *ngFor="let i of income">
+        <button ion-item (click)="RenameCategory(i)">
+              <ion-toggle [(ngModel)]="i.status" (ionChange)="statusCategory(i)" checked="i.status"></ion-toggle>
+              <ion-label>{{i.name}}</ion-label>
+              <ion-icon color="{{i.color}}" name="{{i.icon}}" item-start></ion-icon>
+        </button>
     </ion-list>
 
     <ion-fab top right edge>

@@ -19,7 +19,8 @@ import { CategorieProvider, Categorie } from '../../providers/categorie/categori
 
 
 export class CategoriePage implements OnInit{
-  public categories: Array<any> = [];
+  public expense: Array<any> = [];
+  public income: Array<any> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController,
@@ -50,11 +51,13 @@ export class CategoriePage implements OnInit{
     }
 
     getAll(){
-      this.categories = [];
+      this.expense = [];
+      this.income = [];
       this.categorieProvider.getAllCategorie()
       .then((result: any[]) => {
-        this.categories = result;
-        return this.categories;
+        this.expense = result.filter((c: Categorie) => c.type === 'E');
+        this.income = result.filter((c: Categorie) => c.type === 'I');
+        return;
       });
     }
 

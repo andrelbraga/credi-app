@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, PopoverController, ViewController, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ExpenseProvider, Expense } from '../../providers/expense/expense';
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
 
 
 //Providers importeds
 import { CategorieProvider, Categorie } from '../../providers/categorie/categorie';
+import { ExpenseProvider, Expense } from '../../providers/expense/expense';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 /**
  * Generated class for the ExpensePage page.
@@ -83,7 +83,7 @@ export class ExpensePage {
     new Promise(() => {
       this.categorieProvider.getAllCategorie()
         .then((result) => {
-          this.categories = result;
+          this.categories = result.filter((c: Categorie) => c.type === 'E');
           return this.categories;
       }).catch(e =>  console.log(e));
     }).catch(e =>  console.log(e));
@@ -101,13 +101,13 @@ export class ExpensePage {
   submit(data){
     let e = new Expense(data);
         //e.datain = data.datain.toLocaleDateString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'});
-        e.datain =  moment(data.datain).format();
-        e.categorie_id = this.categorieName.id;
+      e.datein =  moment(data.datein).format();
+      e.categorie_id = this.categorieName.id;
     this.expenseProvider.insertExpense(e).then( e => {
-          console.log(e);
-          let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
-          msg.present();
-        }).catch( e => {
+      console.log(e);
+      let msg = this.toastCtrl.create({message:'Ok!', duration: 3000, position: 'top'});
+      msg.present();
+    }).catch( e => {
       console.log(e);
       let msg = this.toastCtrl.create({message:'Not Ok!', duration: 3000, position: 'top'});
       msg.present();
@@ -123,10 +123,8 @@ export class ExpensePage {
 showCategories(){
   let opt = {
     showBackdrop: true,
-    enableBackdropDismiss: true,
-    //cssClass:'backdropOpacityPopover'
+    enableBackdropDismiss: true
   }
-
   let opnModal = this.popoverCtrl.create(Popup, {data: this.categories}, opt);
   opnModal.onDidDismiss(data => {
     this.categorieName = data;

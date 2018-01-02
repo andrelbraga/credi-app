@@ -16,18 +16,19 @@
 
     <form [formGroup]="formIncome">
         <ion-item>
-          <ion-label floating>R$</ion-label>
-          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Income.entrada" maxlength="10"></ion-input>
+            <ion-input formControlName="formName" [(ngModel)]="income.name" placeholder="Renda" clearInput></ion-input>
+          </ion-item>
+
+        <ion-item>
+          <ion-input type="number" formControlName="formMoney" placeholder="R$" [(ngModel)]="income.entrada" maxlength="10"></ion-input>
         </ion-item>
        
         <ion-item>
-            <ion-label floating>Data</ion-label>
-            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Income.datain"></ion-datetime>
+            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" placeholder="Data" [(ngModel)]="income.datein"></ion-datetime>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Nota</ion-label>
-            <ion-input formControlName="formNote" [(ngModel)]="Income.resume" clearInput></ion-input>
+            <ion-input formControlName="formNote" [(ngModel)]="income.resume" placeholder="Observação" clearInput></ion-input>
         </ion-item>
 
         <button ion-item block (click)="showCategories()">
@@ -36,7 +37,7 @@
         </button>
 
         <ion-item>
-          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(Income)" prompt>Submit</button>
+          <button ion-button block color="bluedevider" [disabled]="!formIncome.valid" (click)="submit(income)" prompt>Submit</button>
         </ion-item>
       </form>
 

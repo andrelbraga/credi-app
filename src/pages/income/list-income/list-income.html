@@ -8,6 +8,26 @@
 
   <ion-navbar>
     <ion-title>Rendas/Mês</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="showMenuPopup()">
+            <ion-icon name="md-funnel"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-navbar>
+      <ion-buttons left>
+          <button ion-button icon-only (click)="beforeMonth()">
+              <ion-icon name="md-arrow-dropleft"></ion-icon>
+          </button>
+      </ion-buttons>
+      <div style="text-align:center; color:white; font-size:20px;">
+        {{currentMonth.name}} - {{(amountExpense | currency:'BRL':true:'2.2-2') || 'R$0,00' }}
+      </div>
+      <ion-buttons right>
+          <button ion-button icon-only (click)="afterMonth()">
+              <ion-icon name="md-arrow-dropright"></ion-icon>
+          </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 

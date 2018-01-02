@@ -17,15 +17,6 @@ import { ExpenseProvider } from '../../../providers/expense/expense';
       <button ion-item (click)="close()">Alfabético</button>
       <button ion-item (click)="close()">Dias</button>
       <button ion-item (click)="close()">Categorias</button>
-      <button ion-item (click)="close()">Todos</button>
-      <button ion-item (click)="close()">Alfabético</button>
-      <button ion-item (click)="close()">Dias</button>
-      <button ion-item (click)="close()">Categorias</button>
-      <button ion-item (click)="close()">Todos</button>
-      <button ion-item (click)="close()">Alfabético</button>
-      <button ion-item (click)="close()">Dias</button>
-      <button ion-item (click)="close()">Categorias</button>
-      <button ion-item (click)="close()">Todos</button>
     </ion-list>`
 })
 export class Popup{
@@ -161,11 +152,8 @@ public amountExpense: any;
   showMenuPopup(){
     let opt = {
       showBackdrop: true,
-      enableBackdropDismiss: true,
-      cssClass:'backdropOpacityPopover'
+      enableBackdropDismiss: true
     }
-
-
     let p = this.popoverCtrl.create(Popup, {ev: 'DADOS'}, opt);
         p.onDidDismiss(data => {
           console.log(data);

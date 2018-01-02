@@ -59,7 +59,9 @@ export class Categorie{
     this.name = data.name;
     this.icon = data.icon;
     this.color = data.color;
-    this.status = data.status;  
+    this.status = data.status;
+    this.type = data.type;
+    this.complexity = data.complexity;  
   }
 
   id: number;
@@ -67,4 +69,6 @@ export class Categorie{
   icon: string;
   color: string;
   status: string;
+  type: string;
+  complexity: string;
 }

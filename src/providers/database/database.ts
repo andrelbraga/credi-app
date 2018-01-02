@@ -12,11 +12,18 @@ import { ToastController } from 'ionic-angular';
 export class DatabaseProvider {
 
   constructor(private sqlite: SQLite, public toastCtrl: ToastController) {
-
+    this.delDb().then(() => { console.log('Deletado BD Data'); });
   }
 
 public iniDb(){
   return this.sqlite.create({
+    name: 'credi.db',
+    location: 'default'
+  });
+}
+
+public delDb(){
+  return this.sqlite.deleteDatabase({
     name: 'data.db',
     location: 'default'
   });
@@ -102,11 +109,12 @@ public insertDataDefaultTableCategorie(db: SQLiteObject){
 public createTables(db: SQLiteObject){
 db.sqlBatch([
   ['CREATE TABLE IF NOT EXISTS categorie (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, icon TEXT, color TEXT, status TEXT, type TEXT, complexity INTEGER)'],
-  ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT)'],
+  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datein TEXT, dateout TEXT, dateput TEXT, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))'],
+  ['CREATE TABLE IF NOT EXISTS income (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datein TEXT, dateout TEXT, dateput TEXT, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))'],
   ['CREATE TABLE IF NOT EXISTS graphic (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)'],
-  ['CREATE TABLE IF NOT EXISTS expense (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, status NUMERIC, entrada REAL, saida REAL, resume TEXT, datain TEXT, dataout TEXT, dataput TEXT, categorie_id INTEGER, FOREIGN KEY(categorie_id) REFERENCES categorie(id))'],
   ['CREATE TABLE IF NOT EXISTS month (id INTEGER PRIMARY KEY, name TEXT)'],
   ['CREATE TABLE IF NOT EXISTS month_has_expense (id INTEGER PRIMARY KEY AUTOINCREMENT, expense_id INTEGER, month_id INTEGER, year_in INTEGER, FOREIGN KEY(expense_id) REFERENCES expense(id), FOREIGN KEY(month_id) REFERENCES month(id))'],
+  ['CREATE TABLE IF NOT EXISTS month_has_income (id INTEGER PRIMARY KEY AUTOINCREMENT, income_id INTEGER, month_id INTEGER, year_in INTEGER, FOREIGN KEY(income_id) REFERENCES income(id), FOREIGN KEY(month_id) REFERENCES month(id))'],
   //Analytics
   ['CREATE TABLE IF NOT EXISTS types_categories (id INTEGER PRIMARY KEY, name TEXT, resume TEXT)']
 ]).then(() => {

@@ -1012,12 +1012,15 @@ var Popup = (function () {
 }());
 
 var ListIncomePage = (function () {
-    function ListIncomePage(navCtrl, navParams, zone, events, popoverCtrl) {
+    function ListIncomePage(navCtrl, navParams, zone, events, popoverCtrl, incomeProvider) {
+        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.zone = zone;
         this.events = events;
         this.popoverCtrl = popoverCtrl;
+        this.incomeProvider = incomeProvider;
+        this.income = [];
         this.month = [
             { name: 'Janeiro', id: 1 },
             { name: 'Fevereiro', id: 2 },
@@ -1032,12 +1035,39 @@ var ListIncomePage = (function () {
             { name: 'Novembro', id: 11 },
             { name: 'Dezembro', id: 12 },
         ];
+        this.events.subscribe('updateScreen', function () {
+            _this.zone.run(function (e) {
+                _this.income = [];
+                _this.amountIncome = 0;
+                _this.getAll(_this.currentMonth.id);
+            });
+        });
     }
     ListIncomePage.prototype.ngOnInit = function () {
         this.currentMonthFn();
+        this.getAll(this.realMonth());
     };
     ListIncomePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ListIncomePage');
+        this.currentMonthFn();
+        this.getAll(this.realMonth());
+    };
+    ListIncomePage.prototype.ionViewWillEnter = function () {
+        this.currentMonthFn();
+        this.getAll(this.realMonth());
+    };
+    ListIncomePage.prototype.getAll = function (e) {
+        var _this = this;
+        this.incomeProvider.getAllbyMothIncome(e).then(function (result) {
+            if (result.length > 0) {
+                _this.income = [];
+                _this.amountIncome = 0;
+                for (var i = 0; i < result.length; i++) {
+                    _this.amountIncome += result[i].entrada;
+                    _this.income.push(result[i]);
+                }
+                return _this.income;
+            }
+        });
     };
     ListIncomePage.prototype.realMonth = function () {
         var m = new Date();
@@ -1091,12 +1121,13 @@ var ListIncomePage = (function () {
     };
     ListIncomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-list-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\list-income\list-income.html"*/'<!--\n\n  Generated template for the ListIncomePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Rendas/Mês</ion-title>\n\n    <ion-buttons end>\n\n        <button ion-button icon-only (click)="showMenuPopup()">\n\n            <ion-icon name="md-funnel"></ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-navbar>\n\n      <ion-buttons left>\n\n          <button ion-button icon-only (click)="beforeMonth()">\n\n              <ion-icon name="md-arrow-dropleft"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n      <div style="text-align:center; color:white; font-size:20px;">\n\n        {{currentMonth.name}} - {{(amountExpense | currency:\'BRL\':true:\'2.2-2\') || \'R$0,00\' }}\n\n      </div>\n\n      <ion-buttons right>\n\n          <button ion-button icon-only (click)="afterMonth()">\n\n              <ion-icon name="md-arrow-dropright"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\list-income\list-income.html"*/,
+            selector: 'page-list-income',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\income\list-income\list-income.html"*/'<!--\n\n  Generated template for the ListIncomePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Rendas/Mês</ion-title>\n\n    <ion-buttons end>\n\n        <button ion-button icon-only (click)="showMenuPopup()">\n\n            <ion-icon name="md-funnel"></ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-navbar>\n\n      <ion-buttons left>\n\n          <button ion-button icon-only (click)="beforeMonth()">\n\n              <ion-icon name="md-arrow-dropleft"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n      <div style="text-align:center; color:white; font-size:20px;">\n\n        {{currentMonth.name}} - {{(amountIncome | currency:\'BRL\':true:\'2.2-2\') || \'R$0,00\' }}\n\n      </div>\n\n      <ion-buttons right>\n\n          <button ion-button icon-only (click)="afterMonth()">\n\n              <ion-icon name="md-arrow-dropright"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n    <ion-card *ngFor="let i of income"> \n\n\n\n        <ion-item>\n\n          <ion-avatar item-start>\n\n           <ion-icon color="{{i.color}}" name="{{i.icon}}" style="zoom:2.0;"></ion-icon>\n\n          </ion-avatar>\n\n          <h2>{{i.name}}</h2>\n\n          <p>{{i.c_name}}</p>\n\n        </ion-item>\n\n      \n\n        <ion-card-content>\n\n            <ion-row>\n\n                <ion-col align-self-start col-6>\n\n          <p>{{i.resume}}</p>\n\n               </ion-col>\n\n               <ion-col align-self-end col-6>\n\n                <span style="font-size:20px;">{{i.entrada | currency:\'BRL\':true:\'2.2-2\'}}</span>\n\n               </ion-col>\n\n          </ion-row>\n\n        \n\n        </ion-card-content>\n\n      \n\n        <ion-row>\n\n          <ion-col>\n\n            <button ion-button icon-left clear small>\n\n              <ion-icon name="thumbs-up"></ion-icon>\n\n              <div>Pago</div>\n\n            </button>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button icon-left clear small>\n\n              <ion-icon name="text"></ion-icon>\n\n              <div>Editar</div>\n\n            </button>\n\n          </ion-col>\n\n          <ion-col center text-center>\n\n            <ion-note>\n\n              {{i.datain | date:\'dd/MM/yyyy\'}}\n\n            </ion-note>\n\n          </ion-col>\n\n        </ion-row>\n\n      \n\n      </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\income\list-income\list-income.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__providers_income_income__["b" /* IncomeProvider */]]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* PopoverController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* PopoverController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_income_income__["b" /* IncomeProvider */]])
     ], ListIncomePage);
     return ListIncomePage;
 }());
@@ -1485,17 +1516,17 @@ var DatabaseProvider = (function () {
     function DatabaseProvider(sqlite, toastCtrl) {
         this.sqlite = sqlite;
         this.toastCtrl = toastCtrl;
-        this.delDb().then(function () { console.log('Deletado BD Data'); });
+        this.delDb().then(function () { console.log('Deletado BD'); });
     }
     DatabaseProvider.prototype.iniDb = function () {
         return this.sqlite.create({
-            name: 'credi.db',
+            name: 'data.db',
             location: 'default'
         });
     };
     DatabaseProvider.prototype.delDb = function () {
         return this.sqlite.deleteDatabase({
-            name: 'data.db',
+            name: 'credi.db',
             location: 'default'
         });
     };
@@ -1593,9 +1624,10 @@ var DatabaseProvider = (function () {
     };
     DatabaseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */]) === "function" && _b || Object])
     ], DatabaseProvider);
     return DatabaseProvider;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=database.js.map
@@ -2397,6 +2429,29 @@ var IncomeProvider = (function () {
                 var query2 = [res.insertId, mReal, yReal];
                 return db.executeSql(sql2, query2);
             }).catch(function (e) { return console.log(e); });
+        });
+    };
+    IncomeProvider.prototype.getAllbyMothIncome = function (month) {
+        var _this = this;
+        return this.dbProvider.iniDb()
+            .then(function (db) {
+            var sql = "SELECT income.*, categorie.icon, categorie.color, month.name as m_name, categorie.name as c_name";
+            sql += " FROM month_has_income";
+            sql += " INNER JOIN income ON month_has_income.income_id = income.id";
+            sql += " INNER JOIN categorie ON income.categorie_id = categorie.id";
+            sql += " INNER JOIN month ON month.id = month_has_income.month_id";
+            sql += " WHERE income.status = 1 AND month_has_income.month_id = ?";
+            var data = [month];
+            return db.executeSql(sql, data).then(function (data) {
+                _this.aIncome = [];
+                for (var i = 0; i < data.rows.length; i++) {
+                    var item = data.rows.item(i);
+                    var income = item;
+                    _this.aIncome.push(income);
+                }
+                console.log(_this.aIncome);
+                return _this.aIncome;
+            });
         });
     };
     IncomeProvider = __decorate([

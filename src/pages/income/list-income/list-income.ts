@@ -1,6 +1,8 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Events, PopoverController } from 'ionic-angular';
 import { IncomeProvider } from '../../../providers/income/income';
+
+
 /**
  * Generated class for the ListIncomePage page.
  *
@@ -8,19 +10,22 @@ import { IncomeProvider } from '../../../providers/income/income';
  * Ionic pages and navigation.
  */
 
-
 @Component({
   template: `
     <ion-list>
       <ion-list-header>Ordenar</ion-list-header>
-      <button ion-item (click)="close()">Alfabético</button>
-      <button ion-item (click)="close()">Dias</button>
-      <button ion-item (click)="close()">Categorias</button>
+      <button ion-item (click)="close('A')">Alfabético</button>
+      <button ion-item (click)="close('D')">Dias</button>
+      <button ion-item (click)="close('C')">Categorias</button>
     </ion-list>`
 })
 export class Popup{
 
   constructor(){}
+
+  close(o){
+    console.log(o);
+  }
 
 } 
 
@@ -32,35 +37,64 @@ export class Popup{
 })
 export class ListIncomePage implements OnInit{
 
+  public income = [];
   public month: any = [
-    {name:'Janeiro', id:1},
-    {name:'Fevereiro', id:2},
-    {name:'Março', id:3},
-    {name:'Abril', id:4},
-    {name:'Maio', id:5},
-    {name:'Junho', id:6},
-    {name:'Julho', id:7},
-    {name:'Agosto', id:8},
-    {name:'Setembro', id:9},
-    {name:'Outubro', id:10},
-    {name:'Novembro', id:11},
-    {name:'Dezembro', id:12},
+    { name:'Janeiro', id:1},
+    { name:'Fevereiro', id:2},
+    { name:'Março', id:3},
+    { name:'Abril', id:4},
+    { name:'Maio', id:5},
+    { name:'Junho', id:6},
+    { name:'Julho', id:7},
+    { name:'Agosto', id:8},
+    { name:'Setembro', id:9},
+    { name:'Outubro', id:10},
+    { name:'Novembro', id:11},
+    { name:'Dezembro', id:12},
   ];
   public currentMonth: any;
   public amountIncome: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public zone: NgZone, public events: Events,
-              public popoverCtrl: PopoverController) {
-              
+    public zone: NgZone, public events: Events,
+    public popoverCtrl: PopoverController,public incomeProvider: IncomeProvider) {
+    
+      this.events.subscribe('updateScreen',()=>{
+        this.zone.run((e)=>{
+          this.income = [];
+          this.amountIncome = 0;
+          this.getAll(this.currentMonth.id);
+        })
+     });
   }
 
   ngOnInit(){
     this.currentMonthFn();
+    this.getAll(this.realMonth());
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListIncomePage');
+    this.currentMonthFn();
+    this.getAll(this.realMonth());
+  }
+
+  ionViewWillEnter() {
+    this.currentMonthFn();
+    this.getAll(this.realMonth());
+   }
+
+  getAll(e){
+    this.incomeProvider.getAllbyMothIncome(e).then((result) =>{
+      if(result.length > 0){
+        this.income = [];
+        this.amountIncome = 0;
+        for(var i=0;i < result.length; i++ ){
+            this.amountIncome += result[i].entrada;
+            this.income.push(result[i]);
+          }
+        return this.income;
+      }
+    })
   }
 
   realMonth(): number{

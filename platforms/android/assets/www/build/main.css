@@ -76126,7 +76126,11 @@ page-categorie ion-label b {
 }
 
 page-list-expense .content {
-  background-image: url("../assets/imgs/blue-waves.jpg");
+  background-image: url("../assets/imgs/Stars.png");
+  width: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .backdropOpacityPopover ion-backdrop {
@@ -76183,4 +76187,12 @@ page-home #notifications-badge {
 
 .backdropOpacityPopover ion-backdrop {
   opacity: 0.4;
+}
+
+page-list-income .content {
+  background-image: url("../assets/imgs/Snowy-Mountain.png");
+  width: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
 }

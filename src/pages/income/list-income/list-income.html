@@ -21,7 +21,7 @@
           </button>
       </ion-buttons>
       <div style="text-align:center; color:white; font-size:20px;">
-        {{currentMonth.name}} - {{(amountExpense | currency:'BRL':true:'2.2-2') || 'R$0,00' }}
+        {{currentMonth.name}} - {{(amountIncome | currency:'BRL':true:'2.2-2') || 'R$0,00' }}
       </div>
       <ion-buttons right>
           <button ion-button icon-only (click)="afterMonth()">
@@ -33,5 +33,49 @@
 
 
 <ion-content padding>
+
+    <ion-card *ngFor="let i of income"> 
+
+        <ion-item>
+          <ion-avatar item-start>
+           <ion-icon color="{{i.color}}" name="{{i.icon}}" style="zoom:2.0;"></ion-icon>
+          </ion-avatar>
+          <h2>{{i.name}}</h2>
+          <p>{{i.c_name}}</p>
+        </ion-item>
+      
+        <ion-card-content>
+            <ion-row>
+                <ion-col align-self-start col-6>
+          <p>{{i.resume}}</p>
+               </ion-col>
+               <ion-col align-self-end col-6>
+                <span style="font-size:20px;">{{i.entrada | currency:'BRL':true:'2.2-2'}}</span>
+               </ion-col>
+          </ion-row>
+        
+        </ion-card-content>
+      
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="thumbs-up"></ion-icon>
+              <div>Pago</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-left clear small>
+              <ion-icon name="text"></ion-icon>
+              <div>Editar</div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+              {{i.datain | date:'dd/MM/yyyy'}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+      
+      </ion-card>
 
 </ion-content>

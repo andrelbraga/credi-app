@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { IonicPage, NavController, ViewController, NavParams, Events, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, PopoverController } from 'ionic-angular';
 import { ExpenseProvider } from '../../../providers/expense/expense';
 
 
@@ -14,17 +14,20 @@ import { ExpenseProvider } from '../../../providers/expense/expense';
   template: `
     <ion-list>
       <ion-list-header>Ordenar</ion-list-header>
-      <button ion-item (click)="close()">Alfabético</button>
-      <button ion-item (click)="close()">Dias</button>
-      <button ion-item (click)="close()">Categorias</button>
+      <button ion-item (click)="close('A')">Alfabético</button>
+      <button ion-item (click)="close('D')">Dias</button>
+      <button ion-item (click)="close('C')">Categorias</button>
     </ion-list>`
 })
 export class Popup{
 
   constructor(){}
 
-}
+  close(o){
+    console.log(o);
+  }
 
+}
 
 @IonicPage()
 @Component({
@@ -42,28 +45,25 @@ public mock = [
 
 public expense: any = [];
 public month: any = [
-  {name:'Janeiro', id:1},
-  {name:'Fevereiro', id:2},
-  {name:'Março', id:3},
-  {name:'Abril', id:4},
-  {name:'Maio', id:5},
-  {name:'Junho', id:6},
-  {name:'Julho', id:7},
-  {name:'Agosto', id:8},
-  {name:'Setembro', id:9},
-  {name:'Outubro', id:10},
-  {name:'Novembro', id:11},
-  {name:'Dezembro', id:12},
+  { name:'Janeiro', id:1},
+  { name:'Fevereiro', id:2},
+  { name:'Março', id:3},
+  { name:'Abril', id:4},
+  { name:'Maio', id:5},
+  { name:'Junho', id:6},
+  { name:'Julho', id:7},
+  { name:'Agosto', id:8},
+  { name:'Setembro', id:9},
+  { name:'Outubro', id:10},
+  { name:'Novembro', id:11},
+  { name:'Dezembro', id:12},
 ];
 public currentMonth: any;
 public amountExpense: any;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public expenseProvider: ExpenseProvider,
-    public zone: NgZone,
-    public events: Events,
-    public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public expenseProvider: ExpenseProvider, public zone: NgZone,
+    public events: Events,public popoverCtrl: PopoverController) {
 
       this.events.subscribe('updateScreen',()=>{
         this.zone.run((e)=>{
@@ -71,8 +71,7 @@ public amountExpense: any;
           this.amountExpense = 0;
           this.getAll(this.currentMonth.id);
         })
-       });
-
+     });
   }
 
 
@@ -92,7 +91,7 @@ public amountExpense: any;
   }
 
   getAll(e){
-    this.expenseProvider.getAllbyMothEspense(e).then((result) =>{
+    this.expenseProvider.getAllbyMothExpense(e).then((result) =>{
       if(result.length > 0){
         this.expense = [];
         this.amountExpense = 0;

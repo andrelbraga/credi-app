@@ -12,19 +12,19 @@ import { ToastController } from 'ionic-angular';
 export class DatabaseProvider {
 
   constructor(private sqlite: SQLite, public toastCtrl: ToastController) {
-    this.delDb().then(() => { console.log('Deletado BD Data'); });
+    this.delDb().then(() => { console.log('Deletado BD'); });
   }
 
 public iniDb(){
   return this.sqlite.create({
-    name: 'credi.db',
+    name: 'data.db',
     location: 'default'
   });
 }
 
 public delDb(){
   return this.sqlite.deleteDatabase({
-    name: 'data.db',
+    name: 'credi.db',
     location: 'default'
   });
 }

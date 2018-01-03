@@ -55,6 +55,29 @@ export class IncomeProvider {
 
   }
 
+  getAllbyMothIncome(month){
+    return this.dbProvider.iniDb()
+    .then((db: SQLiteObject) => {
+      let sql = "SELECT income.*, categorie.icon, categorie.color, month.name as m_name, categorie.name as c_name";
+          sql += " FROM month_has_income";
+          sql += " INNER JOIN income ON month_has_income.income_id = income.id";
+          sql += " INNER JOIN categorie ON income.categorie_id = categorie.id";
+          sql += " INNER JOIN month ON month.id = month_has_income.month_id";   
+          sql += " WHERE income.status = 1 AND month_has_income.month_id = ?";
+      let data = [month];
+      return db.executeSql(sql,data).then((data) => {
+        this.aIncome = [];
+        for(var i=0; i < data.rows.length; i++){
+          let item = data.rows.item(i);
+          let income: any = item;
+          this.aIncome.push(income);
+        }
+        console.log(this.aIncome);
+        return this.aIncome;
+      });
+    })
+  }
+
 }
 
 export class Income{

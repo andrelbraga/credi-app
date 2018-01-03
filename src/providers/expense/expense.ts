@@ -39,7 +39,7 @@ export class ExpenseProvider {
     })
   }
 
-  getAllbyMothEspense(month){
+  getAllbyMothExpense(month){
     return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
       let sql = "SELECT expense.*, categorie.icon, categorie.color, month.name as m_name, categorie.name as c_name";
@@ -69,7 +69,7 @@ export class ExpenseProvider {
     .then((db: SQLiteObject) => {
       let sql1 = "INSERT INTO expense (name,status,entrada,resume,datein,categorie_id) VALUES (?,?,?,?,?,?)";
       let query1 = [e.name, e.status, e.entrada, e.resume, e.datein, e.categorie_id];
-        let m = new Date(e.datain);
+        let m = new Date(e.datein);
         let mReal = m.getMonth() + 1;
         let yReal = m.getFullYear();
         db.executeSql(sql1,query1).then((res) => {

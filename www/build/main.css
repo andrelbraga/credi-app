@@ -76127,6 +76127,9 @@ page-categorie ion-label b {
 
 page-list-expense .content {
   background-image: url("../assets/imgs/Fundo.png");
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .backdropOpacityPopover ion-backdrop {
@@ -76181,10 +76184,23 @@ page-home #notifications-badge {
   font-family: "Roboto";
 }
 
+page-home .my-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 20;
+  top: 0;
+  left: 0;
+}
+
 .backdropOpacityPopover ion-backdrop {
   opacity: 0.4;
 }
 
 page-list-income .content {
   background-image: url("../assets/imgs/Fundo.png");
+  width: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
 }

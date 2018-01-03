@@ -552,9 +552,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Popup = (function () {
     function Popup() {
     }
+    Popup.prototype.close = function (o) {
+        console.log(o);
+    };
     Popup = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            template: "\n    <ion-list>\n      <ion-list-header>Ordenar</ion-list-header>\n      <button ion-item (click)=\"close()\">Alfab\u00E9tico</button>\n      <button ion-item (click)=\"close()\">Dias</button>\n      <button ion-item (click)=\"close()\">Categorias</button>\n    </ion-list>"
+            template: "\n    <ion-list>\n      <ion-list-header>Ordenar</ion-list-header>\n      <button ion-item (click)=\"close('A')\">Alfab\u00E9tico</button>\n      <button ion-item (click)=\"close('D')\">Dias</button>\n      <button ion-item (click)=\"close('C')\">Categorias</button>\n    </ion-list>"
         }),
         __metadata("design:paramtypes", [])
     ], Popup);
@@ -613,7 +616,7 @@ var ListExpensePage = (function () {
     };
     ListExpensePage.prototype.getAll = function (e) {
         var _this = this;
-        this.expenseProvider.getAllbyMothEspense(e).then(function (result) {
+        this.expenseProvider.getAllbyMothExpense(e).then(function (result) {
             if (result.length > 0) {
                 _this.expense = [];
                 _this.amountExpense = 0;
@@ -680,12 +683,9 @@ var ListExpensePage = (function () {
             selector: 'page-list-expense',template:/*ion-inline-start:"C:\Projetos\credi-app\src\pages\expense\list-expense\list-expense.html"*/'<!--\n\n  Generated template for the ListExpensePage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Despesas/Mês</ion-title>\n\n    <ion-buttons end>\n\n        <button ion-button icon-only (click)="showMenuPopup()">\n\n            <ion-icon name="md-funnel"></ion-icon>\n\n        </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n  <ion-navbar>\n\n      <ion-buttons left>\n\n          <button ion-button icon-only (click)="beforeMonth()">\n\n              <ion-icon name="md-arrow-dropleft"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n      <div style="text-align:center; color:white; font-size:20px;">\n\n        {{currentMonth.name}} - {{(amountExpense | currency:\'BRL\':true:\'2.2-2\') || \'R$0,00\' }}\n\n      </div>\n\n      <ion-buttons right>\n\n          <button ion-button icon-only (click)="afterMonth()">\n\n              <ion-icon name="md-arrow-dropright"></ion-icon>\n\n          </button>\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n\n\n    <!-- <div *ngIf="expense.length == 0">\n\n      <img src="assets/imgs/404.png" />\n\n    </div> -->\n\n\n\n    <ion-card *ngFor="let e of expense"> \n\n\n\n        <ion-item>\n\n          <ion-avatar item-start>\n\n           <ion-icon color="{{e.color}}" name="{{e.icon}}" style="zoom:2.0;"></ion-icon>\n\n          </ion-avatar>\n\n          <h2>{{e.name}}</h2>\n\n          <p>{{e.c_name}}</p>\n\n        </ion-item>\n\n      \n\n        <ion-card-content>\n\n            <ion-row>\n\n                <ion-col align-self-start col-6>\n\n          <p>{{e.resume}}</p>\n\n               </ion-col>\n\n               <ion-col align-self-end col-6>\n\n                <span style="font-size:20px;">{{e.entrada | currency:\'BRL\':true:\'2.2-2\'}}</span>\n\n               </ion-col>\n\n          </ion-row>\n\n        \n\n        </ion-card-content>\n\n      \n\n        <ion-row>\n\n          <ion-col>\n\n            <button ion-button icon-left clear small>\n\n              <ion-icon name="thumbs-up"></ion-icon>\n\n              <div>Pago</div>\n\n            </button>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button icon-left clear small>\n\n              <ion-icon name="text"></ion-icon>\n\n              <div>Editar</div>\n\n            </button>\n\n          </ion-col>\n\n          <ion-col center text-center>\n\n            <ion-note>\n\n              {{e.datain | date:\'dd/MM/yyyy\'}}\n\n            </ion-note>\n\n          </ion-col>\n\n        </ion-row>\n\n      \n\n      </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Projetos\credi-app\src\pages\expense\list-expense\list-expense.html"*/,
             providers: [__WEBPACK_IMPORTED_MODULE_2__providers_expense_expense__["b" /* ExpenseProvider */]],
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_expense_expense__["b" /* ExpenseProvider */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* PopoverController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_expense_expense__["b" /* ExpenseProvider */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* PopoverController */]])
     ], ListExpensePage);
     return ListExpensePage;
 }());
@@ -1002,9 +1002,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var Popup = (function () {
     function Popup() {
     }
+    Popup.prototype.close = function (o) {
+        console.log(o);
+    };
     Popup = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            template: "\n    <ion-list>\n      <ion-list-header>Ordenar</ion-list-header>\n      <button ion-item (click)=\"close()\">Alfab\u00E9tico</button>\n      <button ion-item (click)=\"close()\">Dias</button>\n      <button ion-item (click)=\"close()\">Categorias</button>\n    </ion-list>"
+            template: "\n    <ion-list>\n      <ion-list-header>Ordenar</ion-list-header>\n      <button ion-item (click)=\"close('A')\">Alfab\u00E9tico</button>\n      <button ion-item (click)=\"close('D')\">Dias</button>\n      <button ion-item (click)=\"close('C')\">Categorias</button>\n    </ion-list>"
         }),
         __metadata("design:paramtypes", [])
     ], Popup);
@@ -1126,8 +1129,7 @@ var ListIncomePage = (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["NgZone"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* PopoverController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_income_income__["b" /* IncomeProvider */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* PopoverController */], __WEBPACK_IMPORTED_MODULE_2__providers_income_income__["b" /* IncomeProvider */]])
     ], ListIncomePage);
     return ListIncomePage;
 }());
@@ -1624,10 +1626,9 @@ var DatabaseProvider = (function () {
     };
     DatabaseProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_native_sqlite__["a" /* SQLite */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* ToastController */]])
     ], DatabaseProvider);
     return DatabaseProvider;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=database.js.map
@@ -2287,7 +2288,7 @@ var ExpenseProvider = (function () {
             });
         });
     };
-    ExpenseProvider.prototype.getAllbyMothEspense = function (month) {
+    ExpenseProvider.prototype.getAllbyMothExpense = function (month) {
         var _this = this;
         return this.dbProvider.iniDb()
             .then(function (db) {
@@ -2316,7 +2317,7 @@ var ExpenseProvider = (function () {
             .then(function (db) {
             var sql1 = "INSERT INTO expense (name,status,entrada,resume,datein,categorie_id) VALUES (?,?,?,?,?,?)";
             var query1 = [e.name, e.status, e.entrada, e.resume, e.datein, e.categorie_id];
-            var m = new Date(e.datain);
+            var m = new Date(e.datein);
             var mReal = m.getMonth() + 1;
             var yReal = m.getFullYear();
             db.executeSql(sql1, query1).then(function (res) {

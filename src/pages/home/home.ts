@@ -11,6 +11,7 @@ import { CategoriePage } from '../categorie/categorie';
   templateUrl: 'home.html',
 })
 export class HomePage implements OnInit{
+  overlayHidden: boolean = false;
 
 
  //Begin Doughnut data
@@ -44,6 +45,10 @@ constructor(public navCtrl: NavController, public events: Events, public zone: N
   ionViewWillEnter() {
    
   }
+
+  public hideOverlay() {
+    this.overlayHidden = true;
+}
 
   ngOnInit() {
     this.fabButtonOpened = false;

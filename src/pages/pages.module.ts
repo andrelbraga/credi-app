@@ -9,6 +9,7 @@ import { IncomePageModule } from './income/income.module';
 import { ExpensePageModule } from './expense/expense.module';
 import { CategoriePageModule } from './categorie/categorie.module';
 import { RootPageModule } from './root/root.module';
+import { HomePageModule } from './home/home.module';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -24,7 +25,8 @@ import { ProvidersModule } from '../providers/providers.module';
     ExpensePageModule,
     CategoriePageModule,
     ProvidersModule,
-    RootPageModule
+    RootPageModule,
+    HomePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [ ],

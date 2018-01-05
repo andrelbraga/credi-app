@@ -50,6 +50,9 @@ export class Popup implements OnInit{
 
 }
 
+
+
+
 @IonicPage()
 @Component({
   selector: 'page-expense',
@@ -130,6 +133,11 @@ showCategories(){
     this.categorieName = data;
   });
   opnModal.present();
+}
+
+
+scheduled(){
+  
 }
 
 

@@ -38,6 +38,10 @@
         </button>
 
         <ion-item>
+          <button ion-button block color="dark" (click)="scheduled(Expense)" prompt>Submit</button>
+        </ion-item>
+
+        <ion-item>
           <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>
         </ion-item>
       </form>

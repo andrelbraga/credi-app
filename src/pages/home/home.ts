@@ -1,11 +1,37 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { IonicPage, NavController, Events, PopoverController, ModalController } from 'ionic-angular';
 import { IncomePage } from '../income/income';
 import { ExpensePage } from '../expense/expense';
 import { CategoriePage } from '../categorie/categorie';
 
 
+@Component({
+  template:`<ion-header>
+              <ion-navbar>
+                <ion-title>Notificações</ion-title>
+                <ion-buttons end>
+                <button ion-button icon-only (click)="exitModal()">
+                <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons>
+              </ion-navbar>
+          </ion-header>
+          <ion-content padding>
+          </ion-content>
+          `
+})
+export class Popup{
+  
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController) {    
+  }
 
+  exitModal(){
+     this.navCtrl.pop();
+  }
+
+}
+
+@IonicPage()
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -36,7 +62,8 @@ public fabButtonOpened: any;
 //End Line Chart
 
 //Constructor HomePage
-constructor(public navCtrl: NavController, public events: Events, public zone: NgZone) { }
+constructor(public navCtrl: NavController, public events: Events, 
+  public zone: NgZone, public modalCtrl: ModalController) { }
 
   ionViewDidLoad() {
     
@@ -107,6 +134,12 @@ constructor(public navCtrl: NavController, public events: Events, public zone: N
 
   //Begin Methods
 
+  opnNotification(){
+    let opnPopup = this.modalCtrl.create(Popup);
+    opnPopup.present();
+  }
+
+  
   //End Methods
 
 

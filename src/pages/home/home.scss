@@ -1,59 +1,36 @@
 page-home {
 
-  .graphic{
-    color: #565656;
-    position: absolute;
-    width: 100%;
-    padding-right: 220px;
-    padding-bottom: 195px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-    text-align: right;
-    font-weight: bold;
+  .fab {
+    contain: initial;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
   }
-
-  .categorie{
-    color: #488aff;
-    position: absolute;
-    width: 100%;
-    padding-right: 220px;
-    padding-bottom: 140px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-    text-align: right;
-    font-weight: bold;
-    }
-
-    .expense{
-      color: #f53d3d;
-      position: absolute;
-      width: 100%;
-      padding-right: 220px;
-      padding-bottom: 85px;
-      margin-top: 10px;
-      margin-bottom: 0px;
-      text-align: right;
-      font-weight: bold;
-     }
-
-    .income{
-      color: #32db64;
-      position: absolute;
-      width: 100%;
-      padding-right: 220px;
-      padding-bottom: 30px;
-      margin-top: 10px;
-      margin-bottom: 0px;
-      text-align: right;
-      font-weight: bold;
+  
+  ion-fab {
+      ion-fab-list button[ion-fab] {
+          overflow: visible;
+  
+          div.label {
+            position: absolute;
+            right: 48px;
+            background: rgba(250, 249, 249, 0.7);
+            height: 24px;
+            line-height: 16px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 3px;
+            color: #fff;
+            box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
+          }
       }
+  }  
 
-    
    .ListBackdrop{
         background-color: white !important;
         opacity: 0.2;
     }
-    
+
     #notification-button {            
       position: relative;
       width: 42px;
@@ -70,5 +47,15 @@ page-home {
       right: -3px;
       border-radius: 100%;
       font-family: "Roboto";
+    }
+
+    .my-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 20;
+      top: 0;
+      left: 0;
     }
 }

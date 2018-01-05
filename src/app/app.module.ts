@@ -10,33 +10,27 @@ import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { DatabaseProvider } from '../providers/database/database';
 
 //Feature Pages
 import { PagesModule } from '../pages/pages.module';
 import { ProvidersModule } from '../providers/providers.module';
 
-//Plugin
-import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   imports: [
     BrowserModule,
     PagesModule,
     ProvidersModule,
-    ChartsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
     StatusBar,

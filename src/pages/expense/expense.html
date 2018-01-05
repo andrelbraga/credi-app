@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Expenses</ion-title>
+    <ion-title>Despesas</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,29 +17,29 @@
       <!-- <alert-default [obj]="categories" *ngIf="showCategorie" id="category"></alert-default> -->
         
         <ion-item>
-          <ion-label floating>Despesa</ion-label>
-          <ion-input formControlName="formName" [(ngModel)]="Expense.name" clearInput></ion-input>
+          <ion-input formControlName="formName" [(ngModel)]="Expense.name" placeholder="Despesa" clearInput></ion-input>
         </ion-item>
         
         <ion-item>
-          <ion-label floating>R$</ion-label>
-          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.entrada" maxlength="10"></ion-input>
+          <ion-input type="number" formControlName="formMoney"  [(ngModel)]="Expense.entrada" placeholder="R$" maxlength="10"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Data</ion-label>
-            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" [(ngModel)]="Expense.datain"></ion-datetime>
+            <ion-datetime formControlName="formDate" displayFormat="DD/MM/YYYY" placeholder="Data" [(ngModel)]="Expense.datein"></ion-datetime>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Nota</ion-label>
-            <ion-textarea rows="3" maxLength="500" formControlName="formNote" [(ngModel)]="Expense.resume"></ion-textarea>
+            <ion-textarea rows="3" maxLength="500" formControlName="formNote" placeholder="Observação" [(ngModel)]="Expense.resume"></ion-textarea>
         </ion-item>
 
         <button ion-item block (click)="showCategories()">
           <ion-label>{{ categorieName != null ? categorieName.name : 'Add Categories'}}</ion-label>
           <ion-icon color="{{categorieName != null ? categorieName.color : 'primary'}}" name="{{categorieName != null ? categorieName.icon : 'md-add'}}" item-start></ion-icon>
         </button>
+
+        <ion-item>
+          <button ion-button block color="dark" (click)="scheduled(Expense)" prompt>Submit</button>
+        </ion-item>
 
         <ion-item>
           <button ion-button block color="bluedevider" [disabled]="!formExpense.valid" (click)="submit(Expense)" prompt>Submit</button>

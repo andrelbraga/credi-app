@@ -17,7 +17,7 @@ export class ExpenseProvider {
     console.log('Hello ExpenseProvider Provider');
   }
 
-  getAllEpense(status: number = 1, lazy: boolean = false){
+  getAllEpense(status: number = 1, lazy: boolean = true){
     return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
       let sql = "SELECT expense.*, categorie.icon, categorie.color, categorie.name as c_name FROM expense";
@@ -31,7 +31,6 @@ export class ExpenseProvider {
         for(var i=0; i < data.rows.length; i++){
           let item = data.rows.item(i);
           let expense: any = item;
-
           this.aExpense.push(expense);
         }
         console.log(this.aExpense);
@@ -40,7 +39,7 @@ export class ExpenseProvider {
     })
   }
 
-  getAllbyMothEspense(month){
+  getAllbyMothExpense(month){
     return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
       let sql = "SELECT expense.*, categorie.icon, categorie.color, month.name as m_name, categorie.name as c_name";
@@ -68,15 +67,16 @@ export class ExpenseProvider {
     //e.datain = e.datain.toLocaleString('pt-BR',{month:'2-digit', day:'2-digit', year:'numeric'});
   return this.dbProvider.iniDb()
     .then((db: SQLiteObject) => {
-      let sql1 = "INSERT INTO expense (name,status,entrada,resume,datain,categorie_id) VALUES (?,?,?,?,?,?)";
-      let query1 = [e.name, e.status, e.entrada, e.resume, e.datain, e.categorie_id];
-        let m = new Date(e.datain);
+      let sql1 = "INSERT INTO expense (name,status,entrada,resume,datein,categorie_id) VALUES (?,?,?,?,?,?)";
+      let query1 = [e.name, e.status, e.entrada, e.resume, e.datein, e.categorie_id];
+        let m = new Date(e.datein);
         let mReal = m.getMonth() + 1;
+        let yReal = m.getFullYear();
         db.executeSql(sql1,query1).then((res) => {
-          let sql2 = "INSERT INTO month_has_expense (expense_id, month_id) VALUES (?,?)";
-          let query2 = [res.insertId, mReal];
+          let sql2 = "INSERT INTO month_has_expense (expense_id,month_id,year_in) VALUES (?,?,?)";
+          let query2 = [res.insertId, mReal, yReal];
           return db.executeSql(sql2,query2);
-        }); 
+        }).catch(e => console.log(e)); 
     });
   }
 
@@ -95,9 +95,9 @@ export class ExpenseProvider {
 export class Expense{
   
   constructor(data) {
-    this.dataout = new Date() || data.dataout;
-    this.datain = new Date() || data.datain;
-    this.dataput = new Date() || data.datain;
+    this.dateout = new Date() || data.dateout;
+    this.datein = new Date() || data.datein;
+    this.dateput = new Date() || data.datein;
     this.id = data.id;
     this.name = data.name;
     this.status = 1 || data.status;
@@ -113,8 +113,8 @@ export class Expense{
   entrada: number;
   saida: number;
   resume: string;
-  datain: string;
-  dataout: string;
-  dataput: string;
+  datein: string;
+  dateout: string;
+  dateput: string;
   categorie_id: number;
 }

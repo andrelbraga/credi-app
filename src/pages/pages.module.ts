@@ -8,8 +8,8 @@ import { IonicApp, IonicErrorHandler } from 'ionic-angular';
 import { IncomePageModule } from './income/income.module';
 import { ExpensePageModule } from './expense/expense.module';
 import { CategoriePageModule } from './categorie/categorie.module';
-import { ListCategoriesPageModule } from './expense/list-categories/list-categories.module';
 import { RootPageModule } from './root/root.module';
+import { HomePageModule } from './home/home.module';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -24,9 +24,9 @@ import { ProvidersModule } from '../providers/providers.module';
     IncomePageModule,
     ExpensePageModule,
     CategoriePageModule,
-    ListCategoriesPageModule,
     ProvidersModule,
-    RootPageModule
+    RootPageModule,
+    HomePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [ ],

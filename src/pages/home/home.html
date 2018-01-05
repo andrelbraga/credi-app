@@ -5,7 +5,7 @@
       </button>
     <ion-title>Home</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only>
+        <button (click)="opnNotification()" ion-button icon-only>
             <ion-icon name="md-notifications" tabBadge="0">
             <ion-badge id="notifications-badge">5</ion-badge>
             </ion-icon>
@@ -72,19 +72,33 @@
 
     </ion-slides>
 
-
-
-    <ion-fab right bottom #fab>
+    <ion-fab right bottom>
         <button ion-fab color="positive" (click)="penFabButton()"><ion-icon name="add"></ion-icon></button>
         <ion-fab-list side="top">
-            <ion-label class="graphic">Graphics</ion-label>
-            <ion-label class="income">Incomes</ion-label>
-            <ion-label class="categorie">Categories</ion-label>
-            <ion-label class="expense">Expenses</ion-label>
-            <button ion-fab style="color:#32db64" (click)="openIncome($event)"><ion-icon name="md-arrow-dropup"></ion-icon></button>
-            <button ion-fab style="color:#f53d3d" (click)="openExpense($event)"><ion-icon name="md-arrow-dropdown"></ion-icon></button>
-            <button ion-fab style="color:#488aff" (click)="openCategorie($event)"><ion-icon name="md-list"></ion-icon></button>
-            <button ion-fab style="color:#565656" (click)="openGraphic($event)"><ion-icon name="md-pie"></ion-icon></button>
+            <button ion-fab [style.background-color]="color" (click)="openGraphic($event)">
+                    <ion-icon name="md-pie" color="dark"></ion-icon>
+                    <div style="color:#565656;" class="label" dir="rtl">Gráficos</div>
+            </button>
+
+            <button ion-fab [style.background-color]="color" (click)="openIncome($event)">
+                    <ion-icon name="md-arrow-dropup" color="secondary"></ion-icon>
+                    <div style="color:#32db64;" class="label" dir="rtl">Rendas</div>
+            </button>
+
+            <button ion-fab [style.background-color]="color" (click)="openCategorie($event)">
+                    <ion-icon name="md-list" color="primary"></ion-icon>
+                    <div style="color:#488aff" class="label" dir="rtl">Categorias</div>
+            </button>
+
+            <button ion-fab [style.background-color]="color" (click)="openExpense($event)">
+                    <ion-icon name="md-arrow-dropdown" color="danger"></ion-icon>
+                    <div style="color:#f53d3d;" class="label" dir="rtl">Despesas</div>
+            </button>
+
+            <!-- <div class="my-overlay" padding [hidden]="overlayHidden">
+                <button full (click)="hideOverlay()">Click me</button>
+            </div> -->
+
         </ion-fab-list>
     </ion-fab>
 
